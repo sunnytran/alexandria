@@ -1,15 +1,12 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
+const db = require("./data/db.js");
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
-
-  res.json(customers);
+app.get("/boards", (req, res) => {
+  const boards = await db("boards");
+  console.log(boards)
+  res.json({ boards })
 });
 
 const PORT = process.env.PORT || 5000;
