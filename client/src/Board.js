@@ -1,7 +1,11 @@
 import React from "react";
 
-function Board(props) {
-  return <h1>{props.name}</h1>;
-}
+const Board = ({ match, location }) => {
+  const {
+    params: { boardName },
+  } = match;
+
+  return <h1>{boardName}</h1>;
+};
 
 export default Board;

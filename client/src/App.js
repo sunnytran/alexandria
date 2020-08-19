@@ -34,14 +34,7 @@ function App() {
       </ul>
 
       <Switch>
-        {boards.map((i) => {
-          return (
-            <Route
-              path="/:boardName"
-              component={() => <Board name={i.name} title={i.title} />}
-            />
-          );
-        })}
+        <Route path="/:boardName" component={Board} />
       </Switch>
     </BrowserRouter>
   );
