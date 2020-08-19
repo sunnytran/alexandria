@@ -1,7 +1,7 @@
 import React from "react";
 
-function Board() {
-  return <h1>BOARD</h1>;
+function Board(props) {
+  return <h1>{props.name}</h1>;
 }
 
 export default Board;

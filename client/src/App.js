@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Board from "./Board";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           return (
             <li key={i.id}>
               <h3>
-                <Link to="/board">
+                <Link to={`/${i.name}`}>
                   {i.name} - {i.title}
                 </Link>
               </h3>
@@ -33,7 +33,16 @@ function App() {
         })}
       </ul>
 
-      <Route path="/board" component={Board} />
+      <Switch>
+        {boards.map((i) => {
+          return (
+            <Route
+              path="/:boardName"
+              component={() => <Board name={i.name} title={i.title} />}
+            />
+          );
+        })}
+      </Switch>
     </BrowserRouter>
   );
 }
