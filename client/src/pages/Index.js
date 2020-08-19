@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Link, Switch } from "react-router-dom";
-import Board from "./Board";
 
 function Index() {
   const [boards, setBoards] = useState([]);

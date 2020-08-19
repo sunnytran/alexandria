@@ -22,3 +22,17 @@ npm run client
 ## App Info
 
 imageboard clone
+
+i use
+
+    - react
+
+    - react-router
+
+    - axios
+
+    - express
+
+    - knex
+
+    - postgres
