@@ -3,10 +3,12 @@ const express = require("express");
 const app = express();
 const db = require("./data/db.js");
 
-app.get("/boards", async (req, res) => {
+app.get("/api/v1/boards", async (req, res) => {
   const boards = await db("boards");
   res.json(boards);
 });
+
+app.post("/api/v1/boards", async (req, res) => {});
 
 const PORT = process.env.PORT || 5000;
 
