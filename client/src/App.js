@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import axios from "axios";
+
 function App() {
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("/boards")
-        .then((res) => res.json())
-        .then((res) => {
-          setBoards(res);
-        })
-        .catch((error) => console.log(error));
+      await axios.get("/boards").then((res) => {
+        setBoards(res.data);
+      });
     };
 
     fetchData();
