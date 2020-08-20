@@ -27,6 +27,8 @@ i use
 
     - react
 
+    - redux
+
     - react-router
 
     - axios
