@@ -8,7 +8,16 @@ app.get("/api/v1/boards", async (req, res) => {
   res.json(boards);
 });
 
-app.post("/api/v1/boards", async (req, res) => {});
+app.get("/api/v1/board/:id", async (req, res) => {
+  const board = await db("boards")
+    .where({ name: req.params.id })
+    .first()
+    .then((row) => row);
+
+  res.json(board);
+});
+
+app.post("/api/v1/posts", async (req, res) => {});
 
 const PORT = process.env.PORT || 5000;
 
