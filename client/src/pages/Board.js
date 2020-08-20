@@ -27,6 +27,7 @@ const Board = ({ match, location, board, getBoard }) => {
 
   useEffect(() => {
     getBoard(boardName);
+
     console.log(board);
   });
 

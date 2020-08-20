@@ -8,7 +8,7 @@ const Root = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route component={Index} exact path="/" />
+        <Route exact path="/" component={Index} />
         <Route path="/:boardName" component={Board} />
       </Switch>
     </BrowserRouter>
