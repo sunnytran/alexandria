@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Route, Link, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-function Index() {
-  const [boards, setBoards] = useState([]);
+import { getBoards } from "../store/actions/boards";
 
+function Index({ boards, getBoards }) {
   useEffect(() => {
-    const fetchData = async () => {
-      await axios.get("/api/v1/boards").then((res) => {
-        setBoards(res.data);
-      });
-    };
-
-    fetchData();
-  }, []);
+    getBoards();
+  });
 
   return (
     <div>
@@ -33,4 +27,8 @@ function Index() {
   );
 }
 
-export default Index;
+const mapStateToProps = (state) => ({
+  boards: state.boards,
+});
+
+export default connect(mapStateToProps, { getBoards })(Index);

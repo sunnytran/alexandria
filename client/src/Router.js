@@ -1,17 +1,19 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import Index from "./pages/Index";
 import Board from "./pages/Board";
 
 const Root = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Switch>
         <Route component={Index} exact path="/" />
         <Route path="/:boardName" component={Board} />
       </Switch>
-    </div>
+    </BrowserRouter>
   );
 };
 
