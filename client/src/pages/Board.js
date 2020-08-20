@@ -1,24 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { getBoard } from "../store/actions/boards";
-
-const postComment = (e) => {
-  e.preventDefault();
-  console.log(e.target.comment.value);
-
-  // axios
-  //   .post("/user", {
-  //     firstName: "Fred",
-  //     lastName: "Flintstone",
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-};
+import { getBoard } from "../store/actions/board";
 
 const Board = ({ match, location, board, getBoard }) => {
   const {
@@ -33,15 +17,18 @@ const Board = ({ match, location, board, getBoard }) => {
 
   return (
     <div>
-      <h1>/{boardName}/</h1>
-
-      <form onSubmit={postComment.bind(this)}>
-        <label>Comment</label>
-        <br />
-        <textarea name="comment" rows="5" cols="50" />
-        <br />
-        <input type="submit" value="Post" />
-      </form>
+      <h1>Alexandria</h1>
+      <ul>
+        {/* {board.map((i) => {
+          return (
+            <li key={i.id}>
+              <h3>
+                <Link to={`/${i.name}`}>{i.title}</Link>
+              </h3>
+            </li>
+          );
+        })} */}
+      </ul>
     </div>
   );
 };
