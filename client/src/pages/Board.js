@@ -5,6 +5,7 @@ import { getBoard } from "../store/actions/board";
 import { getPosts, addPost } from "../store/actions/posts";
 
 import Post from "../components/Post";
+import store from "../store";
 
 const Board = ({
   match,
@@ -21,8 +22,9 @@ const Board = ({
 
   useEffect(() => {
     getBoard(boardName);
-    getPosts(board.name);
-  });
+    getPosts(boardName);
+    console.log(posts);
+  }, [posts.length, getPosts]);
 
   const handleAddPost = (e) => {
     e.preventDefault();

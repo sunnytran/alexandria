@@ -1,8 +1,6 @@
 import React from "react";
 
 const Post = ({ postContent }) => {
-  console.log(postContent);
-
   return (
     <div style={{ marginBottom: "10px" }}>
       <b>{postContent.username}</b>

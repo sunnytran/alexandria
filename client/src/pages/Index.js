@@ -7,7 +7,7 @@ import { getBoards } from "../store/actions/boards";
 function Index({ boards, getBoards }) {
   useEffect(() => {
     getBoards();
-  });
+  }, [boards.length, getBoards]);
 
   return (
     <div>

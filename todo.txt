@@ -1,14 +1,16 @@
 front
 addposts redux upate the state, don't return the payload
-redux constant rendering is this normal?
-    - i keep getting insufficientresources
 pass id through router and into database, not the name
-hooks useeffect lag, maybe switch to componentdidmount?
-    - might be from all the constant cycling from redux
 TODO: check if fields are empty before submitting
+remove hook dependency warnings or at least fix them
+check into useffect lag when switching pages
 
 server
 organize express routes
 
 db
 add a table of comments for every post and a table of posts for every board
+
+FIXED
+redux constant rendering is this normal?
+    - i keep getting insufficientresources
