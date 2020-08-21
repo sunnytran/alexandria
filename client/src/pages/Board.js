@@ -2,15 +2,25 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { getBoard } from "../store/actions/board";
-import { addPost } from "../store/actions/post";
+import { getPosts, addPost } from "../store/actions/posts";
 
-const Board = ({ match, location, board, getBoard, addPost }) => {
+const Board = ({
+  match,
+  location,
+  board,
+  getBoard,
+  posts,
+  getPosts,
+  addPost,
+}) => {
   const {
     params: { boardName },
   } = match;
 
   useEffect(() => {
     getBoard(boardName);
+    getPosts(board.name);
+    console.log(posts);
   });
 
   const handleAddPost = (e) => {
@@ -41,6 +51,7 @@ const Board = ({ match, location, board, getBoard, addPost }) => {
 
 const mapStateToProps = (state) => ({
   board: state.board,
+  posts: state.posts,
 });
 
-export default connect(mapStateToProps, { getBoard, addPost })(Board);
+export default connect(mapStateToProps, { getBoard, getPosts, addPost })(Board);

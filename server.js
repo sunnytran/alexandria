@@ -21,15 +21,20 @@ app.get("/api/v1/board/:id", async (req, res) => {
   res.json(board);
 });
 
-app.post("/api/v1/post", async (req, res) => {
-  console.log(req.body);
+app.get("/api/v1/posts/:id", async (req, res) => {
+  const posts = await db("posts").where({ board: req.params.id });
+  res.json(posts);
+});
 
+app.post("/api/v1/posts", async (req, res) => {
   await db("posts").insert({
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
   });
+
+  res.status(201).send("Added post successfully");
 });
 
 const PORT = process.env.PORT || 5000;
