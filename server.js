@@ -1,6 +1,10 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const db = require("./data/db.js");
 
 app.get("/api/v1/boards", async (req, res) => {
@@ -17,7 +21,16 @@ app.get("/api/v1/board/:id", async (req, res) => {
   res.json(board);
 });
 
-app.post("/api/v1/posts", async (req, res) => {});
+app.post("/api/v1/post", async (req, res) => {
+  console.log(req.body);
+
+  await db("posts").insert({
+    username: "Anonymous",
+    date: new Date(),
+    comment: req.body.comment,
+    board: req.body.board,
+  });
+});
 
 const PORT = process.env.PORT || 5000;
 

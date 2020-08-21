@@ -1,2 +1,10 @@
+front
+pass id through router and into database, not the name
+hooks useeffect lag, maybe switch to componentdidmount?
+TODO: check if fields are empty before submitting
 
-pass id through router and into database
+server
+organize express routes
+
+db
+add a table of comments for every post and a table of posts for every board
