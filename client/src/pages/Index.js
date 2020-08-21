@@ -17,7 +17,7 @@ function Index({ boards, getBoards }) {
           return (
             <li key={i.id}>
               <h3>
-                <Link to={`/${i.name}`}>{i.title}</Link>
+                <Link to={"/" + i.name}>{i.title}</Link>
               </h3>
             </li>
           );

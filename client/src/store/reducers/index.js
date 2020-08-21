@@ -7,5 +7,5 @@ import postReducer from "./posts";
 export default combineReducers({
   board: boardReducer,
   boards: boardsReducer,
-  post: postReducer,
+  posts: postReducer,
 });

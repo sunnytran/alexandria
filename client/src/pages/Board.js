@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { getBoard } from "../store/actions/board";
 import { getPosts, addPost } from "../store/actions/posts";
 
+import Post from "../components/Post";
+
 const Board = ({
   match,
   location,
@@ -20,7 +22,6 @@ const Board = ({
   useEffect(() => {
     getBoard(boardName);
     getPosts(board.name);
-    console.log(posts);
   });
 
   const handleAddPost = (e) => {
@@ -45,6 +46,12 @@ const Board = ({
         <br />
         <input type="submit" value="Post" />
       </form>
+
+      <div>
+        {posts.map((i) => {
+          return <Post key={i.id} postContent={i} />;
+        })}
+      </div>
     </div>
   );
 };
