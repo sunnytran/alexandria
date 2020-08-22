@@ -27,14 +27,19 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 });
 
 app.post("/api/v1/posts", async (req, res) => {
-  await db("posts").insert({
+  data = {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
-  });
+  };
 
-  res.status(201).send("Added post successfully");
+  const post = await db("posts")
+    .insert(data)
+    .returning("*")
+    .then((res) => res);
+
+  res.json(post[0]);
 });
 
 const PORT = process.env.PORT || 5000;

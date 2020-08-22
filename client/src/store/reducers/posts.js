@@ -5,7 +5,7 @@ const postsReducer = (state = [], { type, payload }) => {
     case GET_POSTS:
       return payload;
     case ADD_POST:
-      return payload;
+      return state.concat(payload);
     default:
       return state;
   }
