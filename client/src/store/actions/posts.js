@@ -11,9 +11,17 @@ export const getPosts = (boardName) => async (dispatch) => {
   });
 };
 
-export const addPost = (textComment, boardName) => async (dispatch) => {
+export const addPost = (image, comment, board) => async (dispatch) => {
+  let data = new FormData();
+  data.append("image", image, image.fileName);
+  console.log(data.get("image"));
+
   await axios
-    .post("/api/v1/posts", { comment: textComment, board: boardName })
+    .post("/api/v1/posts", {
+      image: data,
+      comment: comment,
+      board: board,
+    })
     .then((res) => {
       dispatch({
         type: ADD_POST,

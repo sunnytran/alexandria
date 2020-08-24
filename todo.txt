@@ -1,6 +1,6 @@
 front
-posting bug posts.map is not a function
-addposts redux upate the state, don't return the payload
+image upload
+knex[0] in server.js seems a little hacky, find a better alternative
 pass id through router and into database, not the name
 TODO: check if fields are empty before submitting
 remove hook dependency warnings or at least fix them
@@ -14,5 +14,7 @@ db
 add a table of comments for every post and a table of posts for every board
 
 FIXED
+addposts redux upate the state, don't return the payload
+posting bug posts.map is not a function
 redux constant rendering is this normal?
     - i keep getting insufficientresources

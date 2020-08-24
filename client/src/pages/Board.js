@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { getBoard } from "../store/actions/board";
@@ -19,28 +19,38 @@ const Board = ({
     params: { boardName },
   } = match;
 
+  const [image, setImage] = useState(null);
+
   useEffect(() => {
     getBoard(boardName);
     getPosts(boardName);
   }, [posts.length, getPosts]);
 
+  const onChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const handleAddPost = (e) => {
     e.preventDefault();
 
     // TODO: Check if comment is empty
-    addPost(e.target.comment.value, board.name);
+    addPost(image, e.target.comment.value, board.name);
 
+    e.target.image.value = "";
     e.target.comment.value = "";
+    setImage(null);
   };
 
   return (
     <div>
-      {console.log(posts)}
       <h1>
         /{board.name}/ - {board.title}
       </h1>
 
       <form onSubmit={handleAddPost.bind(this)}>
+        <label>Image</label>
+        <input type="file" name="image" onChange={onChange.bind(this)} />
+        <br />
         <label>Comment</label>
         <br />
         <textarea name="comment" rows="5" cols="50" />
