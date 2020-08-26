@@ -20,6 +20,7 @@ const Board = ({
   } = match;
 
   const [image, setImage] = useState(null);
+  const [replyingTo, setReplyingTo] = useState(null);
 
   useEffect(() => {
     getBoard(boardName);
@@ -60,7 +61,14 @@ const Board = ({
 
       <div>
         {posts.map((i) => {
-          return <Post key={i.id} postContent={i} />;
+          return (
+            <Post
+              key={i.id}
+              postContent={i}
+              replyingTo={replyingTo}
+              setReplyingTo={setReplyingTo}
+            />
+          );
         })}
       </div>
     </div>

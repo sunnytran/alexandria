@@ -12,13 +12,11 @@ export const getPosts = (boardName) => async (dispatch) => {
 };
 
 export const addPost = (image, comment, board) => async (dispatch) => {
-  let data = new FormData();
-  data.append("image", image, image.fileName);
-  console.log(data.get("image"));
+  console.log(image);
 
   await axios
     .post("/api/v1/posts", {
-      image: data,
+      image: image,
       comment: comment,
       board: board,
     })

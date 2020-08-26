@@ -27,8 +27,7 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 });
 
 app.post("/api/v1/posts", async (req, res) => {
-  console.log(req.body.image);
-
+  console.log(req.body);
   data = {
     username: "Anonymous",
     date: new Date(),
