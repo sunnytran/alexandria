@@ -5,6 +5,7 @@ import { getBoard } from "../store/actions/board";
 import { getPosts, addPost } from "../store/actions/posts";
 
 import Post from "../components/Post";
+import PostForm from "../components/PostForm";
 
 const Board = ({
   match,
@@ -19,7 +20,6 @@ const Board = ({
     params: { boardName },
   } = match;
 
-  const [image, setImage] = useState(null);
   const [replyingTo, setReplyingTo] = useState(null);
 
   useEffect(() => {
@@ -27,37 +27,13 @@ const Board = ({
     getPosts(boardName);
   }, [posts.length, getPosts]);
 
-  const onChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
-  const handleAddPost = (e) => {
-    e.preventDefault();
-
-    // TODO: Check if comment is empty
-    addPost(image, e.target.comment.value, board.name);
-
-    e.target.image.value = "";
-    e.target.comment.value = "";
-    setImage(null);
-  };
-
   return (
     <div>
       <h1>
         /{board.name}/ - {board.title}
       </h1>
 
-      <form onSubmit={handleAddPost.bind(this)}>
-        <label>Image</label>
-        <input type="file" name="image" onChange={onChange.bind(this)} />
-        <br />
-        <label>Comment</label>
-        <br />
-        <textarea name="comment" rows="5" cols="50" />
-        <br />
-        <input type="submit" value="Post" />
-      </form>
+      <PostForm />
 
       <div>
         {posts.map((i) => {

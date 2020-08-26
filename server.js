@@ -27,7 +27,6 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 });
 
 app.post("/api/v1/posts", async (req, res) => {
-  console.log(req.body);
   data = {
     username: "Anonymous",
     date: new Date(),
@@ -36,6 +35,28 @@ app.post("/api/v1/posts", async (req, res) => {
   };
 
   const post = await db("posts")
+    .insert(data)
+    .returning("*")
+    .then((res) => res);
+
+  res.json(post[0]);
+});
+
+app.get("/api/v1/replies/:id", async (req, res) => {
+  const replies = await db("replies").where({ replying_to: req.params.id });
+  res.json(replies);
+});
+
+app.post("/api/v1/replies", async (req, res) => {
+  data = {
+    username: "Anonymous",
+    date: new Date(),
+    comment: req.body.comment,
+    board: req.body.board,
+    replying_to: req.body.replyingTo,
+  };
+
+  const post = await db("replies")
     .insert(data)
     .returning("*")
     .then((res) => res);

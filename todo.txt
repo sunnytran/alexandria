@@ -6,6 +6,7 @@ TODO: check if fields are empty before submitting
 remove hook dependency warnings or at least fix them
 check into useffect lag when switching pages
 sort posts newest first? or maybe a "relevance"?
+paginate
 
 server
 organize express routes

@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addReply } from "../store/actions/replies";
+import { addPost } from "../store/actions/posts";
 
-const ReplyForm = ({ board, addReply, setReplyingTo, postID }) => {
+const PostForm = ({ board, addPost }) => {
   const [image, setImage] = useState(null);
 
   const onChange = (e) => {
     setImage(e.target.files[0]);
   };
 
-  const handleAddReply = (e) => {
+  const handleAddPost = (e) => {
     e.preventDefault();
 
-    addReply(image, e.target.comment.value, board.name, postID);
+    // TODO: Check if comment is empty
+    addPost(image, e.target.comment.value, board.name);
 
     e.target.image.value = "";
     e.target.comment.value = "";
     setImage(null);
-
-    setReplyingTo(null);
   };
 
   return (
-    <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
-      <form onSubmit={handleAddReply.bind(this)}>
+    <div>
+      <form onSubmit={handleAddPost.bind(this)}>
         <label>Image</label>
         <input type="file" name="image" onChange={onChange.bind(this)} />
         <br />
@@ -31,7 +30,7 @@ const ReplyForm = ({ board, addReply, setReplyingTo, postID }) => {
         <br />
         <textarea name="comment" rows="5" cols="50" />
         <br />
-        <input type="submit" value="Reply" />
+        <input type="submit" value="Post" />
       </form>
     </div>
   );
@@ -41,4 +40,4 @@ const mapStateToProps = (state) => ({
   board: state.board,
 });
 
-export default connect(mapStateToProps, { addReply })(ReplyForm);
+export default connect(mapStateToProps, { addPost })(PostForm);

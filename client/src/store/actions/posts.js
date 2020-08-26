@@ -12,8 +12,6 @@ export const getPosts = (boardName) => async (dispatch) => {
 };
 
 export const addPost = (image, comment, board) => async (dispatch) => {
-  console.log(image);
-
   await axios
     .post("/api/v1/posts", {
       image: image,
