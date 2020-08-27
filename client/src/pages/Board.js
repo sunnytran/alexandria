@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { getBoard } from "../store/actions/board";
-import { getPosts, addPost } from "../store/actions/posts";
+import { getPosts } from "../store/actions/posts";
+import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
@@ -14,7 +15,8 @@ const Board = ({
   getBoard,
   posts,
   getPosts,
-  addPost,
+  replies,
+  getReplies,
 }) => {
   const {
     params: { boardName },
@@ -25,7 +27,8 @@ const Board = ({
   useEffect(() => {
     getBoard(boardName);
     getPosts(boardName);
-  }, [posts.length, getPosts]);
+    getReplies();
+  }, [posts.length, getPosts, replies.length, getReplies]);
 
   return (
     <div>
@@ -43,6 +46,7 @@ const Board = ({
               postContent={i}
               replyingTo={replyingTo}
               setReplyingTo={setReplyingTo}
+              allReplies={replies}
             />
           );
         })}
@@ -54,6 +58,9 @@ const Board = ({
 const mapStateToProps = (state) => ({
   board: state.board,
   posts: state.posts,
+  replies: state.replies,
 });
 
-export default connect(mapStateToProps, { getBoard, getPosts, addPost })(Board);
+export default connect(mapStateToProps, { getBoard, getPosts, getReplies })(
+  Board
+);

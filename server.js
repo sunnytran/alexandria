@@ -42,8 +42,8 @@ app.post("/api/v1/posts", async (req, res) => {
   res.json(post[0]);
 });
 
-app.get("/api/v1/replies/:id", async (req, res) => {
-  const replies = await db("replies").where({ replying_to: req.params.id });
+app.get("/api/v1/replies/", async (req, res) => {
+  const replies = await db("replies");
   res.json(replies);
 });
 

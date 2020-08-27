@@ -1,26 +1,18 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-
-import { getReplies } from "../store/actions/replies";
+import React, { useState, useEffect } from "react";
 
 import Reply from "./Reply";
 import ReplyForm from "./ReplyForm";
 
-const Post = ({
-  postContent,
-  replies,
-  getReplies,
-  replyingTo,
-  setReplyingTo,
-}) => {
+const Post = ({ postContent, replyingTo, setReplyingTo, allReplies }) => {
   const handleReply = (e) => {
     setReplyingTo(postContent.id);
   };
 
+  const [replies, setReplies] = useState([]);
+
   useEffect(() => {
-    getReplies(postContent.id);
-    console.log(replies);
-  }, [replies.length, getReplies]);
+    setReplies(allReplies.filter((i) => i.replying_to === postContent.id));
+  });
 
   return (
     <div style={{ marginBottom: "10px" }}>
@@ -49,8 +41,4 @@ const Post = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  replies: state.replies,
-});
-
-export default connect(mapStateToProps, { getReplies })(Post);
+export default Post;
