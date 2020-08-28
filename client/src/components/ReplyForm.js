@@ -12,7 +12,7 @@ const ReplyForm = ({ board, addReply, setReplyingTo, postID }) => {
   const handleAddReply = (e) => {
     e.preventDefault();
 
-    addReply(image, e.target.comment.value, board.name, postID);
+    addReply(image, e.target.comment.value, board.name, postID, "post");
 
     e.target.image.value = "";
     e.target.comment.value = "";

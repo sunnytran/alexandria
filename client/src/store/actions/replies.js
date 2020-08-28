@@ -11,15 +11,20 @@ export const getReplies = () => async (dispatch) => {
   });
 };
 
-export const addReply = (image, comment, board, replyingTo) => async (
-  dispatch
-) => {
+export const addReply = (
+  image,
+  comment,
+  board,
+  replyingToID,
+  replyingToType
+) => async (dispatch) => {
   await axios
     .post("/api/v1/replies", {
       image: image,
       comment: comment,
       board: board,
-      replyingTo: replyingTo,
+      replyingToID: replyingToID,
+      replyingToType: replyingToType,
     })
     .then((res) => {
       dispatch({

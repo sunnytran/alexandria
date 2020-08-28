@@ -52,16 +52,16 @@ app.post("/api/v1/replies", async (req, res) => {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
-    board: req.body.board,
-    replying_to: req.body.replyingTo,
+    replying_to_id: req.body.replyingToID,
+    replying_to_type: req.body.replyingToType,
   };
 
-  const post = await db("replies")
+  const replies = await db("replies")
     .insert(data)
     .returning("*")
     .then((res) => res);
 
-  res.json(post[0]);
+  res.json(replies[0]);
 });
 
 const PORT = process.env.PORT || 5000;

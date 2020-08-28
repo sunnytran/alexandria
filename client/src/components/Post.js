@@ -11,8 +11,9 @@ const Post = ({ postContent, replyingTo, setReplyingTo, allReplies }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    setReplies(allReplies.filter((i) => i.replying_to === postContent.id));
-  });
+    setReplies(allReplies.filter((i) => i.replying_to_id === postContent.id));
+    console.log(allReplies);
+  }, [allReplies.length]);
 
   return (
     <div style={{ marginBottom: "10px" }}>

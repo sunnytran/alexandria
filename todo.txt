@@ -1,5 +1,6 @@
 front
 image upload
+format the timestamp
 knex[0] in server.js seems a little hacky, find a better alternative
 pass id through router and into database, not the name
 TODO: check if fields are empty before submitting
