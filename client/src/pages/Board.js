@@ -22,8 +22,6 @@ const Board = ({
     params: { boardName },
   } = match;
 
-  const [replyingTo, setReplyingTo] = useState(null);
-
   useEffect(() => {
     getBoard(boardName);
     getPosts(boardName);
@@ -40,15 +38,7 @@ const Board = ({
 
       <div>
         {posts.map((i) => {
-          return (
-            <Post
-              key={i.id}
-              postContent={i}
-              replyingTo={replyingTo}
-              setReplyingTo={setReplyingTo}
-              allReplies={replies}
-            />
-          );
+          return <Post key={i.id} postContent={i} allReplies={replies} />;
         })}
       </div>
     </div>

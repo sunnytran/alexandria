@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+
+import { setReplyTarget } from "../store/actions/replyTarget";
 
 import Reply from "./Reply";
 import ReplyForm from "./ReplyForm";
 
-const Post = ({ postContent, replyingTo, setReplyingTo, allReplies }) => {
+const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   const handleReply = (e) => {
-    setReplyingTo(postContent.id);
+    setReplyTarget({ type: "post", id: postContent.id });
   };
 
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    setReplies(allReplies.filter((i) => i.replying_to_id === postContent.id));
-    console.log(allReplies);
-  }, [allReplies.length]);
+    console.log(replyTarget);
+    setReplies(
+      allReplies.filter((i) => i.replying_to_post_id === postContent.id)
+    );
+  }, [allReplies.length, replyTarget]);
 
   return (
     <div style={{ marginBottom: "10px" }}>
@@ -29,17 +34,21 @@ const Post = ({ postContent, replyingTo, setReplyingTo, allReplies }) => {
         {postContent.comment}
       </div>
 
+      {replyTarget.type === "post" && replyTarget.id === postContent.id ? (
+        <ReplyForm postID={postContent.id} />
+      ) : null}
+
       <div>
         {replies.map((i) => {
-          return <Reply key={i.id} replyContent={i} />;
+          return <Reply key={i.id} postID={postContent.id} replyContent={i} />;
         })}
       </div>
-
-      {replyingTo === postContent.id ? (
-        <ReplyForm setReplyingTo={setReplyingTo} postID={postContent.id} />
-      ) : null}
     </div>
   );
 };
 
-export default Post;
+const mapStateToProps = (state) => ({
+  replyTarget: state.replyTarget,
+});
+
+export default connect(mapStateToProps, { setReplyTarget })(Post);

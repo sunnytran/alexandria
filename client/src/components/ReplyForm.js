@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addReply } from "../store/actions/replies";
 
-const ReplyForm = ({ board, addReply, setReplyingTo, postID }) => {
+const ReplyForm = ({ board, addReply, postID, replyID }) => {
   const [image, setImage] = useState(null);
 
   const onChange = (e) => {
@@ -12,13 +12,11 @@ const ReplyForm = ({ board, addReply, setReplyingTo, postID }) => {
   const handleAddReply = (e) => {
     e.preventDefault();
 
-    addReply(image, e.target.comment.value, board.name, postID, "post");
+    addReply(image, e.target.comment.value, board.name, postID, replyID);
 
     e.target.image.value = "";
     e.target.comment.value = "";
     setImage(null);
-
-    setReplyingTo(null);
   };
 
   return (

@@ -48,12 +48,13 @@ app.get("/api/v1/replies/", async (req, res) => {
 });
 
 app.post("/api/v1/replies", async (req, res) => {
+  console.log(req.body.replyingToReplyID);
   data = {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
-    replying_to_id: req.body.replyingToID,
-    replying_to_type: req.body.replyingToType,
+    replying_to_post_id: req.body.replyingToPostID,
+    replying_to_reply_id: req.body.replyingToReplyID,
   };
 
   const replies = await db("replies")

@@ -15,16 +15,16 @@ export const addReply = (
   image,
   comment,
   board,
-  replyingToID,
-  replyingToType
+  replyingToPostID,
+  replyingToReplyID
 ) => async (dispatch) => {
   await axios
     .post("/api/v1/replies", {
       image: image,
       comment: comment,
       board: board,
-      replyingToID: replyingToID,
-      replyingToType: replyingToType,
+      replyingToPostID: replyingToPostID,
+      replyingToReplyID: replyingToReplyID,
     })
     .then((res) => {
       dispatch({
