@@ -48,7 +48,6 @@ app.get("/api/v1/replies/", async (req, res) => {
 });
 
 app.post("/api/v1/replies", async (req, res) => {
-  console.log(req.body.replyingToReplyID);
   data = {
     username: "Anonymous",
     date: new Date(),

@@ -14,9 +14,11 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    console.log(replyTarget);
     setReplies(
-      allReplies.filter((i) => i.replying_to_post_id === postContent.id)
+      allReplies.filter(
+        (i) =>
+          i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
+      )
     );
   }, [allReplies.length, replyTarget]);
 
@@ -34,13 +36,22 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
         {postContent.comment}
       </div>
 
-      {replyTarget.type === "post" && replyTarget.id === postContent.id ? (
+      {replyTarget &&
+      replyTarget.type === "post" &&
+      replyTarget.id === postContent.id ? (
         <ReplyForm postID={postContent.id} />
       ) : null}
 
       <div>
         {replies.map((i) => {
-          return <Reply key={i.id} postID={postContent.id} replyContent={i} />;
+          return (
+            <Reply
+              key={i.id}
+              postID={postContent.id}
+              replyContent={i}
+              allReplies={allReplies}
+            />
+          );
         })}
       </div>
     </div>

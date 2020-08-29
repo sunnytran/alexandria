@@ -21,6 +21,8 @@ db
 add a table of comments for every post and a table of posts for every board
 
 FIXED
+  // TODO: Nesting
+  // TODO: Close Reply Form by setting it to null
 addposts redux upate the state, don't return the payload
 posting bug posts.map is not a function
 redux constant rendering is this normal?
