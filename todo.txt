@@ -1,5 +1,5 @@
 front
-date include actual time
+nsted reply bug cant find redux function
 image upload
 knex[0] in server.js seems a little hacky, find a better alternative
 pass id through router and into database, not the name
@@ -19,6 +19,7 @@ organize express routes
 
 db
 add a table of comments for every post and a table of posts for every board
+timezone && then time for the front (date include actual time)
 
 FIXED
 format the timestamp

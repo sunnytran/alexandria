@@ -35,7 +35,7 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
           <button onClick={handleReply.bind(this)}>Reply</button>
         </div>
         <br />
-        {Moment(postContent.date).format("M/D/yyyy LT")}
+        {Moment(postContent.date).format("M/D/yyyy")}
         <br />
         {postContent.comment}
       </div>

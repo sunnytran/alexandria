@@ -40,7 +40,7 @@ const Reply = ({
         <button onClick={handleReply.bind(this)}>Reply</button>
       </div>
       <br />
-      {Moment(replyContent.date).format("M/D/yyyy LT")}
+      {Moment(replyContent.date).format("M/D/yyyy")}
       <br />
       {replyContent.comment}
 
@@ -53,7 +53,7 @@ const Reply = ({
       <div>
         {replies.map((i) => {
           return (
-            <Reply
+            <ConnectedReply
               key={i.id}
               postID={postID}
               replyContent={i}
@@ -70,4 +70,6 @@ const mapStateToProps = (state) => ({
   replyTarget: state.replyTarget,
 });
 
-export default connect(mapStateToProps, { setReplyTarget })(Reply);
+const ConnectedReply = connect(mapStateToProps, { setReplyTarget })(Reply);
+
+export default ConnectedReply;
