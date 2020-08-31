@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
+import Moment from "moment";
+
 import ReplyForm from "./ReplyForm";
 
 const Reply = ({
@@ -28,6 +30,8 @@ const Reply = ({
     setReplyTarget({ type: "reply", id: replyContent.id });
   };
 
+  Moment.locale("en");
+
   return (
     <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
       <div style={{ display: "inline" }}>
@@ -36,7 +40,7 @@ const Reply = ({
         <button onClick={handleReply.bind(this)}>Reply</button>
       </div>
       <br />
-      {replyContent.date}
+      {Moment(replyContent.date).format("M/D/yyyy LT")}
       <br />
       {replyContent.comment}
 

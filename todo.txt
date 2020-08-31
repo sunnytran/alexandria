@@ -1,6 +1,6 @@
 front
+date include actual time
 image upload
-format the timestamp
 knex[0] in server.js seems a little hacky, find a better alternative
 pass id through router and into database, not the name
 TODO: check if fields are empty before submitting
@@ -21,6 +21,7 @@ db
 add a table of comments for every post and a table of posts for every board
 
 FIXED
+format the timestamp
   // TODO: Nesting
   // TODO: Close Reply Form by setting it to null
 addposts redux upate the state, don't return the payload
