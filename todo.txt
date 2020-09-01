@@ -10,6 +10,7 @@ sort posts newest first? or maybe a "relevance"?
 organize reply into "reply component" with logic which contains "reply cards"
 paginate
 cache hiding
+save nested hides when hiding its parent
 
 redux
 hate having to create more and more classes just or specific state variables

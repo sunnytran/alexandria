@@ -12,16 +12,21 @@ export const getPosts = (boardName) => async (dispatch) => {
 };
 
 export const addPost = (image, comment, board) => async (dispatch) => {
-  await axios
-    .post("/api/v1/posts", {
-      image: image,
-      comment: comment,
-      board: board,
-    })
-    .then((res) => {
-      dispatch({
-        type: ADD_POST,
-        payload: res.data,
-      });
-    });
+  const formData = new FormData();
+  formData.append("image", image, image.name);
+
+  await axios.post("/api/v1/test", formData);
+
+  // await axios
+  //   .post("/api/v1/posts", {
+  //     image: image,
+  //     comment: comment,
+  //     board: board,
+  //   })
+  //   .then((res) => {
+  //     dispatch({
+  //       type: ADD_POST,
+  //       payload: res.data,
+  //     });
+  //   });
 };

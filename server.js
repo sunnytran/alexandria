@@ -27,6 +27,8 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 });
 
 app.post("/api/v1/posts", async (req, res) => {
+  console.log(req.body.image);
+
   data = {
     username: "Anonymous",
     date: new Date(),
@@ -54,6 +56,7 @@ app.post("/api/v1/replies", async (req, res) => {
     comment: req.body.comment,
     replying_to_post_id: req.body.replyingToPostID,
     replying_to_reply_id: req.body.replyingToReplyID,
+    board: req.body.board,
   };
 
   const replies = await db("replies")
@@ -62,6 +65,10 @@ app.post("/api/v1/replies", async (req, res) => {
     .then((res) => res);
 
   res.json(replies[0]);
+});
+
+app.post("/api/v1/test/", async (req, res) => {
+  console.log(req.body + "<--");
 });
 
 const PORT = process.env.PORT || 5000;
