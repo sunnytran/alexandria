@@ -9,6 +9,7 @@ check into useffect lag when switching pages
 sort posts newest first? or maybe a "relevance"?
 organize reply into "reply component" with logic which contains "reply cards"
 paginate
+cache hiding
 
 redux
 hate having to create more and more classes just or specific state variables

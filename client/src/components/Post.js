@@ -24,20 +24,32 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
     );
   }, [allReplies.length, replyTarget]);
 
+  const [isShowing, setIsShowing] = useState(true);
+
+  const handleShowing = (e) => {
+    setIsShowing(!isShowing);
+  };
+
   Moment.locale("en");
 
   return (
     <div style={{ marginBottom: "10px" }}>
       <div>
         <div style={{ display: "inline" }}>
+          <button onClick={handleShowing.bind(this)}>
+            {isShowing ? "-" : "+"}
+          </button>
+          &nbsp;
           <b>{postContent.username}</b>
           &nbsp;
-          <button onClick={handleReply.bind(this)}>Reply</button>
+          {isShowing ? (
+            <button onClick={handleReply.bind(this)}>Reply</button>
+          ) : null}
         </div>
         <br />
         {Moment(postContent.date).format("M/D/yyyy")}
         <br />
-        {postContent.comment}
+        {isShowing ? postContent.comment : null}
       </div>
 
       {replyTarget &&
@@ -46,18 +58,20 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
         <ReplyForm postID={postContent.id} />
       ) : null}
 
-      <div>
-        {replies.map((i) => {
-          return (
-            <Reply
-              key={i.id}
-              postID={postContent.id}
-              replyContent={i}
-              allReplies={allReplies}
-            />
-          );
-        })}
-      </div>
+      {isShowing ? (
+        <div>
+          {replies.map((i) => {
+            return (
+              <Reply
+                key={i.id}
+                postID={postContent.id}
+                replyContent={i}
+                allReplies={allReplies}
+              />
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };

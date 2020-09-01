@@ -30,19 +30,31 @@ const Reply = ({
     setReplyTarget({ type: "reply", id: replyContent.id });
   };
 
+  const [isShowing, setIsShowing] = useState(true);
+
+  const handleShowing = (e) => {
+    setIsShowing(!isShowing);
+  };
+
   Moment.locale("en");
 
   return (
     <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
       <div style={{ display: "inline" }}>
+        <button onClick={handleShowing.bind(this)}>
+          {isShowing ? "-" : "+"}
+        </button>
+        &nbsp;
         <b>{replyContent.username}</b>
         &nbsp;
-        <button onClick={handleReply.bind(this)}>Reply</button>
+        {isShowing ? (
+          <button onClick={handleReply.bind(this)}>Reply</button>
+        ) : null}
       </div>
       <br />
       {Moment(replyContent.date).format("M/D/yyyy")}
       <br />
-      {replyContent.comment}
+      {isShowing ? replyContent.comment : null}
 
       {replyTarget &&
       replyTarget.type === "reply" &&
@@ -50,18 +62,20 @@ const Reply = ({
         <ReplyForm postID={postID} replyID={replyContent.id} />
       ) : null}
 
-      <div>
-        {replies.map((i) => {
-          return (
-            <ConnectedReply
-              key={i.id}
-              postID={postID}
-              replyContent={i}
-              allReplies={allReplies}
-            />
-          );
-        })}
-      </div>
+      {isShowing ? (
+        <div>
+          {replies.map((i) => {
+            return (
+              <ConnectedReply
+                key={i.id}
+                postID={postID}
+                replyContent={i}
+                allReplies={allReplies}
+              />
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };
