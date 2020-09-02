@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const multer = require("multer");
+let upload = multer();
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,8 +70,9 @@ app.post("/api/v1/replies", async (req, res) => {
   res.json(replies[0]);
 });
 
-app.post("/api/v1/test/", async (req, res) => {
+app.post("/api/v1/test/", upload.fields([]), async (req, res) => {
   console.log(req.body + "<--");
+  console.log(req.body);
 });
 
 const PORT = process.env.PORT || 5000;
