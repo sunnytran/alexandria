@@ -56,8 +56,8 @@ app.get("/api/v1/posts/:id", async (req, res) => {
   res.json(posts);
 });
 
-app.post("/api/v1/posts", async (req, res) => {
-  console.log(req.body.image);
+app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
+  // console.log(req.body.comment);
 
   data = {
     username: "Anonymous",
@@ -65,12 +65,10 @@ app.post("/api/v1/posts", async (req, res) => {
     comment: req.body.comment,
     board: req.body.board,
   };
-
   const post = await db("posts")
     .insert(data)
     .returning("*")
     .then((res) => res);
-
   res.json(post[0]);
 });
 
@@ -95,10 +93,6 @@ app.post("/api/v1/replies", async (req, res) => {
     .then((res) => res);
 
   res.json(replies[0]);
-});
-
-app.post("/api/v1/test/", upload.single("image"), async (req, res) => {
-  console.log(req);
 });
 
 const PORT = process.env.PORT || 5000;
