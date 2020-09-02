@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
@@ -58,12 +59,19 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 
 app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
   // console.log(req.body.comment);
+  var img = fs.readFileSync(req.file.path);
+  var encoded = img.toString("base64");
+  var finalImg = {
+    contentType: req.file.mimetype,
+    image: Buffer.from(encoded, "base64"),
+  };
 
   data = {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
+    image: finalImg,
   };
   const post = await db("posts")
     .insert(data)
