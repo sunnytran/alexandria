@@ -2,13 +2,40 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
-let upload = multer();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require("./data/db.js");
+
+const DIR = "./public/";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, fileName);
+  },
+});
+
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  },
+});
 
 app.get("/api/v1/boards", async (req, res) => {
   const boards = await db("boards");
@@ -70,9 +97,8 @@ app.post("/api/v1/replies", async (req, res) => {
   res.json(replies[0]);
 });
 
-app.post("/api/v1/test/", upload.fields([]), async (req, res) => {
-  console.log(req.body + "<--");
-  console.log(req.body);
+app.post("/api/v1/test/", upload.single("image"), async (req, res) => {
+  console.log(req);
 });
 
 const PORT = process.env.PORT || 5000;

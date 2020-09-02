@@ -23,6 +23,8 @@ db
 add a table of comments for every post and a table of posts for every board
 timezone && then time for the front (date include actual time)
 
+ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
+
 FIXED
 format the timestamp
   // TODO: Nesting
