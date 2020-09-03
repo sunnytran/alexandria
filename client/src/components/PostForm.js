@@ -22,7 +22,7 @@ const PostForm = ({ board, addPost }) => {
 
   return (
     <div>
-      <form onSubmit={handleAddPost.bind(this)} enctype="multipart/form-data">
+      <form onSubmit={handleAddPost.bind(this)}>
         <label>Image</label>
         <input type="file" name="image" onChange={onChange.bind(this)} />
         <br />

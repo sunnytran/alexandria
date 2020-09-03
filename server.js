@@ -53,7 +53,11 @@ app.get("/api/v1/board/:id", async (req, res) => {
 });
 
 app.get("/api/v1/posts/:id", async (req, res) => {
-  const posts = await db("posts").where({ board: req.params.id });
+  var posts = await db("posts").where({ board: req.params.id });
+
+  // for (var i = 0; i < posts.length; i++)
+  //   if (posts[i].image) posts[i].image = posts[i].image.toString("base64");
+
   res.json(posts);
 });
 
@@ -65,6 +69,9 @@ app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
     contentType: req.file.mimetype,
     image: Buffer.from(encoded, "base64"),
   };
+  console.log(encoded.substring(0, 10));
+  // console.log(finalImg);
+  // console.log(img);
 
   data = {
     username: "Anonymous",
