@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 
 const multer = require("multer");
 
+const boards = require("./server/controllers/boards");
+const board = require("./server/controllers/board");
+const posts = require("./server/controllers/posts");
 const replies = require("./server/controllers/replies");
 
 const app = express();
@@ -40,29 +43,6 @@ var upload = multer({
   },
 });
 
-app.get("/api/v1/boards", async (req, res) => {
-  const boards = await db("boards");
-  res.json(boards);
-});
-
-app.get("/api/v1/board/:id", async (req, res) => {
-  const board = await db("boards")
-    .where({ name: req.params.id })
-    .first()
-    .then((row) => row);
-
-  res.json(board);
-});
-
-app.get("/api/v1/posts/:id", async (req, res) => {
-  var posts = await db("posts").where({ board: req.params.id });
-
-  // for (var i = 0; i < posts.length; i++)
-  //   if (posts[i].image) posts[i].image = posts[i].image.toString("base64");
-
-  res.json(posts);
-});
-
 app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
   // console.log(req.body.comment);
   // var img = fs.readFileSync(req.file.path);
@@ -90,6 +70,9 @@ app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
   res.json(post[0]);
 });
 
+app.get("/api/v1/boards", boards.handleBoardsGet(db));
+app.get("/api/v1/board/:id", board.handleBoardGet(db));
+app.get("/api/v1/posts/:id", posts.handlePostsGet(db));
 app.get("/api/v1/replies", replies.handleRepliesGet(db));
 app.post("/api/v1/replies", replies.hanldeRepliesPost(db));
 
