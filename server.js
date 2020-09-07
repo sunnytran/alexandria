@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 
 const multer = require("multer");
 
+const replies = require("./server/controllers/replies");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -63,13 +65,13 @@ app.get("/api/v1/posts/:id", async (req, res) => {
 
 app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
   // console.log(req.body.comment);
-  var img = fs.readFileSync(req.file.path);
-  var encoded = img.toString("base64");
-  var finalImg = {
-    contentType: req.file.mimetype,
-    image: Buffer.from(encoded, "base64"),
-  };
-  console.log(encoded.substring(0, 10));
+  // var img = fs.readFileSync(req.file.path);
+  // var encoded = img.toString("base64");
+  // var finalImg = {
+  //   contentType: req.file.mimetype,
+  //   image: Buffer.from(encoded, "base64"),
+  // };
+  // console.log(encoded.substring(0, 10));
   // console.log(finalImg);
   // console.log(img);
 
@@ -78,8 +80,9 @@ app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
-    image: finalImg,
+    // image: finalImg,
   };
+
   const post = await db("posts")
     .insert(data)
     .returning("*")
@@ -87,28 +90,8 @@ app.post("/api/v1/posts", upload.single("image"), async (req, res) => {
   res.json(post[0]);
 });
 
-app.get("/api/v1/replies/", async (req, res) => {
-  const replies = await db("replies");
-  res.json(replies);
-});
-
-app.post("/api/v1/replies", async (req, res) => {
-  data = {
-    username: "Anonymous",
-    date: new Date(),
-    comment: req.body.comment,
-    replying_to_post_id: req.body.replyingToPostID,
-    replying_to_reply_id: req.body.replyingToReplyID,
-    board: req.body.board,
-  };
-
-  const replies = await db("replies")
-    .insert(data)
-    .returning("*")
-    .then((res) => res);
-
-  res.json(replies[0]);
-});
+app.get("/api/v1/replies", replies.handleRepliesGet(db));
+app.post("/api/v1/replies", replies.hanldeRepliesPost(db));
 
 const PORT = process.env.PORT || 5000;
 
