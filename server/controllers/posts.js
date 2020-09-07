@@ -4,20 +4,24 @@ const handlePostsGet = (db) => async (req, res) => {
   res.json(posts);
 };
 
-const handlePostsPost = (db) => async (req, res) => {
-  // var img = fs.readFileSync(req.file.path);
-  // var encoded = img.toString("base64");
-  // var finalImg = {
-  //   contentType: req.file.mimetype,
-  //   image: Buffer.from(encoded, "base64"),
-  // };
+const handlePostsPost = (db, fs) => async (req, res) => {
+  var finalImg = null;
+
+  if (req.file.path) {
+    var img = fs.readFileSync(req.file.path);
+    var encoded = img.toString("base64");
+    var finalImg = {
+      contentType: req.file.mimetype,
+      image: Buffer.from(encoded, "base64"),
+    };
+  }
 
   data = {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
-    // image: finalImg,
+    image: finalImg,
   };
 
   const post = await db("posts")
