@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const db = require("./data/db.js");
+const db = require("./server/db.js");
 
 const DIR = "./public/";
 
