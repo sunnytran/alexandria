@@ -4,10 +4,10 @@ const handlePostsGet = (db) => async (req, res) => {
   res.json(posts);
 };
 
-const handlePostsPost = (db, fs) => async (req, res) => {
+const handlePostsPost = (db, dataUri, uploader) => async (req, res) => {
   var finalImg = null;
 
-  if (req.file && req.file.path) {
+  if (req.file) {
     const file = dataUri(req).content;
     return uploader.upload(file).then((result) => {
       const image = esult.url;
