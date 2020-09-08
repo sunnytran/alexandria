@@ -1,15 +1,13 @@
 front
-nsted reply bug cant find redux function
-image upload
-knex[0] in server.js seems a little hacky, find a better alternative
-pass id through router and into database, not the name
-TODO: check if fields are empty before submitting
 remove hook dependency warnings or at least fix them
+pass id through router and into database, not the name
 check into useffect lag when switching pages
-sort posts newest first? or maybe a "relevance"?
 organize reply into "reply component" with logic which contains "reply cards"
+
+image upload
+TODO: check if fields are empty before submitting
+sort posts newest first? or maybe a "relevance"?
 paginate
-cache hiding
 save nested hides when hiding its parent
 
 redux
@@ -17,7 +15,7 @@ hate having to create more and more classes just or specific state variables
 right now i can't set a variable without appending it to a list
 
 server
-organize express routes
+knex[0] in server.js seems a little hacky, find a better alternative
 
 db
 add a table of comments for every post and a table of posts for every board
@@ -26,6 +24,8 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+nsted reply bug cant find redux function
+organize express routes
 format the timestamp
   // TODO: Nesting
   // TODO: Close Reply Form by setting it to null

@@ -7,13 +7,12 @@ const handlePostsGet = (db) => async (req, res) => {
 const handlePostsPost = (db, fs) => async (req, res) => {
   var finalImg = null;
 
-  if (req.file.path) {
-    var img = fs.readFileSync(req.file.path);
-    var encoded = img.toString("base64");
-    var finalImg = {
-      contentType: req.file.mimetype,
-      image: Buffer.from(encoded, "base64"),
-    };
+  if (req.file && req.file.path) {
+    const file = dataUri(req).content;
+    return uploader.upload(file).then((result) => {
+      const image = esult.url;
+      console.log(image);
+    });
   }
 
   data = {
@@ -21,9 +20,8 @@ const handlePostsPost = (db, fs) => async (req, res) => {
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
-    image: finalImg,
+    // image: finalImg,
   };
-
   const post = await db("posts")
     .insert(data)
     .returning("*")

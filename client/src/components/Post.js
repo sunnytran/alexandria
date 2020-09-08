@@ -26,7 +26,7 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
 
     if (postContent.image) {
       setImage(Buffer.from(postContent.image.data).toString("base64"));
-      console.log(postContent.image.data);
+      // console.log(postContent.image.data);
     }
   }, [allReplies.length, replyTarget]);
 
