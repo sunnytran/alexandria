@@ -1,12 +1,14 @@
 const multer = require("multer");
-const datauri = require("datauri");
+const Datauri = require("datauri");
+const DatauriParser = require("datauri/parser");
 const path = require("path");
 
 const storage = multer.memoryStorage();
 exports.multerUploads = multer({ storage }).single("image");
 
+const parser = new DatauriParser();
 exports.dataUri = (req) =>
-  datauri.format(
+  parser.format(
     path.extname(req.file.originalname).toString(),
     req.file.buffer
   );

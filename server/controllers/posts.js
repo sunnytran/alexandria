@@ -10,7 +10,7 @@ const handlePostsPost = (db, dataUri, uploader) => async (req, res) => {
   if (req.file) {
     const file = dataUri(req).content;
     return uploader.upload(file).then((result) => {
-      const image = esult.url;
+      const image = result.url;
       console.log(image);
     });
   }
