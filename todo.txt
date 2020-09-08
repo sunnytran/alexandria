@@ -16,6 +16,7 @@ right now i can't set a variable without appending it to a list
 
 server
 knex[0] in server.js seems a little hacky, find a better alternative
+cloudinary check if it's image
 
 db
 add a table of comments for every post and a table of posts for every board

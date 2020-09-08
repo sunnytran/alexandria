@@ -5,23 +5,21 @@ const handlePostsGet = (db) => async (req, res) => {
 };
 
 const handlePostsPost = (db, dataUri, uploader) => async (req, res) => {
-  var finalImg = null;
-
-  if (req.file) {
-    const file = dataUri(req).content;
-    return uploader.upload(file).then((result) => {
-      const image = result.url;
-      console.log(image);
-    });
-  }
-
   data = {
     username: "Anonymous",
     date: new Date(),
     comment: req.body.comment,
     board: req.body.board,
-    // image: finalImg,
   };
+
+  if (req.file) {
+    const file = dataUri(req).content;
+    await uploader.upload(file).then((result) => {
+      data.image_link = result.url;
+      data.image_name = req.file.originalname;
+    });
+  }
+
   const post = await db("posts")
     .insert(data)
     .returning("*")
