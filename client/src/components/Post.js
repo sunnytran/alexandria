@@ -14,7 +14,6 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   };
 
   const [replies, setReplies] = useState([]);
-  const [image, setImage] = useState(null);
 
   useEffect(() => {
     setReplies(
@@ -23,11 +22,6 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
           i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
       )
     );
-
-    if (postContent.image) {
-      setImage(Buffer.from(postContent.image.data).toString("base64"));
-      // console.log(postContent.image.data);
-    }
   }, [allReplies.length, replyTarget]);
 
   const [isShowing, setIsShowing] = useState(true);
@@ -45,6 +39,7 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
           <button onClick={handleShowing.bind(this)}>
             {isShowing ? "-" : "+"}
           </button>
+          <img src={postContent.image_link ? postContent.image_link : ""} />
           &nbsp;
           <b>{postContent.username}</b>
           &nbsp;

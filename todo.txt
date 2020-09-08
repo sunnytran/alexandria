@@ -1,4 +1,5 @@
 front
+resize images
 remove hook dependency warnings or at least fix them
 pass id through router and into database, not the name
 check into useffect lag when switching pages
