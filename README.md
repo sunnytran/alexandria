@@ -35,6 +35,8 @@ i use
 
     - express
 
+    - cloudinary
+
     - knex
 
     - postgres
