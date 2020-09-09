@@ -39,7 +39,11 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
           <button onClick={handleShowing.bind(this)}>
             {isShowing ? "-" : "+"}
           </button>
-          <img src={postContent.image_link ? postContent.image_link : ""} />
+          <img
+            src={
+              isShowing && postContent.image_link ? postContent.image_link : ""
+            }
+          />
           &nbsp;
           <b>{postContent.username}</b>
           &nbsp;
