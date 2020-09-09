@@ -18,18 +18,18 @@ export const addReply = (
   replyingToPostID,
   replyingToReplyID
 ) => async (dispatch) => {
-  await axios
-    .post("/api/v1/replies", {
-      image: image,
-      comment: comment,
-      board: board,
-      replyingToPostID: replyingToPostID,
-      replyingToReplyID: replyingToReplyID,
-    })
-    .then((res) => {
-      dispatch({
-        type: ADD_REPLY,
-        payload: res.data,
-      });
+  const formData = new FormData();
+  if (image) formData.append("image", image);
+  formData.append("comment", comment);
+  formData.append("board", board);
+  formData.append("replyingToPostID", replyingToPostID);
+  if (replyingToReplyID)
+    formData.append("replyingToReplyID", replyingToReplyID);
+
+  await axios.post("/api/v1/replies", formData).then((res) => {
+    dispatch({
+      type: ADD_REPLY,
+      payload: res.data,
     });
+  });
 };

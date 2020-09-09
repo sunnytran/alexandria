@@ -4,6 +4,7 @@ remove hook dependency warnings or at least fix them
 pass id through router and into database, not the name
 check into useffect lag when switching pages
 organize reply into "reply component" with logic which contains "reply cards"
+remove image from cloudinary when removing a post
 
 image upload
 TODO: check if fields are empty before submitting

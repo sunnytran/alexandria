@@ -29,7 +29,11 @@ app.post(
   posts.handlePostsPost(db, dataUri, uploader)
 );
 app.get("/api/v1/replies", replies.handleRepliesGet(db));
-app.post("/api/v1/replies", replies.hanldeRepliesPost(db));
+app.post(
+  "/api/v1/replies",
+  multerUploads,
+  replies.handleRepliesPost(db, dataUri, uploader)
+);
 
 const PORT = process.env.DB_PORT || 5000;
 

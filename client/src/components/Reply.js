@@ -44,6 +44,11 @@ const Reply = ({
         <button onClick={handleShowing.bind(this)}>
           {isShowing ? "-" : "+"}
         </button>
+        <img
+          src={
+            isShowing && replyContent.image_link ? replyContent.image_link : ""
+          }
+        />
         &nbsp;
         <b>{replyContent.username}</b>
         &nbsp;

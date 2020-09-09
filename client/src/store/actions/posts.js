@@ -23,23 +23,4 @@ export const addPost = (image, comment, board) => async (dispatch) => {
       payload: res.data,
     });
   });
-
-  // await axios.post("/api/v1/test", formData);
-
-  // await axios
-  //   .post(
-  //     "/api/v1/posts",
-  //     {
-  //       image: image,
-  //       comment: comment,
-  //       board: board,
-  //     },
-  //     formData
-  //   )
-  //   .then((res) => {
-  //     dispatch({
-  //       type: ADD_POST,
-  //       payload: res.data,
-  //     });
-  //   });
 };
