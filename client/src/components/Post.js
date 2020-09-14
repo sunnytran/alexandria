@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
+import { Image, Transformation } from "cloudinary-react";
 import Moment from "moment";
 
 import Reply from "./Reply";
@@ -13,9 +14,13 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
     setReplyTarget({ type: "post", id: postContent.id });
   };
 
+  const [imageID, setImageID] = useState("");
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
+    const imageLink = postContent.image_link;
+    setImageID(imageLink.substring(imageLink.lastIndexOf("/") + 1));
+
     setReplies(
       allReplies.filter(
         (i) =>
@@ -39,11 +44,9 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
           <button onClick={handleShowing.bind(this)}>
             {isShowing ? "-" : "+"}
           </button>
-          <img
-            src={
-              isShowing && postContent.image_link ? postContent.image_link : ""
-            }
-          />
+          <Image cloudName="dyvaitfrl" publicId={imageID}>
+            <Transformation height="250" crop="scale" />
+          </Image>
           &nbsp;
           <b>{postContent.username}</b>
           &nbsp;
