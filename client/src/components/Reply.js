@@ -30,14 +30,12 @@ const Reply = ({
 
   const [isShowing, setIsShowing] = useState(true);
 
-  const handleShowing = (e) => {
-    setIsShowing(!isShowing);
-  };
-
   return (
     <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
       <Content
         content={replyContent}
+        postID={postID}
+        replyID={replyContent.id}
         replyType={"reply"}
         replyTarget={replyTarget}
         setReplyTarget={setReplyTarget}

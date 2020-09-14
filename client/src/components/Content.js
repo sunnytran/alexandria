@@ -8,7 +8,14 @@ import Moment from "moment";
 
 import ReplyForm from "./ReplyForm";
 
-const Content = ({ content, replyType, replyTarget, setReplyTarget }) => {
+const Content = ({
+  content,
+  postID,
+  replyID,
+  replyType,
+  replyTarget,
+  setReplyTarget,
+}) => {
   const handleReply = (e) => {
     setReplyTarget({ type: replyType, id: content.id });
   };
@@ -56,7 +63,7 @@ const Content = ({ content, replyType, replyTarget, setReplyTarget }) => {
       {replyTarget &&
       replyTarget.type === replyType &&
       replyTarget.id === content.id ? (
-        <ReplyForm postID={content.id} />
+        <ReplyForm postID={postID} replyID={replyID} />
       ) : null}
     </div>
   );

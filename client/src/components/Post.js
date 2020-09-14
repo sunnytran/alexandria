@@ -28,14 +28,11 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
 
   const [isShowing, setIsShowing] = useState(true);
 
-  const handleShowing = (e) => {
-    setIsShowing(!isShowing);
-  };
-
   return (
     <div style={{ marginBottom: "10px" }}>
       <Content
         content={postContent}
+        postID={postContent.id}
         replyType={"post"}
         replyTarget={replyTarget}
         setReplyTarget={setReplyTarget}
