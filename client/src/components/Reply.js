@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
-import Moment from "moment";
-
-import ReplyForm from "./ReplyForm";
+import Content from "./Content";
 
 const Reply = ({
   postID,
@@ -36,36 +34,14 @@ const Reply = ({
     setIsShowing(!isShowing);
   };
 
-  Moment.locale("en");
-
   return (
     <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
-      <div style={{ display: "inline" }}>
-        <button onClick={handleShowing.bind(this)}>
-          {isShowing ? "-" : "+"}
-        </button>
-        <img
-          src={
-            isShowing && replyContent.image_link ? replyContent.image_link : ""
-          }
-        />
-        &nbsp;
-        <b>{replyContent.username}</b>
-        &nbsp;
-        {isShowing ? (
-          <button onClick={handleReply.bind(this)}>Reply</button>
-        ) : null}
-      </div>
-      <br />
-      {Moment(replyContent.date).format("M/D/yyyy")}
-      <br />
-      {isShowing ? replyContent.comment : null}
-
-      {replyTarget &&
-      replyTarget.type === "reply" &&
-      replyTarget.id === replyContent.id ? (
-        <ReplyForm postID={postID} replyID={replyContent.id} />
-      ) : null}
+      <Content
+        content={replyContent}
+        replyType={"reply"}
+        replyTarget={replyTarget}
+        setReplyTarget={setReplyTarget}
+      />
 
       {isShowing ? (
         <div>

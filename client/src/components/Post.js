@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
-import { Image, Transformation } from "cloudinary-react";
-import Moment from "moment";
-
+import Content from "./Content";
 import Reply from "./Reply";
-import ReplyForm from "./ReplyForm";
 
 const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   const handleReply = (e) => {
@@ -35,36 +32,14 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
     setIsShowing(!isShowing);
   };
 
-  Moment.locale("en");
-
   return (
     <div style={{ marginBottom: "10px" }}>
-      <div>
-        <div style={{ display: "inline" }}>
-          <button onClick={handleShowing.bind(this)}>
-            {isShowing ? "-" : "+"}
-          </button>
-          <Image cloudName="dyvaitfrl" publicId={imageID}>
-            <Transformation height="250" crop="scale" />
-          </Image>
-          &nbsp;
-          <b>{postContent.username}</b>
-          &nbsp;
-          {isShowing ? (
-            <button onClick={handleReply.bind(this)}>Reply</button>
-          ) : null}
-        </div>
-        <br />
-        {Moment(postContent.date).format("M/D/yyyy")}
-        <br />
-        {isShowing ? postContent.comment : null}
-      </div>
-
-      {replyTarget &&
-      replyTarget.type === "post" &&
-      replyTarget.id === postContent.id ? (
-        <ReplyForm postID={postContent.id} />
-      ) : null}
+      <Content
+        content={postContent}
+        replyType={"post"}
+        replyTarget={replyTarget}
+        setReplyTarget={setReplyTarget}
+      />
 
       {isShowing ? (
         <div>
