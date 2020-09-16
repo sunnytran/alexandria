@@ -1,4 +1,6 @@
 front
+organize tailwind files
+fix nested isShowing
 resize images
 click image make it bigger
 remove hook dependency warnings or at least fix them

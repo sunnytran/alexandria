@@ -11,7 +11,7 @@ function Index({ boards, getBoards }) {
 
   return (
     <div>
-      <h1>Alexandria</h1>
+      <h1 class="text-lg">Alexandria</h1>
       <ul>
         {boards.map((i) => {
           return (

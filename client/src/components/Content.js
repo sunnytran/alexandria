@@ -23,6 +23,7 @@ const Content = ({
   const [imageID, setImageID] = useState("");
 
   useEffect(() => {
+    console.log(content);
     if (content.image_link) {
       const imageLink = content.image_link;
       setImageID(imageLink.substring(imageLink.lastIndexOf("/") + 1));
@@ -43,28 +44,36 @@ const Content = ({
         <button onClick={handleShowing.bind(this)}>
           {isShowing ? "-" : "+"}
         </button>
-        {isShowing && content.image_link ? (
-          <Image cloudName="dyvaitfrl" publicId={imageID}>
-            <Transformation height="250" crop="scale" />
-          </Image>
-        ) : null}
-        &nbsp;
-        <b>{content.username}</b>
-        &nbsp;
-        {isShowing ? (
-          <button onClick={handleReply.bind(this)}>Reply</button>
+        <b>File</b>:{" "}
+        <a href={content.image_link} target="_blank">
+          {content.image_name}
+        </a>
+      </div>
+
+      <div style={{ display: "block" }}>
+        <div style={{ display: "inline" }}>
+          {isShowing && content.image_link ? (
+            <Image cloudName="dyvaitfrl" publicId={imageID}>
+              <Transformation height="250" crop="scale" />
+            </Image>
+          ) : null}
+        </div>
+        <div style={{ display: "inline" }}>
+          <b>{content.username}</b>
+          &nbsp;
+          {Moment(content.date).format("M/D/yyyy")}
+          &nbsp;
+          {isShowing ? (
+            <button onClick={handleReply.bind(this)}>Reply</button>
+          ) : null}
+        </div>
+        {isShowing ? content.comment : null}
+        {replyTarget &&
+        replyTarget.type === replyType &&
+        replyTarget.id === content.id ? (
+          <ReplyForm postID={postID} replyID={replyID} />
         ) : null}
       </div>
-      <br />
-      {Moment(content.date).format("M/D/yyyy")}
-      <br />
-      {isShowing ? content.comment : null}
-
-      {replyTarget &&
-      replyTarget.type === replyType &&
-      replyTarget.id === content.id ? (
-        <ReplyForm postID={postID} replyID={replyID} />
-      ) : null}
     </div>
   );
 };

@@ -15,9 +15,6 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    const imageLink = postContent.image_link;
-    setImageID(imageLink.substring(imageLink.lastIndexOf("/") + 1));
-
     setReplies(
       allReplies.filter(
         (i) =>

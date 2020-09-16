@@ -27,6 +27,8 @@ i use
 
     - react
 
+    - tailwind
+
     - redux
 
     - react-router

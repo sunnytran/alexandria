@@ -5,19 +5,25 @@
   "main": "server.js",
   "scripts": {
     "client-install": "cd client && npm install",
-    "start": "node server.js",
+    "start": "npm run watch:css & node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build:css": "postcss client/src/styles/tailwind.css -o client/src/styles/main.css",
+    "watch:css": "postcss client/src/styles/tailwind.css -o client/src/styles/main.css"
   },
   "author": "Brad Traversy & Gregory Assasie",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "postcss-cli": "^7.1.2",
+    "tailwindcss": "^1.8.10"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.23.0",
     "cloudinary-react": "^1.6.6",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "datauri": "^3.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
