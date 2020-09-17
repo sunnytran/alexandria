@@ -1,5 +1,6 @@
 front
-organize tailwind files
+clean up the title div
+clean up Index layout
 fix nested isShowing
 resize images
 click image make it bigger
@@ -30,6 +31,7 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+organize tailwind files
 nsted reply bug cant find redux function
 organize express routes
 format the timestamp
