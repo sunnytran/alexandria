@@ -30,7 +30,7 @@ const Board = ({
 
   return (
     <div>
-      <h1>
+      <h1 class="font-serif font-semibold text-2xl">
         /{board.name}/ - {board.title}
       </h1>
 

@@ -5,8 +5,6 @@ import App from "./App";
 
 import store from "./store";
 
-import "./styles/main.css";
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
