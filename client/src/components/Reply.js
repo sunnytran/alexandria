@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
-import Content from "./Content";
+import PostContent from "./PostContent";
 
 const Reply = ({
   postID,
@@ -32,7 +32,7 @@ const Reply = ({
 
   return (
     <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
-      <Content
+      <PostContent
         content={replyContent}
         postID={postID}
         replyID={replyContent.id}

@@ -8,7 +8,7 @@ import Moment from "moment";
 
 import ReplyForm from "./ReplyForm";
 
-const Content = ({
+const PostContent = ({
   content,
   postID,
   replyID,
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => ({
   replyTarget: state.replyTarget,
 });
 
-export default connect(mapStateToProps, { setReplyTarget })(Content);
+export default connect(mapStateToProps, { setReplyTarget })(PostContent);
