@@ -7,6 +7,7 @@ import { getBoards } from "../store/actions/boards";
 import "../styles/main.css";
 import Header from "../components/Header";
 import ContentBorder from "../components/ContentBorder";
+import SearchContent from "../components/SearchContent";
 import Stats from "../components/Stats";
 
 function Index({ boards, getBoards }) {
@@ -22,12 +23,7 @@ function Index({ boards, getBoards }) {
         <div class="flex space-x-5">
           <div class="w-1/5 space-y-5">
             <ContentBorder title="Search">
-              <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="searchTitle"
-                type="text"
-                placeholder="Search titles..."
-              />
+              <SearchContent />
             </ContentBorder>
 
             <ContentBorder title="Stats">
