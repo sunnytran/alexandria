@@ -5,10 +5,11 @@ import { getPosts } from "../store/actions/posts";
 
 const Stats = ({ posts, getPosts }) => {
   useEffect(() => {
-    // getPosts(boardName);
+    getPosts();
+    console.log(posts);
   }, [posts.length, getPosts]);
 
-  return <div>Total posts:</div>;
+  return <div>Total posts: {posts.length}</div>;
 };
 
 const mapStateToProps = (state) => ({
