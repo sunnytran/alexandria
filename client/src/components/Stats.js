@@ -9,7 +9,12 @@ const Stats = ({ posts, getPosts }) => {
     console.log(posts);
   }, [posts.length, getPosts]);
 
-  return <div>Total posts: {posts.length}</div>;
+  return (
+    <div>
+      <p># of Posts: {posts.length}</p>
+      <p># of Images: {posts.filter((i) => i.image_link !== null).length}</p>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({
