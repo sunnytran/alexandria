@@ -7,6 +7,7 @@ import { getBoards } from "../store/actions/boards";
 import "../styles/main.css";
 import Header from "../components/Header";
 import ContentBorder from "../components/ContentBorder";
+import Stats from "../components/Stats";
 
 function Index({ boards, getBoards }) {
   useEffect(() => {
@@ -29,7 +30,9 @@ function Index({ boards, getBoards }) {
               />
             </ContentBorder>
 
-            <ContentBorder title="Stats">Stats go here</ContentBorder>
+            <ContentBorder title="Stats">
+              <Stats />
+            </ContentBorder>
           </div>
 
           <div class="w-4/5 space-y-5">
