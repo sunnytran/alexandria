@@ -1,8 +1,7 @@
 front
 subject column
 image mandatory for posts
-v-screen h-screen black background tialwind problem
-width of cards
+v-screen h-screen black background tialwind proble
 redo posts
 organize components by pages
 fix nested isShowing
@@ -35,6 +34,7 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+width of cards
 clean up the title div
 clean up Index layout
 organize tailwind files

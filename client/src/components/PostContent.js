@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { setReplyTarget } from "../store/actions/replyTarget";
 
 import { Image, Transformation } from "cloudinary-react";
-import Moment from "moment";
 
 import ContentBorder from "./ContentBorder";
+import PostTitle from "./PostTitle";
 import ReplyForm from "./ReplyForm";
 
 const PostContent = ({
@@ -37,40 +37,38 @@ const PostContent = ({
     setIsShowing(!isShowing);
   };
 
-  Moment.locale("en");
-
   return (
     <div class="flex">
       <div class="w-1/3">
-        <ContentBorder title={content.title}>
+        <ContentBorder
+          title={
+            <PostTitle
+              title={content.title}
+              date={content.date}
+              handleShowing={handleShowing.bind(this)}
+              isShowing={isShowing}
+            />
+          }
+        >
           <div class="flex space-x-2">
             <div class="w-1/3">
-              <div class="flex space-x-2">
-                <div>
-                  <button onClick={handleShowing.bind(this)}>
-                    {isShowing ? "-" : "+"}
-                  </button>
-                </div>
-                <div>{content.username}</div>
-                <div>{Moment(content.date).format("M/D/yyyy")}</div>
-              </div>
-              <a
-                class="underline text-blue-500 hover:underline hover:text-white"
-                href={content.image_link}
-                target="_blank"
-              >
-                {content.image_name}
-              </a>
               {isShowing && content.image_link ? (
-                <Image cloudName="dyvaitfrl" publicId={imageID}>
-                  <Transformation height="250" crop="scale" />
-                </Image>
+                <a href={content.image_link} target="_blank">
+                  <Image cloudName="dyvaitfrl" publicId={imageID}>
+                    <Transformation height="250" crop="scale" />
+                  </Image>
+                </a>
               ) : null}
             </div>
             <div class="w-1/2">
               {isShowing ? content.comment : null}
+              <div>{content.username}</div>
               {isShowing ? (
-                <button onClick={handleReply.bind(this)}>Reply</button>
+                <button onClick={handleReply.bind(this)}>
+                  <p class="underline text-blue-500 hover:underline hover:text-white">
+                    Reply
+                  </p>
+                </button>
               ) : null}
               {replyTarget &&
               replyTarget.type === replyType &&
