@@ -38,7 +38,7 @@ const Board = ({
 
       {/* <PostForm /> */}
 
-      <div>
+      <div class="pl-5">
         {posts.map((i) => {
           return <Post key={i.id} postContent={i} allReplies={replies} />;
         })}

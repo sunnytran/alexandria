@@ -16,6 +16,8 @@ const PostContent = ({
   replyType,
   replyTarget,
   setReplyTarget,
+  handleShowing,
+  isShowing,
 }) => {
   const handleReply = (e) => {
     setReplyTarget({ type: replyType, id: content.id });
@@ -24,18 +26,11 @@ const PostContent = ({
   const [imageID, setImageID] = useState("");
 
   useEffect(() => {
-    console.log(content);
     if (content.image_link) {
       const imageLink = content.image_link;
       setImageID(imageLink.substring(imageLink.lastIndexOf("/") + 1));
     }
   }, [replyTarget]);
-
-  const [isShowing, setIsShowing] = useState(true);
-
-  const handleShowing = (e) => {
-    setIsShowing(!isShowing);
-  };
 
   return (
     <div class="flex">
@@ -45,7 +40,7 @@ const PostContent = ({
             <PostTitle
               title={content.title}
               date={content.date}
-              handleShowing={handleShowing.bind(this)}
+              handleShowing={handleShowing}
               isShowing={isShowing}
             />
           }
@@ -62,14 +57,19 @@ const PostContent = ({
             </div>
             <div class="w-1/2">
               {isShowing ? content.comment : null}
-              <div>{content.username}</div>
               {isShowing ? (
-                <button onClick={handleReply.bind(this)}>
-                  <p class="underline text-blue-500 hover:underline hover:text-white">
-                    Reply
-                  </p>
-                </button>
+                <div class="flex space-x-1">
+                  <div>{content.username}</div>
+                  <div>
+                    <button onClick={handleReply.bind(this)}>
+                      <p class="underline text-blue-500 hover:underline hover:text-white">
+                        [Reply]
+                      </p>
+                    </button>
+                  </div>
+                </div>
               ) : null}
+
               {replyTarget &&
               replyTarget.type === replyType &&
               replyTarget.id === content.id ? (

@@ -7,13 +7,13 @@ const PostTitle = (props) => {
 
   return (
     <div class="flex text-lg font-semibold">
-      <div class="w-1/2">
-        <button onClick={props.handleShowing.bind(this)}>
+      <div class="w-1/3">
+        <button class="font-bold border-none" onClick={props.handleShowing}>
           {props.isShowing ? "-" : "+"}
         </button>
-        {props.title}
       </div>
-      <div class="w-1/2 text-right">
+      <div class="w-1/3 text-center">{props.title}</div>
+      <div class="w-1/3 text-right">
         {Moment(props.date).format("M/D/yyyy")}
       </div>
     </div>

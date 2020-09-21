@@ -25,6 +25,10 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
 
   const [isShowing, setIsShowing] = useState(true);
 
+  const handleShowing = (e) => {
+    setIsShowing(!isShowing);
+  };
+
   return (
     <div>
       <PostContent
@@ -33,6 +37,8 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
         replyType={"post"}
         replyTarget={replyTarget}
         setReplyTarget={setReplyTarget}
+        handleShowing={handleShowing}
+        isShowing={isShowing}
       />
 
       {isShowing ? (
