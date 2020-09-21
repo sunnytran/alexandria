@@ -1,7 +1,9 @@
 front
 subject column
+image mandatory for posts
 v-screen h-screen black background tialwind problem
 width of cards
+redo posts
 organize components by pages
 fix nested isShowing
 resize images

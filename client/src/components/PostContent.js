@@ -40,44 +40,48 @@ const PostContent = ({
   Moment.locale("en");
 
   return (
-    <ContentBorder title={content.image_name}>
-      <div class="flex space-x-2">
-        <div class="w-1/3">
+    <div class="flex">
+      <div class="w-1/3">
+        <ContentBorder title={content.title}>
           <div class="flex space-x-2">
-            <div>
-              <button onClick={handleShowing.bind(this)}>
-                {isShowing ? "-" : "+"}
-              </button>
+            <div class="w-1/3">
+              <div class="flex space-x-2">
+                <div>
+                  <button onClick={handleShowing.bind(this)}>
+                    {isShowing ? "-" : "+"}
+                  </button>
+                </div>
+                <div>{content.username}</div>
+                <div>{Moment(content.date).format("M/D/yyyy")}</div>
+              </div>
+              <a
+                class="underline text-blue-500 hover:underline hover:text-white"
+                href={content.image_link}
+                target="_blank"
+              >
+                {content.image_name}
+              </a>
+              {isShowing && content.image_link ? (
+                <Image cloudName="dyvaitfrl" publicId={imageID}>
+                  <Transformation height="250" crop="scale" />
+                </Image>
+              ) : null}
             </div>
-            <div>{content.username}</div>
-            <div>{Moment(content.date).format("M/D/yyyy")}</div>
+            <div class="w-1/2">
+              {isShowing ? content.comment : null}
+              {isShowing ? (
+                <button onClick={handleReply.bind(this)}>Reply</button>
+              ) : null}
+              {replyTarget &&
+              replyTarget.type === replyType &&
+              replyTarget.id === content.id ? (
+                <ReplyForm postID={postID} replyID={replyID} />
+              ) : null}
+            </div>
           </div>
-          <a
-            class="underline text-blue-500 hover:underline hover:text-white"
-            href={content.image_link}
-            target="_blank"
-          >
-            {content.image_name}
-          </a>
-          {isShowing && content.image_link ? (
-            <Image cloudName="dyvaitfrl" publicId={imageID}>
-              <Transformation height="250" crop="scale" />
-            </Image>
-          ) : null}
-        </div>
-        <div class="w-1/2">
-          {isShowing ? content.comment : null}
-          {isShowing ? (
-            <button onClick={handleReply.bind(this)}>Reply</button>
-          ) : null}
-          {replyTarget &&
-          replyTarget.type === replyType &&
-          replyTarget.id === content.id ? (
-            <ReplyForm postID={postID} replyID={replyID} />
-          ) : null}
-        </div>
+        </ContentBorder>
       </div>
-    </ContentBorder>
+    </div>
   );
 };
 
