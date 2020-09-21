@@ -1,10 +1,12 @@
 import React from "react";
+import ContentBorder from "../components/ContentBorder";
 
 const SearchContent = () => {
   return (
-    <div>
-      Search stuff here
-      {/* <input
+    <ContentBorder title="Search">
+      <div>
+        Search stuff here
+        {/* <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="searchTitle"
         type="text"
@@ -18,7 +20,8 @@ const SearchContent = () => {
         <option>Missouri</option>
         <option>Texas</option>
       </select> */}
-    </div>
+      </div>
+    </ContentBorder>
   );
 };
 

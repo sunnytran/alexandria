@@ -26,7 +26,7 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   const [isShowing, setIsShowing] = useState(true);
 
   return (
-    <div style={{ marginBottom: "10px" }}>
+    <div>
       <PostContent
         content={postContent}
         postID={postContent.id}

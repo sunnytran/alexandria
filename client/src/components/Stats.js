@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { getPosts } from "../store/actions/posts";
 
+import ContentBorder from "../components/ContentBorder";
+
 const Stats = ({ posts, getPosts }) => {
   useEffect(() => {
     getPosts();
@@ -10,10 +12,10 @@ const Stats = ({ posts, getPosts }) => {
   }, [posts.length, getPosts]);
 
   return (
-    <div>
+    <ContentBorder title="Stats">
       <p># of Posts: {posts.length}</p>
       <p># of Images: {posts.filter((i) => i.image_link !== null).length}</p>
-    </div>
+    </ContentBorder>
   );
 };
 

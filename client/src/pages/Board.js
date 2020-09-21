@@ -29,12 +29,14 @@ const Board = ({
   }, [posts.length, getPosts, replies.length, getReplies]);
 
   return (
-    <div>
-      <h1 class="font-serif font-semibold text-2xl">
-        /{board.name}/ - {board.title}
-      </h1>
+    <div class="v-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
+      <div class="pt-5">
+        <h1 class="font-serif font-semibold text-2xl text-center">
+          /{board.name}/ - {board.title}
+        </h1>
+      </div>
 
-      <PostForm />
+      {/* <PostForm /> */}
 
       <div>
         {posts.map((i) => {

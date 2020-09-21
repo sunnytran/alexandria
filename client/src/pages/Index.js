@@ -22,13 +22,8 @@ function Index({ boards, getBoards }) {
 
         <div class="flex space-x-5">
           <div class="w-1/5 space-y-5">
-            <ContentBorder title="Search">
-              <SearchContent />
-            </ContentBorder>
-
-            <ContentBorder title="Stats">
-              <Stats />
-            </ContentBorder>
+            <SearchContent />
+            <Stats />
           </div>
 
           <div class="w-4/5 space-y-5">
