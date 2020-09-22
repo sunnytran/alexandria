@@ -1,7 +1,8 @@
 front
 v-screen h-screen black background tialwind proble
 redo posts
-organize components by pages
+persistnet post fixed bottom-0
+organize components folder
 addd icons with maximize feature
 resize images
 click image make it bigger

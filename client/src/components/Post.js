@@ -11,7 +11,6 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
     setReplyTarget({ type: "post", id: postContent.id });
   };
 
-  const [imageID, setImageID] = useState("");
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {

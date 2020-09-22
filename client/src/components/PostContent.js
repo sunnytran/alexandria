@@ -55,17 +55,19 @@ const PostContent = ({
                 </a>
               ) : null}
             </div>
-            <div class="w-1/2">
+            <div class="relative w-2/3">
               {isShowing ? content.comment : null}
               {isShowing ? (
-                <div class="flex space-x-1">
-                  <div>{content.username}</div>
-                  <div>
-                    <button onClick={handleReply.bind(this)}>
-                      <p class="underline text-blue-500 hover:underline hover:text-white">
-                        [Reply]
-                      </p>
-                    </button>
+                <div class="absolute right-0 bottom-0">
+                  <div class="flex space-x-1">
+                    <div>{content.username}</div>
+                    <div>
+                      <button onClick={handleReply.bind(this)}>
+                        <p class="underline text-blue-500 hover:underline hover:text-white">
+                          [Reply]
+                        </p>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : null}
