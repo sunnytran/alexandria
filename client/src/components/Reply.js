@@ -35,7 +35,7 @@ const Reply = ({
   };
 
   return (
-    <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
+    <div class="pt-2 pl-4">
       <PostContent
         content={replyContent}
         postID={postID}

@@ -29,7 +29,7 @@ const Board = ({
   }, [posts.length, getPosts, replies.length, getReplies]);
 
   return (
-    <div class="bg-gradient-to-b from-gray-900 to-black text-white font-mono">
+    <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
       <div class="pt-5">
         <h1 class="font-serif font-semibold text-2xl text-center">
           /{board.name}/ - {board.title}
@@ -38,7 +38,7 @@ const Board = ({
 
       <PostForm />
 
-      <div class="pl-5 pb-5">
+      <div class="pt-5 pl-5 pb-5">
         {posts.map((i) => {
           return <Post key={i.id} postContent={i} allReplies={replies} />;
         })}

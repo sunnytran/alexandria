@@ -6,9 +6,12 @@ const PostTitle = (props) => {
   Moment.locale("en");
 
   return (
-    <div class="flex text-lg font-semibold">
+    <div class="flex text-sm font-semibold">
       <div class="w-1/3">
-        <button class="font-bold border-none" onClick={props.handleShowing}>
+        <button
+          class="font-bold border-none focus:outline-none"
+          onClick={props.handleShowing}
+        >
           {props.isShowing ? "-" : "+"}
         </button>
       </div>

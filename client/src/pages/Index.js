@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getBoards } from "../store/actions/boards";
 
 import "../styles/main.css";
+
 import Header from "../components/Header";
 import ContentBorder from "../components/ContentBorder";
 import SearchContent from "../components/SearchContent";
@@ -27,7 +28,7 @@ function Index({ boards, getBoards }) {
           </div>
 
           <div class="w-4/5 space-y-5">
-            <ContentBorder title="About" borderColor="orange-200">
+            <ContentBorder title="About" borderColor="orange-300">
               Alexandria is a simple imageboard clone where you can post
               comments and share images. There are boards dedicated to a variety
               of topics that you can participate in without needing to register

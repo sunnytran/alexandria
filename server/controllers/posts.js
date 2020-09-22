@@ -9,6 +9,7 @@ const handlePostsPost = (db, dataUri, uploader) => async (req, res) => {
   data = {
     username: "Anonymous",
     date: new Date(),
+    title: req.body.title,
     comment: req.body.comment,
     board: req.body.board,
   };

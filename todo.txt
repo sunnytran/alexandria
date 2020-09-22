@@ -1,21 +1,22 @@
 front
-v-screen h-screen black background tialwind proble
-redo posts
+sort by new or some type ofrelevance
+resizing stuff gets in the way postform and stuf
+consistent text sizes
+reply forms
+redo posts (add the title feature etc)
 organize components folder
 addd icons with maximize feature
-resize images
-click image make it bigger
+page for a specific posts
 remove hook dependency warnings or at least fix them
 pass id through router and into database, not the name
 check into useffect lag when switching pages
-organize reply into "reply component" with logic which contains "reply cards"
 remove image from cloudinary when removing a post
+paginate
 
 image upload
 TODO: check if fields are empty before submitting
 sort posts newest first? or maybe a "relevance"?
-paginate
-save nested hides when hiding its parent
+save nested hides when hiding its parent cookies? localstorage?
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -32,6 +33,9 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+organize reply into "reply component" with logic which contains "reply cards"
+resize imagess
+v-screen h-screen black background tialwind proble
 persistnet post fixed bottom-0
 fix nested isShowing
 subject column

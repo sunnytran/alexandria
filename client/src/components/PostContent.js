@@ -33,7 +33,7 @@ const PostContent = ({
   }, [replyTarget]);
 
   return (
-    <div class="flex">
+    <div class="flex text-sm">
       <div class="w-1/3">
         <ContentBorder
           title={
@@ -46,16 +46,16 @@ const PostContent = ({
           }
         >
           <div class="flex space-x-2">
-            <div class="w-1/3">
+            <div class="w-auto">
               {isShowing && content.image_link ? (
                 <a href={content.image_link} target="_blank">
                   <Image cloudName="dyvaitfrl" publicId={imageID}>
-                    <Transformation height="250" crop="scale" />
+                    <Transformation height="200" crop="scale" />
                   </Image>
                 </a>
               ) : null}
             </div>
-            <div class="relative w-2/3">
+            <div class="relative w-full">
               {isShowing ? content.comment : null}
               {isShowing ? (
                 <div class="absolute right-0 bottom-0">

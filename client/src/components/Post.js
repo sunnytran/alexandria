@@ -29,7 +29,7 @@ const Post = ({ postContent, replyTarget, setReplyTarget, allReplies }) => {
   };
 
   return (
-    <div>
+    <div class="pb-10">
       <PostContent
         content={postContent}
         postID={postContent.id}
