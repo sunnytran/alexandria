@@ -1,7 +1,6 @@
 front
 v-screen h-screen black background tialwind proble
 redo posts
-persistnet post fixed bottom-0
 organize components folder
 addd icons with maximize feature
 resize images
@@ -33,6 +32,7 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+persistnet post fixed bottom-0
 fix nested isShowing
 subject column
 image mandatory for posts

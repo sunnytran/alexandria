@@ -21,7 +21,7 @@ const PostForm = ({ board, addPost }) => {
   };
 
   return (
-    <div>
+    <div class="fixed bottom-0 right-0 pb-5 pr-5">
       <form onSubmit={handleAddPost.bind(this)}>
         <label>Image</label>
         <input type="file" name="image" onChange={onChange.bind(this)} />

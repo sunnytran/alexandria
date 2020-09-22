@@ -36,7 +36,7 @@ const Board = ({
         </h1>
       </div>
 
-      {/* <PostForm /> */}
+      <PostForm />
 
       <div class="pl-5 pb-5">
         {posts.map((i) => {
