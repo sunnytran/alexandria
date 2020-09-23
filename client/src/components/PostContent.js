@@ -56,7 +56,10 @@ const PostContent = ({
               ) : null}
             </div>
             <div class="relative w-full">
-              {isShowing ? content.comment : null}
+              <div>
+                {isShowing ? content.comment : null}
+                <br />
+              </div>
               {isShowing ? (
                 <div class="absolute right-0 bottom-0">
                   <div class="flex space-x-1">

@@ -43,7 +43,7 @@ const PostForm = ({ board, addPost }) => {
             cols="50"
           />
           <input
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
             type="submit"
             value="Post"
           />

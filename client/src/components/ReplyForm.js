@@ -31,9 +31,13 @@ const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
         <br />
         <label>Comment</label>
         <br />
-        <textarea name="comment" rows="5" cols="50" />
+        <textarea class="text-black mb-2" name="comment" rows="5" cols="50" />
         <br />
-        <input type="submit" value="Reply" />
+        <input
+          class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
+          type="submit"
+          value="Reply"
+        />
       </form>
     </div>
   );

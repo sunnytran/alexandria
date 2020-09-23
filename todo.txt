@@ -1,19 +1,24 @@
 front
+sign off geting in the way
+image upload lag
+page for a specfic posts
+post "preview"
+
+proper background color
+The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
+
 sort by new or some type ofrelevance
 resizing stuff gets in the way postform and stuf
 consistent text sizes
 reply forms
-redo posts (add the title feature etc)
 organize components folder
-addd icons with maximize feature
-page for a specific posts
 remove hook dependency warnings or at least fix them
-pass id through router and into database, not the name
 check into useffect lag when switching pages
 remove image from cloudinary when removing a post
 paginate
+mod stuff
+auth
 
-image upload
 TODO: check if fields are empty before submitting
 sort posts newest first? or maybe a "relevance"?
 save nested hides when hiding its parent cookies? localstorage?
@@ -33,6 +38,10 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+change butto ncolor
+image upload
+redo posts (add the title feature etc)
+backgroud color error again
 organize reply into "reply component" with logic which contains "reply cards"
 resize imagess
 v-screen h-screen black background tialwind proble
