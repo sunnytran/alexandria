@@ -42,6 +42,8 @@ const PostContent = ({
               date={content.date}
               handleShowing={handleShowing}
               isShowing={isShowing}
+              id={postID}
+              board={content.board}
             />
           }
         >
