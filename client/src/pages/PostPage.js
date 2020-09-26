@@ -24,7 +24,8 @@ const PostPage = ({
   useEffect(() => {
     getBoard(boardName);
     getPosts(boardName);
-    getReplies();
+    getReplies({ replying_to_post_id: postID });
+    console.log(replies);
   }, [posts.length, getPosts, replies.length, getReplies]);
 
   return (

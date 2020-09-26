@@ -2,8 +2,8 @@ import axios from "axios";
 
 import { GET_REPLIES, ADD_REPLY } from "./types";
 
-export const getReplies = () => async (dispatch) => {
-  await axios.get("/api/v1/replies/").then((res) => {
+export const getReplies = (params) => async (dispatch) => {
+  await axios.get("/api/v1/replies/", { params: params }).then((res) => {
     dispatch({
       type: GET_REPLIES,
       payload: res.data,

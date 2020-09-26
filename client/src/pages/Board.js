@@ -25,7 +25,7 @@ const Board = ({
   useEffect(() => {
     getBoard(boardName);
     getPosts(boardName);
-    getReplies();
+    getReplies({ board: boardName });
   }, [posts.length, getPosts, replies.length, getReplies]);
 
   return (

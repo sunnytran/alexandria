@@ -1,5 +1,5 @@
 const handleRepliesGet = (db) => async (req, res) => {
-  const replies = await db("replies");
+  const replies = await db("replies").where(req.query);
   res.json(replies);
 };
 
