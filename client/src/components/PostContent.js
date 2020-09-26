@@ -32,9 +32,13 @@ const PostContent = ({
     }
   }, [replyTarget]);
 
+  var size = "1/3";
+  const contentLength = content.comment.length;
+  if (contentLength > 1000) size = "1/2";
+
   return (
     <div class="flex text-sm">
-      <div class="w-1/3">
+      <div class={"w-" + size}>
         <ContentBorder
           title={
             <PostTitle

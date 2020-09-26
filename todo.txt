@@ -4,6 +4,8 @@ image upload lag
 page for a specfic posts
 post "preview"
 
+text wrap around picture
+
 proper background color
 The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
 
