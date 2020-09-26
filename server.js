@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const db = require("./server/config/db.js");
 const boards = require("./server/controllers/boards");
 const board = require("./server/controllers/board");
+const post = require("./server/controllers/post");
 const posts = require("./server/controllers/posts");
 const replies = require("./server/controllers/replies");
 
@@ -23,10 +24,11 @@ app.use("*", cloudinaryConfig);
 app.get("/api/v1/boards", boards.handleBoardsGet(db));
 app.get("/api/v1/board/:id", board.handleBoardGet(db));
 app.get("/api/v1/posts/:id", posts.handlePostsGet(db));
+app.get("/api/v1/post/:id", post.handlePostGet(db));
 app.post(
-  "/api/v1/posts",
+  "/api/v1/post",
   multerUploads,
-  posts.handlePostsPost(db, dataUri, uploader)
+  post.handlePostPost(db, dataUri, uploader)
 );
 app.get("/api/v1/replies", replies.handleRepliesGet(db));
 app.post(

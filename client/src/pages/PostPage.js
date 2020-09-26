@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { getBoard } from "../store/actions/board";
-import { getPosts } from "../store/actions/posts";
+import { getPost } from "../store/actions/post";
 import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/Post";
@@ -12,8 +12,8 @@ const PostPage = ({
   location,
   board,
   getBoard,
-  posts,
-  getPosts,
+  post,
+  getPost,
   replies,
   getReplies,
 }) => {
@@ -23,10 +23,9 @@ const PostPage = ({
 
   useEffect(() => {
     getBoard(boardName);
-    getPosts(boardName);
+    getPost(postID);
     getReplies({ replying_to_post_id: postID });
-    console.log(replies);
-  }, [posts.length, getPosts, replies.length, getReplies]);
+  }, [getPost, replies.length, getReplies]);
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
@@ -36,22 +35,21 @@ const PostPage = ({
         </h1>
       </div>
 
-      {/* <Post postContent={i} allReplies={replies /> */}
-      {/* <div class="pt-5 pl-5 pb-5">
-        {posts.map((i) => {
-          return <Post key={i.id} postContent={i} allReplies={replies} />;
-        })}
-      </div> */}
+      <div class="pt-5 pl-5 pb-5">
+        {post.length !== 0 ? (
+          <Post postContent={post} allReplies={replies} />
+        ) : null}
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   board: state.board,
-  posts: state.posts,
+  post: state.post,
   replies: state.replies,
 });
 
-export default connect(mapStateToProps, { getBoard, getPosts, getReplies })(
+export default connect(mapStateToProps, { getBoard, getPost, getReplies })(
   PostPage
 );
