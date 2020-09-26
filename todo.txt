@@ -1,8 +1,11 @@
 front
 sign off geting in the way
 image upload lag
-page for a specfic posts
 post "preview"
+redux bug need to reload to get new content
+
+reply forms
+reply targets
 
 text wrap around picture
 
@@ -13,8 +16,7 @@ preview if too much text
 
 sort by new or some type ofrelevance
 resizing stuff gets in the way postform and stuf
-consistent text sizes
-reply forms
+consistent text size
 organize components folder
 remove hook dependency warnings or at least fix them
 check into useffect lag when switching pages
@@ -42,6 +44,7 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+page for a specfic posts
 change butto ncolor
 image upload
 redo posts (add the title feature etc)

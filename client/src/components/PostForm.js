@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addPost } from "../store/actions/post";
+
+import { addPost } from "../store/actions/posts";
 
 import ContentBorder from "../components/ContentBorder";
 

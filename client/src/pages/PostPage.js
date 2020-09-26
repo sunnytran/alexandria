@@ -6,6 +6,7 @@ import { getPost } from "../store/actions/post";
 import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/Post";
+import ReplyForm from "../components/ReplyForm";
 
 const PostPage = ({
   match,
@@ -25,6 +26,10 @@ const PostPage = ({
     getBoard(boardName);
     getPost(postID);
     getReplies({ replying_to_post_id: postID });
+
+    // console.log(postID);
+    // console.log(post);
+    // console.log("=========");
   }, [getPost, replies.length, getReplies]);
 
   return (
@@ -40,6 +45,8 @@ const PostPage = ({
           <Post postContent={post} allReplies={replies} />
         ) : null}
       </div>
+
+      <ReplyForm />
     </div>
   );
 };

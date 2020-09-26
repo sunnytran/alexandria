@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { addReply } from "../store/actions/replies";
 import { setReplyTarget } from "../store/actions/replyTarget";
 
+import ContentBorder from "../components/ContentBorder";
+
 const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
   const [image, setImage] = useState(null);
 
@@ -24,21 +26,27 @@ const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
   };
 
   return (
-    <div style={{ paddingTop: "10px", paddingLeft: "20px" }}>
-      <form onSubmit={handleAddReply.bind(this)}>
-        <label>Image</label>
-        <input type="file" name="image" onChange={onChange.bind(this)} />
-        <br />
-        <label>Comment</label>
-        <br />
-        <textarea class="text-black mb-2" name="comment" rows="5" cols="50" />
-        <br />
-        <input
-          class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
-          type="submit"
-          value="Reply"
-        />
-      </form>
+    <div class="fixed bottom-0 right-0 pb-5 pr-5">
+      <ContentBorder title="Re:" borderColor="orange-300">
+        <form onSubmit={handleAddReply.bind(this)}>
+          <div class="flex space-x-2 mb-2">
+            <label>Image</label>
+            <input type="file" name="image" onChange={onChange.bind(this)} />
+          </div>
+          <label>Comment</label>
+          <textarea
+            name="comment"
+            class="text-black block mb-2"
+            rows="5"
+            cols="50"
+          />
+          <input
+            class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
+            type="submit"
+            value="Reply"
+          />
+        </form>
+      </ContentBorder>
     </div>
   );
 };
