@@ -17,7 +17,7 @@ function Index({ boards, getBoards }) {
   }, [boards.length, getBoards]);
 
   return (
-    <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
+    <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
       <div class="container mx-auto pt-5">
         <Header />
 

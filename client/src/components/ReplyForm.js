@@ -4,9 +4,17 @@ import { connect } from "react-redux";
 import { addReply } from "../store/actions/replies";
 import { setReplyTarget } from "../store/actions/replyTarget";
 
+import ReplyTitle from "./ReplyTitle";
 import ContentBorder from "../components/ContentBorder";
 
-const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
+const ReplyForm = ({
+  board,
+  addReply,
+  setReplyTarget,
+  postID,
+  replyID,
+  username,
+}) => {
   const [image, setImage] = useState(null);
 
   const onChange = (e) => {
@@ -26,27 +34,39 @@ const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
   };
 
   return (
-    <div>
-      <ContentBorder title="Re:" borderColor="orange-300">
-        <form onSubmit={handleAddReply.bind(this)}>
-          <div class="flex space-x-2 mb-2">
-            <label>Image</label>
-            <input type="file" name="image" onChange={onChange.bind(this)} />
-          </div>
-          <label>Comment</label>
-          <textarea
-            name="comment"
-            class="text-black block mb-2"
-            rows="5"
-            cols="50"
-          />
-          <input
-            class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
-            type="submit"
-            value="Reply"
-          />
-        </form>
-      </ContentBorder>
+    <div class="flex">
+      <div class="w-1/3">
+        <div class="pt-2 pl-4">
+          <ContentBorder
+            title={<ReplyTitle title={username} />}
+            borderColor="orange-300"
+          >
+            {/* <ContentBorder title={"Re:" + username} > */}
+            <form onSubmit={handleAddReply.bind(this)}>
+              <div class="flex space-x-2 mb-2">
+                <label>Image</label>
+                <input
+                  type="file"
+                  name="image"
+                  onChange={onChange.bind(this)}
+                />
+              </div>
+              <label>Comment</label>
+              <textarea
+                name="comment"
+                class="text-black block mb-2"
+                rows="5"
+                cols="50"
+              />
+              <input
+                class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
+                type="submit"
+                value="Reply"
+              />
+            </form>
+          </ContentBorder>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,21 +1,21 @@
 front
+reply forms
+reply targets
+text wrap around picture
 sign off geting in the way
 image upload lag
 redux bug need to reload to get new content
 
-reply forms
-reply targets
+reply textbox wont fit
 
-text wrap around picture
+get rid of replytarget connect stuff
 
 proper background color
 The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
 
-preview if too much text
+
 
 sort by new or some type ofrelevance
-resizing stuff gets in the way postform and stuf
-consistent text size
 organize components folder
 remove hook dependency warnings or at least fix them
 check into useffect lag when switching pages
@@ -33,16 +33,18 @@ hate having to create more and more classes just or specific state variables
 right now i can't set a variable without appending it to a list
 
 server
-knex[0] in server.js seems a little hacky, find a better alternative
 cloudinary check if it's image
 
 db
 add a table of comments for every post and a table of posts for every board
 timezone && then time for the front (date include actual time)
 
-ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
-
 FIXED
+reply form indent and width
+consistent text size
+ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
+resizing stuff gets in the way postform and stuf
+preview if too much text
 post "preview"
 render postform over everything
 page for a specfic posts

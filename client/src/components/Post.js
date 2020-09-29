@@ -53,7 +53,7 @@ const Post = ({
       {replyTargetData &&
       replyTargetData.type === "post" &&
       replyTargetData.value === postContent.id ? (
-        <ReplyForm />
+        <ReplyForm username={postContent.username} />
       ) : null}
 
       {isShowing ? (

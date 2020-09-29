@@ -43,7 +43,7 @@ const PostContent = ({
   };
 
   return (
-    <div class="flex text-sm">
+    <div class="flex">
       <div class={"w-" + size}>
         <ContentBorder
           title={
@@ -92,12 +92,6 @@ const PostContent = ({
                   </div>
                 </div>
               ) : null}
-
-              {/* {replyTarget &&
-              replyTarget.type === replyType &&
-              replyTarget.id === content.id ? (
-                <ReplyForm postID={postID} replyID={replyID} />
-              ) : null} */}
             </div>
           </div>
         </ContentBorder>

@@ -7,7 +7,7 @@ const PostTitle = (props) => {
   Moment.locale("en");
 
   return (
-    <div class="flex text-sm font-semibold">
+    <div class="flex font-semibold">
       <div class="w-1/5">
         <button
           class="font-bold border-none focus:outline-none"

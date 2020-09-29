@@ -34,7 +34,7 @@ const PostPage = ({
   };
 
   return (
-    <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
+    <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
       <div class="pt-5">
         <h1 class="font-serif font-semibold text-2xl text-center">
           /{board.name}/ - {board.title}

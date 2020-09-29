@@ -54,7 +54,7 @@ const Reply = ({
       {replyTargetData &&
       replyTargetData.type === "reply" &&
       replyTargetData.value === replyContent.id ? (
-        <ReplyForm />
+        <ReplyForm username={replyContent.username} />
       ) : null}
 
       {isShowing && !isPreviewing ? (
