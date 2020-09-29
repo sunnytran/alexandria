@@ -25,7 +25,7 @@ const PostForm = ({ board, addPost }) => {
   };
 
   return (
-    <div class="fixed bottom-0 right-0 pb-5 pr-5">
+    <div class="z-50 fixed bottom-0 right-0 bg-black pb-5 pr-5">
       <ContentBorder title="Make a post" borderColor="orange-300">
         <form onSubmit={handleAddPost.bind(this)}>
           <div class="flex space-x-2 mb-2">

@@ -40,7 +40,14 @@ const Board = ({
 
       <div class="pt-5 pl-5 pb-5">
         {posts.map((i) => {
-          return <Post key={i.id} postContent={i} allReplies={replies} />;
+          return (
+            <Post
+              key={i.id}
+              isPreviewing={true}
+              postContent={i}
+              allReplies={replies}
+            />
+          );
         })}
       </div>
     </div>

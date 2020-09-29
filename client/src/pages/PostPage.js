@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { getBoard } from "../store/actions/board";
@@ -6,7 +6,6 @@ import { getPost } from "../store/actions/post";
 import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/Post";
-import ReplyForm from "../components/ReplyForm";
 
 const PostPage = ({
   match,
@@ -22,15 +21,17 @@ const PostPage = ({
     params: { boardName, postID },
   } = match;
 
+  const [replyTargetData, setReplyTargetData] = useState(null);
+
   useEffect(() => {
     getBoard(boardName);
     getPost(postID);
     getReplies({ replying_to_post_id: postID });
-
-    // console.log(postID);
-    // console.log(post);
-    // console.log("=========");
   }, [getPost, replies.length, getReplies]);
+
+  const updateReplyTarget = (targetData) => {
+    setReplyTargetData(targetData);
+  };
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono">
@@ -42,11 +43,15 @@ const PostPage = ({
 
       <div class="pt-5 pl-5 pb-5">
         {post.length !== 0 ? (
-          <Post postContent={post} allReplies={replies} />
+          <Post
+            preview={false}
+            postContent={post}
+            allReplies={replies}
+            updateReplyTarget={updateReplyTarget}
+            replyTargetData={replyTargetData}
+          />
         ) : null}
       </div>
-
-      <ReplyForm />
     </div>
   );
 };

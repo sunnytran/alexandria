@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { setReplyTarget } from "../store/actions/replyTarget";
 
@@ -10,19 +11,17 @@ import PostTitle from "./PostTitle";
 import ReplyForm from "./ReplyForm";
 
 const PostContent = ({
+  isPreviewing = false,
   content,
   postID,
   replyID,
   replyType,
   replyTarget,
   setReplyTarget,
+  updateReplyTarget,
   handleShowing,
   isShowing,
 }) => {
-  const handleReply = (e) => {
-    setReplyTarget({ type: replyType, id: content.id });
-  };
-
   const [imageID, setImageID] = useState("");
 
   useEffect(() => {
@@ -35,6 +34,13 @@ const PostContent = ({
   var size = "1/3";
   const contentLength = content.comment.length;
   if (contentLength > 1000) size = "1/2";
+
+  const handleReply = () => {
+    const type = replyID ? "reply" : "post";
+    const value = type === "post" ? postID : replyID;
+
+    updateReplyTarget({ type: type, value: value });
+  };
 
   return (
     <div class="flex text-sm">
@@ -62,30 +68,36 @@ const PostContent = ({
               ) : null}
             </div>
             <div class="relative w-full">
-              <div>
-                {isShowing ? content.comment : null}
-                <br />
-              </div>
+              <div>{isShowing ? content.comment : null}</div>
               {isShowing ? (
                 <div class="absolute right-0 bottom-0">
                   <div class="flex space-x-1">
                     <div>{content.username}</div>
                     <div>
-                      <button onClick={handleReply.bind(this)}>
-                        <p class="underline text-blue-500 hover:underline hover:text-white">
+                      {isPreviewing ? (
+                        <Link
+                          class="underline text-blue-500 hover:underline hover:text-white"
+                          to={"/" + content.board + "/" + postID}
+                        >
                           [Reply]
-                        </p>
-                      </button>
+                        </Link>
+                      ) : (
+                        <button onClick={handleReply.bind(this)}>
+                          <p class="underline text-blue-500 hover:underline hover:text-white">
+                            [Reply]
+                          </p>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
               ) : null}
 
-              {replyTarget &&
+              {/* {replyTarget &&
               replyTarget.type === replyType &&
               replyTarget.id === content.id ? (
                 <ReplyForm postID={postID} replyID={replyID} />
-              ) : null}
+              ) : null} */}
             </div>
           </div>
         </ContentBorder>

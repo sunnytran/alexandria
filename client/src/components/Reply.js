@@ -4,13 +4,18 @@ import { connect } from "react-redux";
 import { setReplyTarget } from "../store/actions/replyTarget";
 
 import PostContent from "./PostContent";
+import ReplyForm from "../components/ReplyForm";
 
 const Reply = ({
+  isPreviewing = false,
   postID,
   replyContent,
   allReplies,
   replyTarget,
   setReplyTarget,
+  hasReplyForm = false,
+  updateReplyTarget,
+  replyTargetData,
 }) => {
   const [replies, setReplies] = useState([]);
 
@@ -24,10 +29,6 @@ const Reply = ({
     );
   }, [allReplies.length, replyTarget]);
 
-  const handleReply = (e) => {
-    setReplyTarget({ type: "reply", id: replyContent.id });
-  };
-
   const [isShowing, setIsShowing] = useState(true);
 
   const handleShowing = (e) => {
@@ -37,6 +38,7 @@ const Reply = ({
   return (
     <div class="pt-2 pl-4">
       <PostContent
+        isPreviewing={isPreviewing}
         content={replyContent}
         postID={postID}
         replyID={replyContent.id}
@@ -45,17 +47,29 @@ const Reply = ({
         setReplyTarget={setReplyTarget}
         handleShowing={handleShowing}
         isShowing={isShowing}
+        updateReplyTarget={updateReplyTarget}
+        replyTargetData={replyTargetData}
       />
 
-      {isShowing ? (
+      {replyTargetData &&
+      replyTargetData.type === "reply" &&
+      replyTargetData.value === replyContent.id ? (
+        <ReplyForm />
+      ) : null}
+
+      {isShowing && !isPreviewing ? (
         <div>
           {replies.map((i) => {
             return (
               <ConnectedReply
                 key={i.id}
+                isPreviewing={isPreviewing}
                 postID={postID}
                 replyContent={i}
                 allReplies={allReplies}
+                hasReplyForm={hasReplyForm}
+                updateReplyTarget={updateReplyTarget}
+                replyTargetData={replyTargetData}
               />
             );
           })}

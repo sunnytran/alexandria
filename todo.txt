@@ -1,7 +1,6 @@
 front
 sign off geting in the way
 image upload lag
-post "preview"
 redux bug need to reload to get new content
 
 reply forms
@@ -44,6 +43,8 @@ timezone && then time for the front (date include actual time)
 ORGANIZE FILE STRUCTURE NOW THAT YOU HAVE MULTER
 
 FIXED
+post "preview"
+render postform over everything
 page for a specfic posts
 change butto ncolor
 image upload

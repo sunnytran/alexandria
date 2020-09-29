@@ -26,7 +26,7 @@ const ReplyForm = ({ board, addReply, setReplyTarget, postID, replyID }) => {
   };
 
   return (
-    <div class="fixed bottom-0 right-0 pb-5 pr-5">
+    <div>
       <ContentBorder title="Re:" borderColor="orange-300">
         <form onSubmit={handleAddReply.bind(this)}>
           <div class="flex space-x-2 mb-2">
