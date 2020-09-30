@@ -35,7 +35,7 @@ const ReplyForm = ({
   return (
     <div class="flex">
       <div class="w-1/3">
-        <div class="pt-2 pl-4">
+        <div class="flex pt-2 pl-4">
           <ContentBorder
             title={
               <ReplyTitle
@@ -56,6 +56,7 @@ const ReplyForm = ({
               </div>
               <label>Comment</label>
               <textarea
+                class="form-textarea block"
                 name="comment"
                 class="text-black block mb-2"
                 rows="5"

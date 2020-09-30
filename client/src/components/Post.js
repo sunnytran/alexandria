@@ -23,6 +23,7 @@ const Post = ({
           i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
       )
     );
+    console.log(replies);
   }, [allReplies.length]);
 
   const [isShowing, setIsShowing] = useState(true);

@@ -1,15 +1,9 @@
 front
-text wrap around picture
-sign off geting in the way
-image upload lag
 redux bug need to reload to get new content
 
-reply textbox wont fit
-
+image upload lag
 proper background color
 The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
-
-
 
 sort by new or some type ofrelevance
 organize components folder
@@ -36,6 +30,8 @@ add a table of comments for every post and a table of posts for every board
 timezone && then time for the front (date include actual time)
 
 FIXED
+reply textbox wont fit
+sign off geting in the way
 reply forms
 reply targets
 get rid of replytarget connect stuff
