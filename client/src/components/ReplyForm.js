@@ -6,7 +6,14 @@ import { addReply } from "../store/actions/replies";
 import ReplyTitle from "./ReplyTitle";
 import ContentBorder from "../components/ContentBorder";
 
-const ReplyForm = ({ board, addReply, postID, replyID, username }) => {
+const ReplyForm = ({
+  board,
+  addReply,
+  postID,
+  replyID,
+  username,
+  updateReplyTarget,
+}) => {
   const [image, setImage] = useState(null);
 
   const onChange = (e) => {
@@ -28,10 +35,14 @@ const ReplyForm = ({ board, addReply, postID, replyID, username }) => {
       <div class="w-1/3">
         <div class="pt-2 pl-4">
           <ContentBorder
-            title={<ReplyTitle title={username} />}
+            title={
+              <ReplyTitle
+                title={username}
+                updateReplyTarget={updateReplyTarget}
+              />
+            }
             borderColor="orange-300"
           >
-            {/* <ContentBorder title={"Re:" + username} > */}
             <form onSubmit={handleAddReply.bind(this)}>
               <div class="flex space-x-2 mb-2">
                 <label>Image</label>
