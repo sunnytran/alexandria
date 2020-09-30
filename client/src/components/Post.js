@@ -50,6 +50,8 @@ const Post = ({
       replyTargetData.type === "post" &&
       replyTargetData.value === postContent.id ? (
         <ReplyForm
+          board={postContent.board}
+          postID={postContent.id}
           username={postContent.username}
           updateReplyTarget={updateReplyTarget}
         />

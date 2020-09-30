@@ -1,5 +1,4 @@
 front
-reply forms
 text wrap around picture
 sign off geting in the way
 image upload lag
@@ -37,6 +36,7 @@ add a table of comments for every post and a table of posts for every board
 timezone && then time for the front (date include actual time)
 
 FIXED
+reply forms
 reply targets
 get rid of replytarget connect stuff
 reply form indent and width

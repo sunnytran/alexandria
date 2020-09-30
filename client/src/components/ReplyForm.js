@@ -28,6 +28,8 @@ const ReplyForm = ({
     e.target.image.value = "";
     e.target.comment.value = "";
     setImage(null);
+
+    updateReplyTarget(null);
   };
 
   return (

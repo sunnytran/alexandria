@@ -14,7 +14,6 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
 
   if (req.body.replyingToReplyID && req.body.replyingToReplyID !== undefined) {
     data.replying_to_reply_id = req.body.replyingToReplyID;
-    console.log(req.body.replyingToReplyID);
   }
 
   if (req.file) {
