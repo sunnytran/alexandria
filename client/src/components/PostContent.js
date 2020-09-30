@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { Image, Transformation } from "cloudinary-react";
 
 import ContentBorder from "./ContentBorder";
 import PostTitle from "./PostTitle";
-import ReplyForm from "./ReplyForm";
 
 const PostContent = ({
   isPreviewing = false,
@@ -59,7 +57,11 @@ const PostContent = ({
           <div class="flex space-x-2">
             <div class="w-auto">
               {isShowing && content.image_link ? (
-                <a href={content.image_link} target="_blank">
+                <a
+                  href={content.image_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image cloudName="dyvaitfrl" publicId={imageID}>
                     <Transformation height={height} crop="scale" />
                   </Image>

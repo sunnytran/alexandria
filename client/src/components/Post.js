@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import PostContent from "./PostContent";
@@ -23,7 +22,9 @@ const Post = ({
           i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
       )
     );
-    console.log(replies);
+    // console.log("===================");
+    // console.log(postContent);
+    // console.log(allReplies);
   }, [allReplies.length]);
 
   const [isShowing, setIsShowing] = useState(true);

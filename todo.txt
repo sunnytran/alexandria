@@ -1,12 +1,16 @@
 front
-redux bug need to reload to get new content
-
-image upload lag
 proper background color
 The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
+organize components folder
+TODO: check if fields are empty before submitting
+timezone && then time for the front (date include actual time)
+
+board categories
+stats change get to get count psql
+
+image upload lag
 
 sort by new or some type ofrelevance
-organize components folder
 remove hook dependency warnings or at least fix them
 check into useffect lag when switching pages
 remove image from cloudinary when removing a post
@@ -14,9 +18,7 @@ paginate
 mod stuff
 auth
 
-TODO: check if fields are empty before submitting
 sort posts newest first? or maybe a "relevance"?
-save nested hides when hiding its parent cookies? localstorage?
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -26,10 +28,9 @@ server
 cloudinary check if it's image
 
 db
-add a table of comments for every post and a table of posts for every board
-timezone && then time for the front (date include actual time)
 
 FIXED
+redux bug need to reload to get new content
 reply textbox wont fit
 sign off geting in the way
 reply forms

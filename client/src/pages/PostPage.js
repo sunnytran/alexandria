@@ -27,8 +27,10 @@ const PostPage = ({
     getBoard(boardName);
     getPost(postID);
     getReplies({ replying_to_post_id: postID });
-    console.log(replies);
-  }, [getPost, replies.length, getReplies]);
+    // console.log(postID);
+    // console.log(post.id);
+    // console.log(post);
+  }, [post.id, getPost, replies.length, getReplies]);
 
   const updateReplyTarget = (targetData) => {
     setReplyTargetData(targetData);
@@ -41,9 +43,8 @@ const PostPage = ({
           /{board.name}/ - {board.title}
         </h1>
       </div>
-
       <div class="pt-5 pl-5 pb-5">
-        {post.length !== 0 ? (
+        {post.length !== 0 && post.id == postID ? (
           <Post
             preview={false}
             postContent={post}

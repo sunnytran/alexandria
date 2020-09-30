@@ -56,9 +56,8 @@ const ReplyForm = ({
               </div>
               <label>Comment</label>
               <textarea
-                class="form-textarea block"
                 name="comment"
-                class="text-black block mb-2"
+                class="form-textarea block text-black mb-2"
                 rows="5"
                 cols="50"
               />
