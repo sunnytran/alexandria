@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-
-import { setReplyTarget } from "../store/actions/replyTarget";
 
 import PostContent from "./PostContent";
 import ReplyForm from "../components/ReplyForm";
@@ -61,7 +58,7 @@ const Reply = ({
         <div>
           {replies.map((i) => {
             return (
-              <ConnectedReply
+              <Reply
                 key={i.id}
                 isPreviewing={isPreviewing}
                 postID={postID}
@@ -79,10 +76,4 @@ const Reply = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  replyTarget: state.replyTarget,
-});
-
-const ConnectedReply = connect(mapStateToProps, { setReplyTarget })(Reply);
-
-export default ConnectedReply;
+export default Reply;

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { setReplyTarget } from "../store/actions/replyTarget";
-
 import PostContent from "./PostContent";
 import Reply from "./Reply";
 import ReplyForm from "../components/ReplyForm";
@@ -11,8 +9,6 @@ import ReplyForm from "../components/ReplyForm";
 const Post = ({
   isPreviewing = false,
   postContent,
-  replyTarget,
-  setReplyTarget,
   allReplies,
   hasReplyForm = false,
   updateReplyTarget,
@@ -27,7 +23,7 @@ const Post = ({
           i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
       )
     );
-  }, [allReplies.length, replyTarget]);
+  }, [allReplies.length]);
 
   const [isShowing, setIsShowing] = useState(true);
 
@@ -87,8 +83,4 @@ const Post = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  replyTarget: state.replyTarget,
-});
-
-export default connect(mapStateToProps, { setReplyTarget })(Post);
+export default Post;

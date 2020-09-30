@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { setReplyTarget } from "../store/actions/replyTarget";
-
 import { Image, Transformation } from "cloudinary-react";
 
 import ContentBorder from "./ContentBorder";
@@ -15,9 +13,6 @@ const PostContent = ({
   content,
   postID,
   replyID,
-  replyType,
-  replyTarget,
-  setReplyTarget,
   updateReplyTarget,
   handleShowing,
   isShowing,
@@ -29,7 +24,8 @@ const PostContent = ({
       const imageLink = content.image_link;
       setImageID(imageLink.substring(imageLink.lastIndexOf("/") + 1));
     }
-  }, [replyTarget]);
+    console.log("HELLO");
+  });
 
   var size = "1/3";
   const contentLength = content.comment.length;
@@ -100,8 +96,4 @@ const PostContent = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  replyTarget: state.replyTarget,
-});
-
-export default connect(mapStateToProps, { setReplyTarget })(PostContent);
+export default PostContent;

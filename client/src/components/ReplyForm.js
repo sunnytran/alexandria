@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { addReply } from "../store/actions/replies";
-import { setReplyTarget } from "../store/actions/replyTarget";
 
 import ReplyTitle from "./ReplyTitle";
 import ContentBorder from "../components/ContentBorder";
 
-const ReplyForm = ({
-  board,
-  addReply,
-  setReplyTarget,
-  postID,
-  replyID,
-  username,
-}) => {
+const ReplyForm = ({ board, addReply, postID, replyID, username }) => {
   const [image, setImage] = useState(null);
 
   const onChange = (e) => {
@@ -29,8 +21,6 @@ const ReplyForm = ({
     e.target.image.value = "";
     e.target.comment.value = "";
     setImage(null);
-
-    setReplyTarget(null);
   };
 
   return (
@@ -73,9 +63,6 @@ const ReplyForm = ({
 
 const mapStateToProps = (state) => ({
   board: state.board,
-  replyTarget: state.replyTarget,
 });
 
-export default connect(mapStateToProps, { addReply, setReplyTarget })(
-  ReplyForm
-);
+export default connect(mapStateToProps, { addReply })(ReplyForm);
