@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../store/actions/posts";
 import { getReplies } from "../store/actions/replies";
 
-import ContentBorder from "../components/ContentBorder";
+import ContentBorder from "./content/ContentBorder";
 
 const Stats = ({ posts, getPosts, replies, getReplies }) => {
   useEffect(() => {

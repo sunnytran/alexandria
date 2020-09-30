@@ -7,7 +7,7 @@ import { getBoards } from "../store/actions/boards";
 import "../styles/main.css";
 
 import Header from "../components/Header";
-import ContentBorder from "../components/ContentBorder";
+import ContentBorder from "../components/content/ContentBorder";
 import SearchContent from "../components/SearchContent";
 import Stats from "../components/Stats";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import PostContent from "./PostContent";
-import ReplyForm from "../components/ReplyForm";
+import PostContent from "../content/PostContent";
+import ReplyForm from "./ReplyForm";
 
 const Reply = ({
   isPreviewing = false,

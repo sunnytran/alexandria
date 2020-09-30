@@ -1,7 +1,6 @@
 front
 proper background color
 The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
-organize components folder
 TODO: check if fields are empty before submitting
 timezone && then time for the front (date include actual time)
 
@@ -30,6 +29,7 @@ cloudinary check if it's image
 db
 
 FIXED
+organize components folder
 redux bug need to reload to get new content
 reply textbox wont fit
 sign off geting in the way

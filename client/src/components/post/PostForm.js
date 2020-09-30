@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addPost } from "../store/actions/posts";
+import { addPost } from "../../store/actions/posts";
 
-import ContentBorder from "../components/ContentBorder";
+import ContentBorder from "../content/ContentBorder";
 
 const PostForm = ({ board, addPost }) => {
   const [image, setImage] = useState(null);

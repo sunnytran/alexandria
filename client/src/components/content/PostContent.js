@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Image, Transformation } from "cloudinary-react";
 
 import ContentBorder from "./ContentBorder";
-import PostTitle from "./PostTitle";
+import PostTitle from "../post/PostTitle";
 
 const PostContent = ({
   isPreviewing = false,

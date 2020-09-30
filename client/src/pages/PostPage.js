@@ -5,7 +5,7 @@ import { getBoard } from "../store/actions/board";
 import { getPost } from "../store/actions/post";
 import { getReplies } from "../store/actions/replies";
 
-import Post from "../components/Post";
+import Post from "../components/post/Post";
 
 const PostPage = ({
   match,
@@ -27,9 +27,6 @@ const PostPage = ({
     getBoard(boardName);
     getPost(postID);
     getReplies({ replying_to_post_id: postID });
-    // console.log(postID);
-    // console.log(post.id);
-    // console.log(post);
   }, [post.id, getPost, replies.length, getReplies]);
 
   const updateReplyTarget = (targetData) => {

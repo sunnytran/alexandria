@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addReply } from "../store/actions/replies";
+import { addReply } from "../../store/actions/replies";
 
 import ReplyTitle from "./ReplyTitle";
-import ContentBorder from "../components/ContentBorder";
+import ContentBorder from "../content/ContentBorder";
 
 const ReplyForm = ({
   board,

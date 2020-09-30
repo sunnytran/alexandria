@@ -5,8 +5,8 @@ import { getBoard } from "../store/actions/board";
 import { getPosts } from "../store/actions/posts";
 import { getReplies } from "../store/actions/replies";
 
-import Post from "../components/Post";
-import PostForm from "../components/PostForm";
+import Post from "../components/post/Post";
+import PostForm from "../components/post/PostForm";
 
 const Board = ({
   match,

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import PostContent from "./PostContent";
-import Reply from "./Reply";
-import ReplyForm from "../components/ReplyForm";
+import PostContent from "../content/PostContent";
+import Reply from "../reply/Reply";
+import ReplyForm from "../reply/ReplyForm";
 
 const Post = ({
   isPreviewing = false,

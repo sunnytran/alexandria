@@ -1,5 +1,5 @@
 import React from "react";
-import ContentBorder from "../components/ContentBorder";
+import ContentBorder from "./content/ContentBorder";
 
 const SearchContent = () => {
   return (
