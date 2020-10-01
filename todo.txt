@@ -1,5 +1,4 @@
 front
-timezone && then time for the front (date include actual time)
 stats change get to get count psql
 sort by new or some type ofrelevance
 popular posts
@@ -12,6 +11,7 @@ mod stuff
 auth
 remove image from cloudinary when removing a post
 reports
+splash log in or view only
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -22,6 +22,7 @@ server
 db
 
 FIXED
+timezone && then time for the front (date include actual time)
 cloudinary check if it's image
 TODO: check if fields are empty before submitting
 nav on board page

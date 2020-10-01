@@ -27,7 +27,6 @@ const PostPage = ({
     getBoard(boardName);
     getPost(postID);
     getReplies({ replying_to_post_id: postID });
-    console.log(postID);
   }, [post.id, getPost, replies.length, getReplies]);
 
   const updateReplyTarget = (targetData) => {

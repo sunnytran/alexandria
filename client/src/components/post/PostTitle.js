@@ -26,6 +26,7 @@ const PostTitle = (props) => {
       </div>
       <div class="w-1/6 text-right">
         {Moment(props.date).format("M/D/yyyy")}
+        {/* {Moment(props.date).format("M/D/yyyy h:mm a")} */}
       </div>
     </div>
   );

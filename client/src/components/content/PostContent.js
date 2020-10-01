@@ -105,27 +105,3 @@ const PostContent = ({
 };
 
 export default PostContent;
-
-{
-  /* <div class="flex justify-end h-4">
-<div class="flex space-x-1">
-  <div>{content.username}</div>
-  <div>
-    {isPreviewing ? (
-      <Link
-        class="underline text-blue-500 hover:underline hover:text-white"
-        to={"/" + content.board + "/" + postID}
-      >
-        [Reply]
-      </Link>
-    ) : (
-      <button onClick={handleReply.bind(this)}>
-        <p class="underline text-blue-500 hover:underline hover:text-white">
-          [Reply]
-        </p>
-      </button>
-    )}
-  </div>
-</div>
-</div>  */
-}

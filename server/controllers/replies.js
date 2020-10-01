@@ -6,7 +6,6 @@ const handleRepliesGet = (db) => async (req, res) => {
 const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
   data = {
     username: "Anonymous",
-    date: new Date(),
     comment: req.body.comment,
     replying_to_post_id: req.body.replyingToPostID,
     board: req.body.board,

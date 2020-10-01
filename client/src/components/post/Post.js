@@ -23,7 +23,6 @@ const Post = ({
       )
     );
     // console.log("===================");
-    // console.log(postContent);
     // console.log(allReplies);
   }, [allReplies.length]);
 
