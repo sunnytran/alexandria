@@ -7,6 +7,7 @@ import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/post/Post";
 import PostForm from "../components/post/PostForm";
+import BoardsNav from "../components/BoardsNav";
 
 const Board = ({
   match,
@@ -30,10 +31,11 @@ const Board = ({
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      <div class="pt-5">
+      <div class="pt-5 pb-2">
         <h1 class="font-serif font-semibold text-2xl text-center">
           /{board.name}/ - {board.title}
         </h1>
+        <BoardsNav />
       </div>
 
       <PostForm />
@@ -60,6 +62,8 @@ const mapStateToProps = (state) => ({
   replies: state.replies,
 });
 
-export default connect(mapStateToProps, { getBoard, getPosts, getReplies })(
-  Board
-);
+export default connect(mapStateToProps, {
+  getBoard,
+  getPosts,
+  getReplies,
+})(Board);

@@ -3,9 +3,11 @@ stats change get to get count psql
 TODO: check if fields are empty before submitting
 timezone && then time for the front (date include actual time)
 
-nav on board page
 sort by new or some type ofrelevance
 paginate
+
+popular posts
+
 searching
 
 mod stuff
@@ -23,6 +25,7 @@ cloudinary check if it's image
 db
 
 FIXED
+nav on board page
 board categories
 organize components folder
 redux bug need to reload to get new content
