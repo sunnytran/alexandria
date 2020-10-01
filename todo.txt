@@ -1,23 +1,17 @@
 front
-proper background color
-The above solutions tell about adding the external library to give the required functionality but instead what you can do is just go to your Index.css file and inside the already written 'body' tag put "background-color: 'color'" and its done
+stats change get to get count psql
 TODO: check if fields are empty before submitting
 timezone && then time for the front (date include actual time)
 
-board categories
-stats change get to get count psql
-
-image upload lag
-
+nav on board page
 sort by new or some type ofrelevance
-remove hook dependency warnings or at least fix them
-check into useffect lag when switching pages
-remove image from cloudinary when removing a post
 paginate
+searching
+
 mod stuff
 auth
-
-sort posts newest first? or maybe a "relevance"?
+remove image from cloudinary when removing a post
+reports
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -29,6 +23,7 @@ cloudinary check if it's image
 db
 
 FIXED
+board categories
 organize components folder
 redux bug need to reload to get new content
 reply textbox wont fit

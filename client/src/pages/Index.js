@@ -16,6 +16,11 @@ function Index({ boards, getBoards }) {
     getBoards();
   }, [boards.length, getBoards]);
 
+  var categories = [];
+  for (var i = 0; i < boards.length; i++)
+    if (!categories.includes(boards[i].category))
+      categories.push(boards[i].category);
+
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
       <div class="container mx-auto pt-5">
@@ -36,7 +41,32 @@ function Index({ boards, getBoards }) {
             </ContentBorder>
 
             <ContentBorder title="Boards">
-              <ul>
+              <div class="flex">
+                {categories.map((i) => {
+                  return (
+                    <div key={i} class="flex-1">
+                      <span class="font-bold underline">{i}</span>
+                      <ul>
+                        {boards
+                          .filter((j) => j.category === i)
+                          .map((j) => {
+                            return (
+                              <li key={j.id}>
+                                <Link
+                                  class="no-underline text-blue-500 hover:underline hover:text-white"
+                                  to={"/" + j.name}
+                                >
+                                  {j.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* <ul>
                 {boards.map((i) => {
                   return (
                     <li key={i.id}>
@@ -49,7 +79,7 @@ function Index({ boards, getBoards }) {
                     </li>
                   );
                 })}
-              </ul>
+              </ul> */}
             </ContentBorder>
 
             <ContentBorder title="Popular">Popular posts go here</ContentBorder>
