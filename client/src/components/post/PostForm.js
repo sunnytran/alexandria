@@ -15,13 +15,15 @@ const PostForm = ({ board, addPost }) => {
   const handleAddPost = (e) => {
     e.preventDefault();
 
-    // TODO: Check if comment is empty
-    addPost(image, e.target.title.value, e.target.comment.value, board.name);
+    if (image && e.target.title.value) {
+      // TODO: Check if comment is empty
+      addPost(image, e.target.title.value, e.target.comment.value, board.name);
 
-    e.target.title.value = "";
-    e.target.image.value = "";
-    e.target.comment.value = "";
-    setImage(null);
+      e.target.title.value = "";
+      e.target.image.value = "";
+      e.target.comment.value = "";
+      setImage(null);
+    }
   };
 
   return (
@@ -34,7 +36,12 @@ const PostForm = ({ board, addPost }) => {
           </div>
           <div class="flex space-x-2 mb-2">
             <label>Image</label>
-            <input type="file" name="image" onChange={onChange.bind(this)} />
+            <input
+              type="file"
+              name="image"
+              accept="image/x-png,image/gif,image/jpeg"
+              onChange={onChange.bind(this)}
+            />
           </div>
           <label>Comment</label>
           <textarea

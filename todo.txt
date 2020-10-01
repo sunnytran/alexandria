@@ -1,12 +1,10 @@
 front
-stats change get to get count psql
-TODO: check if fields are empty before submitting
 timezone && then time for the front (date include actual time)
-
+stats change get to get count psql
 sort by new or some type ofrelevance
-paginate
-
 popular posts
+
+paginate
 
 searching
 
@@ -20,11 +18,12 @@ hate having to create more and more classes just or specific state variables
 right now i can't set a variable without appending it to a list
 
 server
-cloudinary check if it's image
 
 db
 
 FIXED
+cloudinary check if it's image
+TODO: check if fields are empty before submitting
 nav on board page
 board categories
 organize components folder

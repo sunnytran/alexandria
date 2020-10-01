@@ -23,13 +23,15 @@ const ReplyForm = ({
   const handleAddReply = (e) => {
     e.preventDefault();
 
-    addReply(image, e.target.comment.value, board.name, postID, replyID);
+    if (image || e.target.comment.value) {
+      addReply(image, e.target.comment.value, board.name, postID, replyID);
 
-    e.target.image.value = "";
-    e.target.comment.value = "";
-    setImage(null);
+      e.target.image.value = "";
+      e.target.comment.value = "";
+      setImage(null);
 
-    updateReplyTarget(null);
+      updateReplyTarget(null);
+    }
   };
 
   return (
@@ -51,6 +53,7 @@ const ReplyForm = ({
                 <input
                   type="file"
                   name="image"
+                  accept="image/x-png,image/gif,image/jpeg"
                   onChange={onChange.bind(this)}
                 />
               </div>
