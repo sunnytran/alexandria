@@ -20,7 +20,7 @@ const BoardsNav = ({ boards, getBoards }) => {
       &nbsp;/
       {boards.map((i) => {
         return (
-          <div>
+          <div key={i.name}>
             <a
               class="no-underline text-blue-500 hover:underline hover:text-white"
               href={"/" + i.name}

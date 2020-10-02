@@ -6,6 +6,7 @@ import { getPost } from "../store/actions/post";
 import { getReplies } from "../store/actions/replies";
 
 import Post from "../components/post/Post";
+import BoardsNav from "../components/BoardsNav";
 
 const PostPage = ({
   match,
@@ -39,6 +40,7 @@ const PostPage = ({
         <h1 class="font-serif font-semibold text-2xl text-center">
           /{board.name}/ - {board.title}
         </h1>
+        <BoardsNav />
       </div>
       <div class="pt-5 pl-5 pb-5">
         {post.length !== 0 && post.id == postID ? (

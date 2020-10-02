@@ -27,6 +27,10 @@ function Index({ boards, getBoards }) {
 
         <div class="flex space-x-5">
           <div class="w-1/5 space-y-5">
+            <Stats />
+          </div>
+
+          <div class="w-4/5 space-y-5">
             <ContentBorder title="About" borderColor="orange-300">
               Alexandria is a simple imageboard clone where you can post
               comments and share images. There are boards dedicated to a variety
@@ -41,10 +45,6 @@ function Index({ boards, getBoards }) {
                 My GitHub
               </a>
             </ContentBorder>
-            <Stats />
-          </div>
-
-          <div class="w-4/5 space-y-5">
             <ContentBorder title="Boards">
               <div class="flex">
                 {categories.map((i) => {

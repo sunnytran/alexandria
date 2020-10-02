@@ -9,6 +9,7 @@ const board = require("./server/controllers/board");
 const post = require("./server/controllers/post");
 const posts = require("./server/controllers/posts");
 const replies = require("./server/controllers/replies");
+const stats = require("./server/controllers/stats");
 
 const {
   uploader,
@@ -36,6 +37,7 @@ app.post(
   multerUploads,
   replies.handleRepliesPost(db, dataUri, uploader)
 );
+app.get("/api/v1/stats", stats.handleStatsGet(db));
 
 const PORT = process.env.DB_PORT || 5000;
 

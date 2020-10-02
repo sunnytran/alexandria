@@ -1,7 +1,8 @@
 front
-stats change get to get count psql
-sort by new or some type ofrelevance
 popular posts
+links?? react-linkify https://github.com/tasti/react-linkify
+
+username generation
 
 paginate
 
@@ -10,6 +11,9 @@ auth
 remove image from cloudinary when removing a post
 reports
 splash log in or view only
+STICKY!!
+
+archiving posts
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -20,6 +24,8 @@ server
 db
 
 FIXED
+sort by new or some type ofrelevance
+stats change get to get count psql
 timezone && then time for the front (date include actual time)
 cloudinary check if it's image
 TODO: check if fields are empty before submitting

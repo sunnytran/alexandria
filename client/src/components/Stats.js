@@ -1,32 +1,26 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-
-import { getPosts } from "../store/actions/posts";
-import { getReplies } from "../store/actions/replies";
+import React, { useEffect, useState } from "react";
 
 import ContentBorder from "./content/ContentBorder";
 
-const Stats = ({ posts, getPosts, replies, getReplies }) => {
-  useEffect(() => {
-    getPosts();
-    getReplies();
-  }, [posts.length, getPosts, replies.length, getReplies]);
+import axios from "axios";
 
-  var nImages = 0;
-  nImages += posts.length;
-  nImages += replies.filter((i) => i.image_link !== null).length;
+const Stats = () => {
+  const [nPosts, setNPosts] = useState(0);
+  const [nImages, setNImages] = useState(0);
+
+  useEffect(() => {
+    axios.get("/api/v1/stats").then((res) => {
+      setNPosts(res.data.n_posts);
+      setNImages(res.data.n_images);
+    });
+  }, [nPosts, nImages]);
 
   return (
     <ContentBorder title="Stats">
-      <p># of Posts: {posts.length}</p>
+      <p># of Posts: {nPosts}</p>
       <p># of Images: {nImages}</p>
     </ContentBorder>
   );
 };
 
-const mapStateToProps = (state) => ({
-  posts: state.posts,
-  replies: state.replies,
-});
-
-export default connect(mapStateToProps, { getPosts, getReplies })(Stats);
+export default Stats;

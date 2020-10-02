@@ -16,6 +16,7 @@ const Post = ({
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
+    console.log(allReplies);
     setReplies(
       allReplies.filter(
         (i) =>
@@ -23,7 +24,6 @@ const Post = ({
       )
     );
     // console.log("===================");
-    // console.log(allReplies);
   }, [allReplies.length]);
 
   const [isShowing, setIsShowing] = useState(true);
@@ -77,7 +77,7 @@ const Post = ({
         </div>
       ) : null}
 
-      {isShowing && isPreviewing && replies.length > 0 ? (
+      {isShowing && isPreviewing && allReplies.length > previewNReplies ? (
         <Link
           class="underline text-blue-500 hover:underline hover:text-white"
           to={"/" + postContent.board + "/" + postContent.id}

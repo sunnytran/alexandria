@@ -42,14 +42,18 @@ const Board = ({
 
       <div class="pt-5 pl-5 pb-5">
         {posts.map((i) => {
-          return (
+          return i.board === boardName ? (
             <Post
               key={i.id}
               isPreviewing={true}
               postContent={i}
-              allReplies={replies}
+              allReplies={replies.filter(
+                (j) =>
+                  j.replying_to_post_id === i.id ||
+                  j.replying_to_reply_id === i.id
+              )}
             />
-          );
+          ) : null;
         })}
       </div>
     </div>

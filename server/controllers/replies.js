@@ -28,6 +28,10 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
     .returning("*")
     .then((res) => res);
 
+  await db("posts")
+    .where({ id: req.body.replyingToPostID })
+    .update({ last_bump: db.fn.now() });
+
   res.json(replies[0]);
 };
 
