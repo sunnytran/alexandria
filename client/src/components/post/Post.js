@@ -77,7 +77,11 @@ const Post = ({
         </div>
       ) : null}
 
-      {isShowing && isPreviewing && allReplies.length > previewNReplies ? (
+      {isShowing &&
+      isPreviewing &&
+      ((replies.length < previewNReplies &&
+        allReplies.length >= previewNReplies) ||
+        allReplies.length > previewNReplies) ? (
         <Link
           class="underline text-blue-500 hover:underline hover:text-white"
           to={"/" + postContent.board + "/" + postContent.id}
