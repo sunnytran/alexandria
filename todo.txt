@@ -1,9 +1,7 @@
 front
-popular posts
-username generation
-
 toastify for stuff
 title character limit
+url post doesnt exist
 
 paginate
 
@@ -25,6 +23,8 @@ server
 db
 
 FIXED
+username generation
+popular posts
 links?? react-linkify https://github.com/tasti/react-linkify
 sort by new or some type ofrelevance
 stats change get to get count psql

@@ -22,6 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("*", cloudinaryConfig);
 
+app.set("trust proxy", true);
+
 app.get("/api/v1/boards", boards.handleBoardsGet(db));
 app.get("/api/v1/board/:id", board.handleBoardGet(db));
 app.get("/api/v1/posts/:id", posts.handlePostsGet(db));

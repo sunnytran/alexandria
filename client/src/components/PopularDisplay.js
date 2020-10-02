@@ -8,15 +8,19 @@ const PopularDisplay = (props) => {
   Moment.locale("en");
 
   const nPopular = 4;
-  const popular = props.posts.slice(0, nPopular);
+  var popular = props.posts;
+  popular = popular.sort(
+    (a, b) =>
+      b.replies_count / (Moment().diff(b.last_bump, "seconds") / 86400) -
+      a.replies_count / (Moment().diff(a.last_bump, "seconds") / 86400)
+  );
+  popular = popular.slice(0, nPopular);
 
   return (
     <div class="flex space-x-4 justify-center">
       {popular.map((i) => {
-        console.log(Moment());
-
         return (
-          <div>
+          <div key={i.id}>
             <p class="text-center">/{i.board}/</p>
             <div class="flex justify-center">
               <Link to={"/" + i.board + "/" + i.id}>
