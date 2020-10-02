@@ -1,8 +1,9 @@
 front
 popular posts
-links?? react-linkify https://github.com/tasti/react-linkify
-
 username generation
+
+toastify for stuff
+title character limit
 
 paginate
 
@@ -12,7 +13,7 @@ remove image from cloudinary when removing a post
 reports
 splash log in or view only
 STICKY!!
-
+LOCKING
 archiving posts
 
 redux
@@ -24,6 +25,7 @@ server
 db
 
 FIXED
+links?? react-linkify https://github.com/tasti/react-linkify
 sort by new or some type ofrelevance
 stats change get to get count psql
 timezone && then time for the front (date include actual time)

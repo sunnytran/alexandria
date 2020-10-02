@@ -41,6 +41,17 @@ const PostContent = ({
   var height = "200";
   if (contentLength > 1000) height = "300";
 
+  const linkStyle = (href, text, key) => (
+    <a
+      class="underline text-blue-500 hover:underline hover:text-white"
+      href={href}
+      key={key}
+      target="_blank"
+    >
+      {text}
+    </a>
+  );
+
   return (
     <div class="flex">
       <div class={"w-" + size}>
@@ -72,17 +83,11 @@ const PostContent = ({
             </div>
             <div class="relative w-full">
               <div class="h-auto">
-                {isShowing
-                  ? content.comment
-                  : // <Linkify
-                    //   properties={{
-                    //     target: "_blank",
-                    //     style: { color: "blue", fontWeight: "bold" },
-                    //   }}
-                    // >
-                    // {content.comment}
-                    // </Linkify>
-                    null}
+                {isShowing ? (
+                  <Linkify componentDecorator={linkStyle}>
+                    {content.comment}
+                  </Linkify>
+                ) : null}
               </div>
               {isShowing ? (
                 <div>
