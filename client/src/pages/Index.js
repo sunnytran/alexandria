@@ -3,17 +3,20 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getBoards } from "../store/actions/boards";
+import { getPosts } from "../store/actions/posts";
 
 import "../styles/main.css";
 
 import Header from "../components/Header";
 import ContentBorder from "../components/content/ContentBorder";
 import Stats from "../components/Stats";
+import PopularDisplay from "../components/PopularDisplay";
 
-function Index({ boards, getBoards }) {
+function Index({ boards, getBoards, posts, getPosts }) {
   useEffect(() => {
     getBoards();
-  }, [boards.length, getBoards]);
+    getPosts();
+  }, [boards.length, getBoards, posts.length, getPosts]);
 
   var categories = [];
   for (var i = 0; i < boards.length; i++)
@@ -73,7 +76,9 @@ function Index({ boards, getBoards }) {
               </div>
             </ContentBorder>
 
-            <ContentBorder title="Popular">Popular posts go here</ContentBorder>
+            <ContentBorder title="Popular">
+              <PopularDisplay posts={posts} />
+            </ContentBorder>
           </div>
         </div>
       </div>
@@ -83,6 +88,7 @@ function Index({ boards, getBoards }) {
 
 const mapStateToProps = (state) => ({
   boards: state.boards,
+  posts: state.posts,
 });
 
-export default connect(mapStateToProps, { getBoards })(Index);
+export default connect(mapStateToProps, { getBoards, getPosts })(Index);

@@ -31,6 +31,9 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
   await db("posts")
     .where({ id: req.body.replyingToPostID })
     .update({ last_bump: db.fn.now() });
+  await db("posts")
+    .where({ id: req.body.replyingToPostID })
+    .increment("replies_count", 1);
 
   res.json(replies[0]);
 };

@@ -16,7 +16,6 @@ const Post = ({
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    console.log(allReplies);
     setReplies(
       allReplies.filter(
         (i) =>

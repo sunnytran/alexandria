@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { Image, Transformation } from "cloudinary-react";
 
+import Linkify from "react-linkify";
+
 import ContentBorder from "./ContentBorder";
 import PostTitle from "../post/PostTitle";
 
@@ -69,7 +71,19 @@ const PostContent = ({
               ) : null}
             </div>
             <div class="relative w-full">
-              <div class="h-auto">{isShowing ? content.comment : null}</div>
+              <div class="h-auto">
+                {isShowing
+                  ? content.comment
+                  : // <Linkify
+                    //   properties={{
+                    //     target: "_blank",
+                    //     style: { color: "blue", fontWeight: "bold" },
+                    //   }}
+                    // >
+                    // {content.comment}
+                    // </Linkify>
+                    null}
+              </div>
               {isShowing ? (
                 <div>
                   <div class="flex h-8"></div>
