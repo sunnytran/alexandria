@@ -1,6 +1,7 @@
 var adjectives = require("../utils/adjectives");
 var animals = require("../utils/animals");
 var seedrandom = require("seedrandom");
+var stringUtils = require("../utils/stringUtils");
 
 const handleRepliesGet = (db) => async (req, res) => {
   const replies = await db("replies").where(req.query);
@@ -11,9 +12,13 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
   var postID = req.body.replyingToPostID;
   seedrandom(req.ip + "/" + postID, { global: true });
   var name =
-    adjectives[Math.floor(Math.random() * adjectives.length)] +
-    adjectives[Math.floor(Math.random() * adjectives.length)] +
-    animals[Math.floor(Math.random() * animals.length)];
+    stringUtils.capitalize(
+      adjectives[Math.floor(Math.random() * adjectives.length)]
+    ) +
+    stringUtils.capitalize(
+      adjectives[Math.floor(Math.random() * adjectives.length)]
+    ) +
+    stringUtils.capitalize(animals[Math.floor(Math.random() * animals.length)]);
 
   data = {
     username: name,
