@@ -5,8 +5,6 @@ popular posts
 
 paginate
 
-searching
-
 mod stuff
 auth
 remove image from cloudinary when removing a post
