@@ -25,7 +25,7 @@ function Index({ boards, getBoards, posts, getPosts }) {
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      <div class="container mx-auto pt-5">
+      <div class="container mx-auto pt-5 pb-5">
         <Header />
 
         <div class="flex space-x-5">

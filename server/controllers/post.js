@@ -1,6 +1,3 @@
-var adjectives = require("../utils/adjectives");
-var animals = require("../utils/animals");
-var seedrandom = require("seedrandom");
 var stringUtils = require("../utils/stringUtils");
 
 const handlePostGet = (db) => async (req, res) => {
@@ -32,15 +29,7 @@ const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
     .then((res) => res);
   post = post[0];
 
-  seedrandom(req.ip + "/" + post.id, { global: true });
-  var name =
-    stringUtils.capitalize(
-      adjectives[Math.floor(Math.random() * adjectives.length)]
-    ) +
-    stringUtils.capitalize(
-      adjectives[Math.floor(Math.random() * adjectives.length)]
-    ) +
-    stringUtils.capitalize(animals[Math.floor(Math.random() * animals.length)]);
+  var name = stringUtils.generateName(req.ip, post.id);
   await db("posts").where({ id: post.id }).update({ username: name });
   post.username = name;
 

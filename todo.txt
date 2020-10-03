@@ -3,8 +3,6 @@ toastify for stuff
 title character limit
 url post doesnt exist
 
-paginate
-
 mod stuff
 auth
 remove image from cloudinary when removing a post
@@ -13,6 +11,8 @@ splash log in or view only
 STICKY!!
 LOCKING
 archiving posts
+
+paginate
 
 redux
 hate having to create more and more classes just or specific state variables

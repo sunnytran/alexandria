@@ -1,6 +1,3 @@
-var adjectives = require("../utils/adjectives");
-var animals = require("../utils/animals");
-var seedrandom = require("seedrandom");
 var stringUtils = require("../utils/stringUtils");
 
 const handleRepliesGet = (db) => async (req, res) => {
@@ -9,16 +6,7 @@ const handleRepliesGet = (db) => async (req, res) => {
 };
 
 const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
-  var postID = req.body.replyingToPostID;
-  seedrandom(req.ip + "/" + postID, { global: true });
-  var name =
-    stringUtils.capitalize(
-      adjectives[Math.floor(Math.random() * adjectives.length)]
-    ) +
-    stringUtils.capitalize(
-      adjectives[Math.floor(Math.random() * adjectives.length)]
-    ) +
-    stringUtils.capitalize(animals[Math.floor(Math.random() * animals.length)]);
+  var name = stringUtils.generateName(req.ip, req.body.replyingToPostID);
 
   data = {
     username: name,
