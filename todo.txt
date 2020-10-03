@@ -1,7 +1,8 @@
 front
-toastify for stuff
-title character limit
 url post doesnt exist
+
+toastify styling
+replies sorted by last bump
 
 mod stuff
 auth
@@ -23,6 +24,8 @@ server
 db
 
 FIXED
+toastify for stuff
+title character limit
 username generation
 popular posts
 links?? react-linkify https://github.com/tasti/react-linkify

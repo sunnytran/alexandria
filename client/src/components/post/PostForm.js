@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 import { addPost } from "../../store/actions/posts";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import ContentBorder from "../content/ContentBorder";
 
@@ -17,7 +18,12 @@ const PostForm = ({ board, addPost }) => {
   const handleAddPost = (e) => {
     e.preventDefault();
 
-    if (image && e.target.title.value) {
+    if (
+      image &&
+      e.target.title.value &&
+      e.target.title.length() <= 30 &&
+      e.target.comment.value.length() <= 2000
+    ) {
       // TODO: Check if comment is empty
       addPost(image, e.target.title.value, e.target.comment.value, board.name);
 
@@ -27,10 +33,12 @@ const PostForm = ({ board, addPost }) => {
       setImage(null);
     }
 
-    // if (!image) {
-    //   toast("You need to upload an image");
-    // }
-    // if (!e.target.title.value) toast("You need to have a title");
+    if (!image) toast("You need to upload an image");
+    if (!e.target.title.value) toast("You need to have a title");
+    else if (e.target.title.value.length > 30)
+      toast("Your title is too long (30 characters max)");
+    if (e.target.comment.value.length > 2000)
+      toast("Your comment is too long (2000 characters max)");
   };
 
   return (
@@ -42,9 +50,9 @@ const PostForm = ({ board, addPost }) => {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
         draggable={false}
-        pauseOnHover
+        transition={Slide}
+        toastClassName="dark-toast"
       />
       <div class="z-50 fixed bottom-0 right-0 bg-black pb-5 pr-5">
         <ContentBorder title="Make a post" borderColor="orange-300">

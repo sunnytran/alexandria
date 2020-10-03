@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 
 import { addReply } from "../../store/actions/replies";
 
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ReplyTitle from "./ReplyTitle";
 import ContentBorder from "../content/ContentBorder";
 
@@ -23,7 +26,10 @@ const ReplyForm = ({
   const handleAddReply = (e) => {
     e.preventDefault();
 
-    if (image || e.target.comment.value) {
+    if (
+      image ||
+      (e.target.comment.value && e.target.comment.value.length <= 2000)
+    ) {
       addReply(image, e.target.comment.value, board.name, postID, replyID);
 
       e.target.image.value = "";
@@ -31,11 +37,26 @@ const ReplyForm = ({
       setImage(null);
 
       updateReplyTarget(null);
+    } else if (e.target.comment.value && e.target.comment.value.length > 2000)
+      toast("Your comment is too long (2000 characters max)");
+    else {
+      toast("You either need to have an image or a comment");
     }
   };
 
   return (
     <div class="flex">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable={false}
+        transition={Slide}
+        toastClassName="dark-toast"
+      />
       <div class="w-1/3">
         <div class="flex pt-2 pl-4">
           <ContentBorder
