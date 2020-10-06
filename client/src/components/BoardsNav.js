@@ -9,7 +9,7 @@ const BoardsNav = ({ boards, getBoards }) => {
   }, [boards.length, getBoards]);
 
   return (
-    <div class="flex space-x-2 justify-center">
+    <div class="flex space-x-1 justify-center">
       [
       <a
         class="no-underline text-orange-300 hover:underline hover:text-white"

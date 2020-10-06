@@ -86,7 +86,7 @@ const ReplyForm = ({
                 cols="50"
               />
               <input
-                class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
+                class="bg-white hover:bg-gray-200 text-black px-2 focus:outline-none"
                 type="submit"
                 value="Reply"
               />

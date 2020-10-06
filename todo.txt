@@ -1,19 +1,16 @@
 front
-url post doesnt exist
-
-toastify styling
-replies sorted by last bump
+url redirect of post/board doesn't exist
+style toastify
+paginate
+ugly resizing/overflow
 
 mod stuff
 auth
 remove image from cloudinary when removing a post
-reports
 splash log in or view only
 STICKY!!
 LOCKING
 archiving posts
-
-paginate
 
 redux
 hate having to create more and more classes just or specific state variables

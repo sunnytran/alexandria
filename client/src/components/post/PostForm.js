@@ -38,7 +38,7 @@ const PostForm = ({ board, addPost }) => {
     else if (e.target.title.value.length > 30)
       toast("Your title is too long (30 characters max)");
     if (e.target.comment.value.length > 2000)
-      toast("Your comment is too long (2000 characters max)");
+      toast("Your comment is too long (2000 characters max");
   };
 
   return (
@@ -52,7 +52,6 @@ const PostForm = ({ board, addPost }) => {
         rtl={false}
         draggable={false}
         transition={Slide}
-        toastClassName="dark-toast"
       />
       <div class="z-50 fixed bottom-0 right-0 bg-black pb-5 pr-5">
         <ContentBorder title="Make a post" borderColor="orange-300">
@@ -78,7 +77,7 @@ const PostForm = ({ board, addPost }) => {
               cols="50"
             />
             <input
-              class="bg-white hover:bg-gray-100 text-black px-2 focus:outline-none"
+              class="bg-white hover:bg-gray-200 text-black pl-10 focus:outline-none"
               type="submit"
               value="Post"
             />
