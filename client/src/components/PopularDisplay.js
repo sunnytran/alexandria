@@ -19,16 +19,6 @@ const PopularDisplay = (props) => {
   return (
     <div class="flex space-x-10 justify-center">
       {popular.map((i) => {
-        // console.log(
-        //   i.title +
-        //     " " +
-        //     i.replies_count +
-        //     " " +
-        //     Moment().diff(i.last_bump, "seconds") / 86400 +
-        //     " " +
-        //     i.replies_count /
-        //       (1 / (Moment().diff(i.last_bump, "seconds") / 86400))
-        // );
         return (
           <div key={i.id}>
             <p class="text-center">/{i.board}/</p>

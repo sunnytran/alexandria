@@ -11,6 +11,7 @@ splash log in or view only
 STICKY!!
 LOCKING
 archiving posts
+username for mod
 
 redux
 hate having to create more and more classes just or specific state variables

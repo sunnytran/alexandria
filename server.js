@@ -3,6 +3,31 @@ require("dotenv").config();
 const fs = require("fs");
 const bodyParser = require("body-parser");
 
+const app = express();
+app.use(bodyParser.json());
+
+const {
+  uploader,
+  cloudinaryConfig,
+} = require("./server/config/cloudinary.config");
+const { multerUploads, dataUri } = require("./server/middlewares/multer");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("*", cloudinaryConfig);
+
+const passport = require("passport");
+const expressSession = require("express-session")({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+});
+const flash = require("express-flash");
+app.use(expressSession);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.set("trust proxy", true);
+
 const db = require("./server/config/db.js");
 const boards = require("./server/controllers/boards");
 const board = require("./server/controllers/board");
@@ -10,19 +35,6 @@ const post = require("./server/controllers/post");
 const posts = require("./server/controllers/posts");
 const replies = require("./server/controllers/replies");
 const stats = require("./server/controllers/stats");
-
-const {
-  uploader,
-  cloudinaryConfig,
-} = require("./server/config/cloudinaryConfig");
-const { multerUploads, dataUri } = require("./server/middlewares/multer");
-
-const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use("*", cloudinaryConfig);
-
-app.set("trust proxy", true);
 
 app.get("/api/v1/boards", boards.handleBoardsGet(db));
 app.get("/api/v1/board/:id", board.handleBoardGet(db));
