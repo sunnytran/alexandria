@@ -14,18 +14,6 @@ const { multerUploads, dataUri } = require("./server/middlewares/multer");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("*", cloudinaryConfig);
 
-const passport = require("passport");
-const expressSession = require("express-session")({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-});
-const flash = require("express-flash");
-app.use(expressSession);
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-
 app.set("trust proxy", true);
 
 const db = require("./server/config/db.js");
@@ -52,6 +40,30 @@ app.post(
   replies.handleRepliesPost(db, dataUri, uploader)
 );
 app.get("/api/v1/stats", stats.handleStatsGet(db));
+
+const passport = require("passport");
+const initializePassport = require("./server/config/passport.config");
+initializePassport(passport);
+const session = require("express-session");
+const flash = require("express-flash");
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.post("/login", (req, res) => {
+  passport.authenticate("local", {
+    successRedirect: "/index",
+    failureRedirect: "/login",
+    failureFlash: true,
+  });
+});
 
 const PORT = process.env.DB_PORT || 5000;
 
