@@ -5,7 +5,6 @@ paginate
 ugly resizing/overflow
 
 mod stuff
-auth
 remove image from cloudinary when removing a post
 splash log in or view only
 STICKY!!
@@ -22,6 +21,7 @@ server
 db
 
 FIXED
+auth
 toastify for stuff
 title character limit
 username generation

@@ -10,8 +10,8 @@ const Root = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/index" component={Index} />
+        <Route exact path="/" component={Index} />
+        <Route exact path="/login" component={Login} />
         <Route path="/:boardName/:postID" component={Post} />
         <Route path="/:boardName" component={Board} />
       </Switch>
