@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -13,7 +13,11 @@ import axios from "axios";
 
 import "../styles/main.css";
 
-const Login = () => {
+const Login = ({ user, getUserData }) => {
+  useEffect(() => {
+    getUserData();
+  }, [user, getUserData]);
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -34,18 +38,6 @@ const Login = () => {
           if (res.data === "Incorrect username/password")
             toast("Incorrect username/password");
           localStorage.setItem("token", res.data.token);
-
-          getUserData();
-          // axios
-          //   .get("/user", {
-          //     headers: {
-          //       "Content-Type": "application/json",
-          //       Authorization: "Bearer " + localStorage.getItem("token"),
-          //     },
-          //   })
-          //   .then((res) => {
-          //     console.log(res.data);
-          //   });
         });
     }
 
@@ -65,6 +57,7 @@ const Login = () => {
         draggable={false}
         transition={Slide}
       />
+
       <div class="container pt-5 mx-auto flex flex-col items-center justify-center">
         <div class="w-10/12 sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-4/12 mb-2">
           <h1 class="font-serif text-5xl">Alexandria</h1>
