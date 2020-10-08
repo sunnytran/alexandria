@@ -1,10 +1,13 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const passportJWT = require("passport-jwt");
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 
 const db = require("./db.js");
 const bcrypt = require("bcryptjs");
 
-function initialize(passport) {
+function initialize(passport, secret) {
   const authenticateUser = new LocalStrategy((username, password, done) => {
     db("users")
       .where({ username: username })
@@ -25,6 +28,24 @@ function initialize(passport) {
   });
 
   passport.use(authenticateUser);
+
+  const authenticateToken = new JWTStrategy(
+    {
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+      secretOrKey: secret,
+    },
+    (jwt_payload, done) => {
+      db("users")
+        .where({ username: jwt_payload.username })
+        .first()
+        .then((user) => {
+          if (!user) return done(null, false, { message: "Token not matched" });
+          done(null, user);
+        });
+    }
+  );
+
+  passport.use(authenticateToken);
 
   passport.serializeUser((user, done) => {
     done(null, user.username);

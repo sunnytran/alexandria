@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { getUserData } from "../store/actions/user";
 
 import ContentBorder from "../components/content/ContentBorder";
 
@@ -10,38 +13,46 @@ import axios from "axios";
 
 import "../styles/main.css";
 
-const handleLogin = (e) => {
-  e.preventDefault();
-
-  if (!e.target.username) toast("Please enter a username");
-  if (!e.target.password) toast("Please enter a password");
-
-  if (e.target.username && e.target.password) {
-    axios
-      .post(
-        "/login",
-        {
-          username: e.target.username.value,
-          password: e.target.password.value,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.data === "Incorrect username/password")
-          toast("Incorrect username/password");
-        console.log(res);
-
-        axios.get("/user", { withCredentials: true }).then((res) => {
-          console.log(res.data);
-        });
-      });
-  }
-
-  e.target.username.value = "";
-  e.target.password.value = "";
-};
-
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (!e.target.username) toast("Please enter a username");
+    if (!e.target.password) toast("Please enter a password");
+
+    if (e.target.username && e.target.password) {
+      axios
+        .post(
+          "/login",
+          {
+            username: e.target.username.value,
+            password: e.target.password.value,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          if (res.data === "Incorrect username/password")
+            toast("Incorrect username/password");
+          localStorage.setItem("token", res.data.token);
+
+          getUserData();
+          // axios
+          //   .get("/user", {
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //       Authorization: "Bearer " + localStorage.getItem("token"),
+          //     },
+          //   })
+          //   .then((res) => {
+          //     console.log(res.data);
+          //   });
+        });
+    }
+
+    e.target.username.value = "";
+    e.target.password.value = "";
+  };
+
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
       <ToastContainer
@@ -102,4 +113,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, {
+  getUserData,
+})(Login);

@@ -61,9 +61,9 @@ const passport = require("passport");
 app.use(passport.initialize());
 app.use(passport.session());
 const initializePassport = require("./server/config/passport.config");
-initializePassport(passport);
+initializePassport(passport, process.env.JWT_SECRET);
 
-app.post("/login", user.handleLogin());
+app.post("/login", user.handleLogin(process.env.JWT_SECRET));
 app.get("/user", user.handleUserGet());
 
 const PORT = process.env.DB_PORT || 5000;
