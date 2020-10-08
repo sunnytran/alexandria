@@ -5,13 +5,14 @@ const db = require("./db.js");
 const bcrypt = require("bcryptjs");
 
 function initialize(passport) {
-  const authenticateUser = (username, password, done) => {
-    console.log("IN AUTH " + username + " " + password);
+  const authenticateUser = new LocalStrategy((username, password, done) => {
     db("users")
-      .where({ username })
+      .where({ username: username })
       .first()
       .then((user) => {
-        if (!user) return done(null, false, { message: "Incorrect username" });
+        if (!user) {
+          return done(null, false, { message: "Incorrect username" });
+        }
         if (bcrypt.compareSync(password, user.password)) {
           return done(null, user);
         } else {
@@ -21,26 +22,17 @@ function initialize(passport) {
       .catch((err) => {
         return done(err);
       });
-  };
+  });
 
   passport.use(authenticateUser);
-  // passport.use(
-  //   new LocalStrategy(
-  //     {
-  //       usernameField: "req.body.username",
-  //       passwordField: "req.body.password",
-  //     },
-  //     authenticateUser
-  //   )
-  // );
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user.username);
   });
 
   passport.deserializeUser((id, done) => {
-    knex("users")
-      .where({ id })
+    db("users")
+      .where({ username: id })
       .first()
       .then((user) => {
         done(null, user);

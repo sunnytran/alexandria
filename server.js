@@ -27,6 +27,7 @@ const post = require("./server/controllers/post");
 const posts = require("./server/controllers/posts");
 const replies = require("./server/controllers/replies");
 const stats = require("./server/controllers/stats");
+const user = require("./server/controllers/user");
 
 app.get("/api/v1/boards", boards.handleBoardsGet(db));
 app.get("/api/v1/board/:id", board.handleBoardGet(db));
@@ -45,9 +46,6 @@ app.post(
 );
 app.get("/api/v1/stats", stats.handleStatsGet(db));
 
-const passport = require("passport");
-const initializePassport = require("./server/config/passport.config");
-initializePassport(passport);
 const session = require("express-session");
 const flash = require("express-flash");
 app.use(
@@ -57,20 +55,16 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(flash());
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  passport.authenticate("local", {
-    successRedirect: "/index",
-    failureRedirect: "/login",
-    failureFlash: true,
-  });
-});
+const passport = require("passport");
+app.use(passport.initialize());
+app.use(passport.session());
+const initializePassport = require("./server/config/passport.config");
+initializePassport(passport);
 
-app.get("/user", (req, res) => {});
+app.post("/login", user.handleLogin());
+app.get("/user", user.handleUserGet());
 
 const PORT = process.env.DB_PORT || 5000;
 

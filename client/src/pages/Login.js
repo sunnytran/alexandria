@@ -27,7 +27,9 @@ const handleLogin = (e) => {
         { withCredentials: true }
       )
       .then((res) => {
-        // console.log("HELLO");
+        if (res.data === "Incorrect username/password")
+          toast("Incorrect username/password");
+        console.log(res);
       });
   }
 };
