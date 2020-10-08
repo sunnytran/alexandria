@@ -2,7 +2,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const db = require("./db.js");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 function initialize(passport) {
   const authenticateUser = (username, password, done) => {
@@ -23,15 +23,16 @@ function initialize(passport) {
       });
   };
 
-  passport.use(
-    new LocalStrategy(
-      {
-        usernameField: "req.body.username",
-        passwordField: "req.body.password",
-      },
-      authenticateUser
-    )
-  );
+  passport.use(authenticateUser);
+  // passport.use(
+  //   new LocalStrategy(
+  //     {
+  //       usernameField: "req.body.username",
+  //       passwordField: "req.body.password",
+  //     },
+  //     authenticateUser
+  //   )
+  // );
 
   passport.serializeUser((user, done) => {
     done(null, user.id);

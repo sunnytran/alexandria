@@ -2,9 +2,13 @@ const express = require("express");
 require("dotenv").config();
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 const {
   uploader,
@@ -58,12 +62,15 @@ app.use(passport.session());
 app.use(flash());
 
 app.post("/login", (req, res) => {
+  console.log(req.body);
   passport.authenticate("local", {
     successRedirect: "/index",
     failureRedirect: "/login",
     failureFlash: true,
   });
 });
+
+app.get("/user", (req, res) => {});
 
 const PORT = process.env.DB_PORT || 5000;
 

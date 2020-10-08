@@ -18,10 +18,14 @@ const handleLogin = (e) => {
 
   if (e.target.username && e.target.password) {
     axios
-      .post("/login", {
-        username: e.target.username.value,
-        password: e.target.password.value,
-      })
+      .post(
+        "/login",
+        {
+          username: e.target.username.value,
+          password: e.target.password.value,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
         // console.log("HELLO");
       });
