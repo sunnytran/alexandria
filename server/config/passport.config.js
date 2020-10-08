@@ -35,7 +35,7 @@ function initialize(passport) {
       .where({ username: id })
       .first()
       .then((user) => {
-        done(null, user);
+        done(null, { username: user.username, role: user.role });
       })
       .catch((err) => {
         done(err, null);

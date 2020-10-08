@@ -30,8 +30,15 @@ const handleLogin = (e) => {
         if (res.data === "Incorrect username/password")
           toast("Incorrect username/password");
         console.log(res);
+
+        axios.get("/user", { withCredentials: true }).then((res) => {
+          console.log(res.data);
+        });
       });
   }
+
+  e.target.username.value = "";
+  e.target.password.value = "";
 };
 
 const Login = () => {
