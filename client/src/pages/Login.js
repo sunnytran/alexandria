@@ -14,6 +14,11 @@ import axios from "axios";
 import "../styles/main.css";
 
 const Login = ({ user, getUserData }) => {
+  useEffect(() => {
+    if (user.username === undefined) getUserData();
+    console.log(user);
+  }, [user, getUserData]);
+
   const handleLogin = (e) => {
     e.preventDefault();
 

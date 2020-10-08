@@ -3,7 +3,7 @@ import axios from "axios";
 import { GET_USER_DATA } from "./types";
 
 export const getUserData = () => async (dispatch) => {
-  axios
+  await axios
     .get("/user", {
       headers: {
         "Content-Type": "application/json",

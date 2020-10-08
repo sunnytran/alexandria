@@ -17,8 +17,7 @@ function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
   useEffect(() => {
     getBoards();
     getPosts();
-    getUserData();
-    console.log(user);
+    if (user.username === undefined) getUserData();
   }, [boards.length, getBoards, posts.length, getPosts, user, getUserData]);
 
   var categories = [];
@@ -28,7 +27,7 @@ function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      {user.username || user.username === undefined ? (
+      {user.username === undefined ? (
         <Redirect to="/login" />
       ) : (
         <div class="container mx-auto pt-5 pb-5">
