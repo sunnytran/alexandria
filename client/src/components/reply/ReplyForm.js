@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { addReply } from "../../store/actions/replies";
+import { getUserData } from "../../store/actions/user";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,8 +17,14 @@ const ReplyForm = ({
   replyID,
   username,
   updateReplyTarget,
+  user,
+  getUserData,
 }) => {
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (user.username === undefined) getUserData();
+  }, [user, getUserData]);
 
   const onChange = (e) => {
     setImage(e.target.files[0]);
@@ -25,6 +32,15 @@ const ReplyForm = ({
 
   const handleAddReply = (e) => {
     e.preventDefault();
+
+    if (user.role === "guest") {
+      toast("You are a guest and are not allowed to reply");
+
+      e.target.image.value = "";
+      e.target.comment.value = "";
+
+      return;
+    }
 
     if (
       image ||
@@ -100,6 +116,7 @@ const ReplyForm = ({
 
 const mapStateToProps = (state) => ({
   board: state.board,
+  user: state.user,
 });
 
-export default connect(mapStateToProps, { addReply })(ReplyForm);
+export default connect(mapStateToProps, { addReply, getUserData })(ReplyForm);

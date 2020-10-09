@@ -17,7 +17,6 @@ const handleLogin = (secret) => (req, res, next) => {
 };
 
 const handleUserGet = () => (req, res, next) => {
-  console.log(req.user);
   passport.authenticate("jwt", { session: false }, (err, token) => {
     if (req.headers["authorization"] === "Bearer guest")
       res.json({ username: "guest", role: "guest" });

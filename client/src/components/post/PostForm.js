@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { addPost } from "../../store/actions/posts";
+import { getUserData } from "../../store/actions/user";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ContentBorder from "../content/ContentBorder";
 
-const PostForm = ({ board, addPost }) => {
+const PostForm = ({ board, addPost, user, getUserData }) => {
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (user.username === undefined) getUserData();
+  }, [user, getUserData]);
 
   const onChange = (e) => {
     setImage(e.target.files[0]);
@@ -17,6 +22,16 @@ const PostForm = ({ board, addPost }) => {
 
   const handleAddPost = (e) => {
     e.preventDefault();
+
+    if (user.role === "guest") {
+      toast("You are a guest and are not allowed to make posts");
+
+      e.target.title.value = "";
+      e.target.image.value = "";
+      e.target.comment.value = "";
+
+      return;
+    }
 
     if (
       image &&
@@ -90,6 +105,7 @@ const PostForm = ({ board, addPost }) => {
 
 const mapStateToProps = (state) => ({
   board: state.board,
+  user: state.user,
 });
 
-export default connect(mapStateToProps, { addPost })(PostForm);
+export default connect(mapStateToProps, { addPost, getUserData })(PostForm);

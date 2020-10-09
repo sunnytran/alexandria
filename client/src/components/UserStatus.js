@@ -1,8 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const UserStatus = (props) => {
+import { getUserData } from "../store/actions/user";
+
+const UserStatus = ({ user, getUserData }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
+    getUserData();
   };
 
   const modMessage =
@@ -13,16 +17,16 @@ const UserStatus = (props) => {
     "View posts and replies while you are here. If you want to participate in this community, contact me!";
 
   var message = guestMessage;
-  if (props.user.role === "user") message = userMessage;
-  else if (props.user.role === "mod") message = modMessage;
+  if (user.role === "user") message = userMessage;
+  else if (user.role === "mod") message = modMessage;
 
   return (
     <div>
-      {console.log(props.user)}
+      {console.log(user)}
       {"Hello " +
-        props.user.username +
+        user.username +
         "! You are a " +
-        props.user.role +
+        user.role +
         ". " +
         message +
         " "}
@@ -31,10 +35,14 @@ const UserStatus = (props) => {
         class="no-underline text-blue-500 hover:underline hover:text-white"
         onClick={handleLogout.bind(this)}
       >
-        [Logout]
+        {user.role !== "guest" ? "[Logout]" : "[Login]"}
       </a>
     </div>
   );
 };
 
-export default UserStatus;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, { getUserData })(UserStatus);

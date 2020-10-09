@@ -28,69 +28,67 @@ function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      {user.username === undefined ? (
-        <Redirect to="/login" />
-      ) : (
-        <div class="container mx-auto pt-5 pb-5">
-          <Header />
-          <div class="flex space-x-5">
-            <div class="w-1/5 space-y-5">
-              <Stats />
-            </div>
+      {user.username === undefined ? <Redirect to="/login" /> : null}
+      <div class="container mx-auto pt-5 pb-5">
+        <Header />
+        <div class="flex space-x-5">
+          <div class="w-1/5 space-y-5">
+            <Stats />
+          </div>
 
-            <div class="w-4/5 space-y-5">
-              <ContentBorder title="About" borderColor="orange-300">
-                Alexandria is a simple imageboard clone where you can post
-                comments and share images. There are boards dedicated to a
-                variety of topics that you can participate in without needing to
-                register for an account!
-                <br />
-                <a
-                  class="no-underline text-blue-500 hover:underline hover:text-white"
-                  href="https://github.com/sunnytran"
-                  target="_blank"
-                >
-                  My GitHub
-                </a>
-                <br />
-                <br />
-                <UserStatus user={user} />
-              </ContentBorder>
-              <ContentBorder title="Boards">
-                <div class="flex">
-                  {categories.map((i) => {
-                    return (
-                      <div key={i} class="flex-1">
-                        <span class="font-bold underline">{i}</span>
-                        <ul>
-                          {boards
-                            .filter((j) => j.category === i)
-                            .map((j) => {
-                              return (
-                                <li key={j.id}>
-                                  <Link
-                                    class="no-underline text-blue-500 hover:underline hover:text-white"
-                                    to={"/" + j.name}
-                                  >
-                                    {j.title}
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                        </ul>
-                      </div>
-                    );
-                  })}
-                </div>
-              </ContentBorder>
+          <div class="w-4/5 space-y-5">
+            <ContentBorder title="About" borderColor="orange-300">
+              Alexandria is a simple imageboard clone where you can post
+              comments and share images. There are boards dedicated to a variety
+              of topics that you can participate in without needing to register
+              for an account!
+              <br />
+              <a
+                class="no-underline text-blue-500 hover:underline hover:text-white"
+                href="https://github.com/sunnytran"
+                target="_blank"
+              >
+                My GitHub
+              </a>
+              <br />
+              <br />
+              <UserStatus user={user} />
+            </ContentBorder>
+            <ContentBorder title="Boards">
+              <div class="flex">
+                {categories.map((i) => {
+                  return (
+                    <div key={i} class="flex-1">
+                      <span class="font-bold underline">{i}</span>
+                      <ul>
+                        {boards
+                          .filter((j) => j.category === i)
+                          .map((j) => {
+                            return (
+                              <li key={j.id}>
+                                <Link
+                                  class="no-underline text-blue-500 hover:underline hover:text-white"
+                                  to={"/" + j.name}
+                                >
+                                  {j.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </ContentBorder>
 
-              <ContentBorder title="Popular">
-                <PopularDisplay posts={posts} />
-              </ContentBorder>
-            </div>
+            <ContentBorder title="Popular">
+              <PopularDisplay posts={posts} />
+            </ContentBorder>
           </div>
         </div>
-      )}
+      </div>
+      )
     </div>
   );
 }

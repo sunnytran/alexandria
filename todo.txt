@@ -5,6 +5,7 @@ paginate
 ugly resizing/overflow
 
 mod stuff
+annoying flash
 remove image from cloudinary when removing a post
 splash log in or view only
 STICKY!!
