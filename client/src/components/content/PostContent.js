@@ -34,9 +34,14 @@ const PostContent = ({
     updateReplyTarget({ type: type, value: value });
   };
 
+  const handleLock = () => {
+
+  };
+
+
   const contentLength = content.comment.length;
 
-  var size = "1/3";
+  var size = "2/5";
   if (contentLength > 1000) size = "1/2";
 
   var height = "200";
@@ -97,22 +102,6 @@ const PostContent = ({
                     <div class="flex space-x-1">
                       <div><span class={content.is_author_mod ? "font-bold text-indigo-600" : ""}>{content.username}</span></div>
                       <div>
-                          { isMod ? (<div>                          <button onClick={handleReply.bind(this)}>
-                            <p class="underline text-green-500 hover:underline hover:text-white">
-                              [Sticky]
-                            </p>
-                          </button>
-                          <button onClick={handleReply.bind(this)}>
-                            <p class="underline text-purple-500 hover:underline hover:text-white">
-                              [Lock]
-                            </p>
-                          </button>
-                          <button onClick={handleReply.bind(this)}>
-                            <p class="underline text-red-500 hover:underline hover:text-white">
-                              [Delete]
-                            </p>
-                          </button></div>) : null}
-
                         {isPreviewing ? (
                           <Link
                             class="underline text-blue-500 hover:underline hover:text-white"
@@ -127,6 +116,24 @@ const PostContent = ({
                             </p>
                           </button>
                         )}
+                        { isMod ? (
+                          <button onClick={handleReply.bind(this)}>
+                            <p class="underline text-green-500 hover:underline hover:text-white">
+                              [Sticky]
+                            </p>
+                          </button> ) : null}
+                        { isMod ? (
+                          <button onClick={handleLock.bind(this)}>
+                            <p class="underline text-purple-500 hover:underline hover:text-white">
+                              [Lock]
+                            </p>
+                          </button> ) : null}
+                        { isMod ? (
+                          <button onClick={handleReply.bind(this)}>
+                            <p class="underline text-red-500 hover:underline hover:text-white">
+                              [Delete]
+                            </p>
+                          </button> ) : null}
                       </div>
                     </div>
                   </div>

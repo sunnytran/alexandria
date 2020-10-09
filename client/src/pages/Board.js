@@ -30,7 +30,6 @@ const Board = ({
     getPosts(boardName);
     getReplies({ board: boardName });
     if (user.username === undefined) getUserData();
-    console.log(user)
   }, [posts.length, getPosts, replies.length, getReplies, user, getUserData]);
 
   return (

@@ -1,8 +1,8 @@
 front
 url redirect of post/board doesn't exist
 style toastify
-paginate
 ugly resizing/overflow
+paginate
 
 mod stuff
 leak error
@@ -11,7 +11,6 @@ annoying flash
 STICKY!!
 LOCKING
 remove image from cloudinary when removing a post
-
 archiving posts
 
 redux
@@ -23,6 +22,7 @@ server
 db
 
 FIXED
+mod actions styling
 special mod color
 splash log in or view only
 username for mod
