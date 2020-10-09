@@ -19,8 +19,13 @@ const UserStatus = (props) => {
   return (
     <div>
       {console.log(props.user)}
-      Hello {props.user.username}! You are a {props.user.role}.&nbsp;
-      {message}&nbsp;
+      {"Hello " +
+        props.user.username +
+        "! You are a " +
+        props.user.role +
+        ". " +
+        message +
+        " "}
       <a
         href="/"
         class="no-underline text-blue-500 hover:underline hover:text-white"
