@@ -5,13 +5,14 @@ paginate
 ugly resizing/overflow
 
 mod stuff
-annoying flash
-remove image from cloudinary when removing a post
-splash log in or view only
+leak error
+annoying flash 
+
 STICKY!!
 LOCKING
+remove image from cloudinary when removing a post
+
 archiving posts
-username for mod
 
 redux
 hate having to create more and more classes just or specific state variables
@@ -22,6 +23,10 @@ server
 db
 
 FIXED
+special mod color
+splash log in or view only
+username for mod
+log out still wont work
 auth
 toastify for stuff
 title character limit

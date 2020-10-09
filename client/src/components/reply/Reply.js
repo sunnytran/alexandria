@@ -13,6 +13,7 @@ const Reply = ({
   hasReplyForm = false,
   updateReplyTarget,
   replyTargetData,
+  isMod
 }) => {
   const [replies, setReplies] = useState([]);
 
@@ -46,6 +47,7 @@ const Reply = ({
         isShowing={isShowing}
         updateReplyTarget={updateReplyTarget}
         replyTargetData={replyTargetData}
+        isMod={isMod}
       />
 
       {replyTargetData &&
@@ -55,7 +57,7 @@ const Reply = ({
           board={replyContent.board}
           postID={postID}
           replyID={replyContent.id}
-          username={replyContent.username}
+          replyUsername={replyContent.username}
           updateReplyTarget={updateReplyTarget}
         />
       ) : null}
@@ -73,6 +75,7 @@ const Reply = ({
                 hasReplyForm={hasReplyForm}
                 updateReplyTarget={updateReplyTarget}
                 replyTargetData={replyTargetData}
+                isMod={isMod}
               />
             );
           })}

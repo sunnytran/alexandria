@@ -8,13 +8,13 @@ const handlePostGet = (db) => async (req, res) => {
 const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
   const fs = require("fs");
 
-  console.log(req.body.username);
   data = {
     username:
       req.body.username !== "undefined" ? req.body.username : "Anonymous",
     title: req.body.title,
     comment: req.body.comment,
     board: req.body.board,
+    is_author_mod: req.body.is_author_mod
   };
 
   if (req.file) {

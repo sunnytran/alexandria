@@ -15,7 +15,7 @@ const ReplyForm = ({
   addReply,
   postID,
   replyID,
-  username,
+  replyUsername,
   updateReplyTarget,
   user,
   getUserData,
@@ -46,7 +46,7 @@ const ReplyForm = ({
       image ||
       (e.target.comment.value && e.target.comment.value.length <= 2000)
     ) {
-      addReply(image, e.target.comment.value, board.name, postID, replyID);
+      addReply(image, e.target.comment.value, board.name, postID, replyID, user.role === "mod" ? user.username : "");
 
       e.target.image.value = "";
       e.target.comment.value = "";
@@ -78,7 +78,7 @@ const ReplyForm = ({
           <ContentBorder
             title={
               <ReplyTitle
-                title={username}
+                title={replyUsername}
                 updateReplyTarget={updateReplyTarget}
               />
             }

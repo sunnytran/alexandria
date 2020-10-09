@@ -28,7 +28,7 @@ function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      {user.username === undefined ? <Redirect to="/login" /> : null}
+      {user && user.username === undefined ? <Redirect to="/login" /> : null}
       <div class="container mx-auto pt-5 pb-5">
         <Header />
         <div class="flex space-x-5">

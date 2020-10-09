@@ -15,7 +15,8 @@ import "../styles/main.css";
 
 const Login = ({ user, getUserData }) => {
   useEffect(() => {
-    if (user.username === undefined) getUserData();
+    if (!user || user.username === undefined) getUserData();
+    console.log(user);
   }, [user, getUserData]);
 
   const handleGuest = () => {
@@ -54,7 +55,7 @@ const Login = ({ user, getUserData }) => {
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
-      {user.username ? (
+      {user && user.username ? (
         <Redirect to="/" />
       ) : (
         <div>

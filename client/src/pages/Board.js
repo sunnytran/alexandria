@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getBoard } from "../store/actions/board";
 import { getPosts } from "../store/actions/posts";
 import { getReplies } from "../store/actions/replies";
+import { getUserData } from "../store/actions/user";
 
 import Post from "../components/post/Post";
 import PostForm from "../components/post/PostForm";
@@ -18,6 +19,7 @@ const Board = ({
   getPosts,
   replies,
   getReplies,
+  user, getUserData
 }) => {
   const {
     params: { boardName },
@@ -27,7 +29,9 @@ const Board = ({
     getBoard(boardName);
     getPosts(boardName);
     getReplies({ board: boardName });
-  }, [posts.length, getPosts, replies.length, getReplies]);
+    if (user.username === undefined) getUserData();
+    console.log(user)
+  }, [posts.length, getPosts, replies.length, getReplies, user, getUserData]);
 
   return (
     <div class="h-screen bg-gradient-to-b from-gray-900 to-black text-white font-mono text-sm">
@@ -52,6 +56,7 @@ const Board = ({
                   j.replying_to_post_id === i.id ||
                   j.replying_to_reply_id === i.id
               )}
+              isMod={user.role === "mod"}
             />
           ) : null;
         })}
@@ -64,10 +69,12 @@ const mapStateToProps = (state) => ({
   board: state.board,
   posts: state.posts,
   replies: state.replies,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, {
   getBoard,
   getPosts,
   getReplies,
+  getUserData
 })(Board);

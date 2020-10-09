@@ -18,7 +18,8 @@ const handleLogin = (secret) => (req, res, next) => {
 
 const handleUserGet = () => (req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, token) => {
-    if (req.headers["authorization"] === "Bearer guest")
+    if (req.headers["authorization"] === "Bearer null") res.json(null);
+    else if (req.headers["authorization"] === "Bearer guest")
       res.json({ username: "guest", role: "guest" });
     else res.json(req.user);
   })(req, res, next);

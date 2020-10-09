@@ -12,6 +12,7 @@ const Post = ({
   hasReplyForm = false,
   updateReplyTarget,
   replyTargetData,
+  isMod
 }) => {
   const [replies, setReplies] = useState([]);
 
@@ -44,6 +45,7 @@ const Post = ({
         updateReplyTarget={updateReplyTarget}
         handleShowing={handleShowing}
         isShowing={isShowing}
+        isMod={isMod}
       />
 
       {replyTargetData &&
@@ -52,7 +54,7 @@ const Post = ({
         <ReplyForm
           board={postContent.board}
           postID={postContent.id}
-          username={postContent.username}
+          replyUsername={postContent.username}
           updateReplyTarget={updateReplyTarget}
         />
       ) : null}
@@ -70,6 +72,7 @@ const Post = ({
                 hasReplyForm={hasReplyForm}
                 updateReplyTarget={updateReplyTarget}
                 replyTargetData={replyTargetData}
+                isMod={isMod}
               />
             );
           })}

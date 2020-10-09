@@ -9,10 +9,12 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
   var name = stringUtils.generateName(req.ip, req.body.replyingToPostID);
 
   data = {
-    username: name,
+    username:
+      req.body.username !== "undefined" ? req.body.username : name,
     comment: req.body.comment,
     replying_to_post_id: req.body.replyingToPostID,
     board: req.body.board,
+    is_author_mod: req.body.is_author_mod
   };
 
   if (req.body.replyingToReplyID && req.body.replyingToReplyID !== undefined) {

@@ -16,6 +16,7 @@ const PostContent = ({
   updateReplyTarget,
   handleShowing,
   isShowing,
+  isMod
 }) => {
   const [imageID, setImageID] = useState("");
 
@@ -94,8 +95,24 @@ const PostContent = ({
                   <div class="flex h-8"></div>
                   <div class="absolute right-0 bottom-0">
                     <div class="flex space-x-1">
-                      <div>{content.username}</div>
+                      <div><span class={content.is_author_mod ? "font-bold text-indigo-600" : ""}>{content.username}</span></div>
                       <div>
+                          { isMod ? (<div>                          <button onClick={handleReply.bind(this)}>
+                            <p class="underline text-green-500 hover:underline hover:text-white">
+                              [Sticky]
+                            </p>
+                          </button>
+                          <button onClick={handleReply.bind(this)}>
+                            <p class="underline text-purple-500 hover:underline hover:text-white">
+                              [Lock]
+                            </p>
+                          </button>
+                          <button onClick={handleReply.bind(this)}>
+                            <p class="underline text-red-500 hover:underline hover:text-white">
+                              [Delete]
+                            </p>
+                          </button></div>) : null}
+
                         {isPreviewing ? (
                           <Link
                             class="underline text-blue-500 hover:underline hover:text-white"

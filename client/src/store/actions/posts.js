@@ -20,6 +20,7 @@ export const addPost = (image, title, comment, board, username) => async (
   formData.append("comment", comment);
   formData.append("board", board);
   formData.append("username", username);
+  formData.append("is_author_mod", username !== "");
 
   await axios.post("/api/v1/post", formData).then((res) => {
     dispatch({
