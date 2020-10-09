@@ -40,7 +40,13 @@ const PostForm = ({ board, addPost, user, getUserData }) => {
       e.target.comment.value.length <= 2000
     ) {
       // TODO: Check if comment is empty
-      addPost(image, e.target.title.value, e.target.comment.value, board.name);
+      addPost(
+        image,
+        e.target.title.value,
+        e.target.comment.value,
+        board.name,
+        user.role === "mod" ? user.username : ""
+      );
 
       e.target.title.value = "";
       e.target.image.value = "";
@@ -49,7 +55,7 @@ const PostForm = ({ board, addPost, user, getUserData }) => {
     }
 
     if (!image) toast("You need to upload an image");
-    if (!e.target.title.value) toast("You need to have a title");
+    if (!e.target.title.value.length == 0) toast("You need to have a title");
     else if (e.target.title.value.length > 30)
       toast("Your title is too long (30 characters max)");
     if (e.target.comment.value.length > 2000)

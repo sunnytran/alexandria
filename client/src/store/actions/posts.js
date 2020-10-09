@@ -11,12 +11,15 @@ export const getPosts = (boardName) => async (dispatch) => {
   });
 };
 
-export const addPost = (image, title, comment, board) => async (dispatch) => {
+export const addPost = (image, title, comment, board, username) => async (
+  dispatch
+) => {
   const formData = new FormData();
   formData.append("image", image);
   formData.append("title", title);
   formData.append("comment", comment);
   formData.append("board", board);
+  formData.append("username", username);
 
   await axios.post("/api/v1/post", formData).then((res) => {
     dispatch({

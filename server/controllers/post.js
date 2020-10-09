@@ -8,8 +8,10 @@ const handlePostGet = (db) => async (req, res) => {
 const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
   const fs = require("fs");
 
+  console.log(req.body.username);
   data = {
-    username: "Anonymous",
+    username:
+      req.body.username !== "undefined" ? req.body.username : "Anonymous",
     title: req.body.title,
     comment: req.body.comment,
     board: req.body.board,
@@ -29,9 +31,13 @@ const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
     .then((res) => res);
   post = post[0];
 
-  var name = stringUtils.generateName(req.ip, post.id);
-  await db("posts").where({ id: post.id }).update({ username: name });
-  post.username = name;
+  if (req.body.username === "undefined") {
+    var name = stringUtils.generateName(req.ip, post.id);
+    await db("posts").where({ id: post.id }).update({ username: name });
+    post.username = name;
+  }
+
+  console.log(post);
 
   res.json(post[0]);
 };
