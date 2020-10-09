@@ -21,8 +21,8 @@ const PostForm = ({ board, addPost }) => {
     if (
       image &&
       e.target.title.value &&
-      e.target.title.length() <= 30 &&
-      e.target.comment.value.length() <= 2000
+      e.target.title.value.length <= 30 &&
+      e.target.comment.value.length <= 2000
     ) {
       // TODO: Check if comment is empty
       addPost(image, e.target.title.value, e.target.comment.value, board.name);
@@ -77,7 +77,7 @@ const PostForm = ({ board, addPost }) => {
               cols="50"
             />
             <input
-              class="bg-white hover:bg-gray-200 text-black pl-10 focus:outline-none"
+              class="bg-white hover:bg-gray-200 text-black px-2 focus:outline-none"
               type="submit"
               value="Post"
             />

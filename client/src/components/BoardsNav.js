@@ -13,7 +13,7 @@ const BoardsNav = ({ boards, getBoards }) => {
       [
       <a
         class="no-underline text-orange-300 hover:underline hover:text-white"
-        href="/index"
+        href="/"
       >
         Home
       </a>

@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import ContentBorder from "../components/content/ContentBorder";
 import Stats from "../components/Stats";
 import PopularDisplay from "../components/PopularDisplay";
+import UserStatus from "../components/UserStatus";
 
 function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
   useEffect(() => {
@@ -51,6 +52,9 @@ function Index({ boards, getBoards, posts, getPosts, user, getUserData }) {
                 >
                   My GitHub
                 </a>
+                <br />
+                <br />
+                <UserStatus user={user} />
               </ContentBorder>
               <ContentBorder title="Boards">
                 <div class="flex">

@@ -3,6 +3,7 @@ import axios from "axios";
 import { GET_USER_DATA } from "./types";
 
 export const getUserData = () => async (dispatch) => {
+  // alert(localStorage.getItem("token"));
   await axios
     .get("/user", {
       headers: {

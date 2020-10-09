@@ -16,8 +16,12 @@ import "../styles/main.css";
 const Login = ({ user, getUserData }) => {
   useEffect(() => {
     if (user.username === undefined) getUserData();
-    console.log(user);
   }, [user, getUserData]);
+
+  const handleGuest = () => {
+    localStorage.setItem("token", "guest");
+    getUserData();
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -69,7 +73,7 @@ const Login = ({ user, getUserData }) => {
               <h1 class="font-serif text-5xl">Alexandria</h1>
             </div>
             <div class="w-10/12 sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-4/12">
-              <ContentBorder title="Login" borderColor="orange-300">
+              <ContentBorder title="Demo Login" borderColor="orange-300">
                 <div class="flex items-center justify-center py-5">
                   <div class="w-8/12">
                     <form onSubmit={handleLogin.bind(this)}>
@@ -87,12 +91,13 @@ const Login = ({ user, getUserData }) => {
                       />
                       <div class="flex">
                         <div class="flex-1">
-                          <Link
+                          <a
                             class="no-underline text-blue-500 hover:underline hover:text-white"
-                            to="/index"
+                            hef="/"
+                            onClick={handleGuest.bind(this)}
                           >
                             Continue as guest
-                          </Link>
+                          </a>
                         </div>
                         <div>
                           <input
