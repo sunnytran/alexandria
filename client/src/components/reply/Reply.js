@@ -13,7 +13,9 @@ const Reply = ({
   hasReplyForm = false,
   updateReplyTarget,
   replyTargetData,
-  isMod
+  isMod,
+  borderColor,
+  isLocked
 }) => {
   const [replies, setReplies] = useState([]);
 
@@ -48,6 +50,8 @@ const Reply = ({
         updateReplyTarget={updateReplyTarget}
         replyTargetData={replyTargetData}
         isMod={isMod}
+        borderColor={borderColor}
+        isLocked={isLocked}
       />
 
       {replyTargetData &&

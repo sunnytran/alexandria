@@ -19,7 +19,8 @@ const Board = ({
   getPosts,
   replies,
   getReplies,
-  user, getUserData
+  user,
+  getUserData
 }) => {
   const {
     params: { boardName },

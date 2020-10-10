@@ -23,7 +23,6 @@ const Post = ({
           i.replying_to_post_id === postContent.id && !i.replying_to_reply_id
       )
     );
-    // console.log("===================");
   }, [allReplies.length]);
 
   const [isShowing, setIsShowing] = useState(true);
@@ -36,6 +35,12 @@ const Post = ({
   var newReplies = replies;
   if (isPreviewing) newReplies = replies.slice(0, previewNReplies);
 
+  var borderColor = 'white'
+  if (postContent.status === 'locked')
+  borderColor = 'purple-500'
+
+  const isLocked = postContent.status === "locked";
+
   return (
     <div class="pb-10">
       <PostContent
@@ -46,6 +51,8 @@ const Post = ({
         handleShowing={handleShowing}
         isShowing={isShowing}
         isMod={isMod}
+        borderColor={borderColor}
+        isLocked={isLocked}
       />
 
       {replyTargetData &&
@@ -73,6 +80,8 @@ const Post = ({
                 updateReplyTarget={updateReplyTarget}
                 replyTargetData={replyTargetData}
                 isMod={isMod}
+                borderColor={borderColor}
+                isLocked={isLocked}
               />
             );
           })}

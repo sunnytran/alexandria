@@ -6,12 +6,12 @@ paginate
 
 mod stuff
 leak error
-annoying flash 
+annoying flash IS FETCHING
 
 STICKY!!
 LOCKING
 remove image from cloudinary when removing a post
-archiving posts
+archiving posts DB TRIGGER
 
 redux
 hate having to create more and more classes just or specific state variables

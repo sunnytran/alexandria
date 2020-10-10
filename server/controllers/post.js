@@ -37,12 +37,15 @@ const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
     post.username = name;
   }
 
-  console.log(post);
-
   res.json(post[0]);
+};
+
+const handlePostPut = (db) => async (req, res) => {
+  await db('posts').where({ id: req.params.id }).update({ status: req.body.status })
 };
 
 module.exports = {
   handlePostGet: handlePostGet,
   handlePostPost: handlePostPost,
+  handlePostPut: handlePostPut
 };

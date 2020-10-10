@@ -38,6 +38,7 @@ app.post(
   multerUploads,
   post.handlePostPost(db, dataUri, uploader)
 );
+app.put("/api/v1/post/:id/", post.handlePostPut(db))
 app.get("/api/v1/replies", replies.handleRepliesGet(db));
 app.post(
   "/api/v1/replies",

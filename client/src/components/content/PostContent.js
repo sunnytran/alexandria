@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { updatePost } from "../../store/actions/post";
 
 import { Image, Transformation } from "cloudinary-react";
 
@@ -16,7 +19,10 @@ const PostContent = ({
   updateReplyTarget,
   handleShowing,
   isShowing,
-  isMod
+  isMod,
+  updatePost,
+  borderColor,
+  isLocked
 }) => {
   const [imageID, setImageID] = useState("");
 
@@ -35,9 +41,8 @@ const PostContent = ({
   };
 
   const handleLock = () => {
-
+    updatePost(content.id, 'locked')
   };
-
 
   const contentLength = content.comment.length;
 
@@ -62,6 +67,7 @@ const PostContent = ({
     <div class="flex">
       <div class={"w-" + size}>
         <ContentBorder
+          borderColor={borderColor}
           title={
             <PostTitle
               title={content.title}
@@ -107,12 +113,12 @@ const PostContent = ({
                             class="underline text-blue-500 hover:underline hover:text-white"
                             to={"/" + content.board + "/" + postID}
                           >
-                            [Reply]
+                            {isLocked ? "[LOCKED]" : "[Reply]"}
                           </Link>
                         ) : (
-                          <button onClick={handleReply.bind(this)}>
+                          <button onClick={isLocked ? null : handleReply.bind(this)}>
                             <p class="underline text-blue-500 hover:underline hover:text-white">
-                              [Reply]
+                            {isLocked ? "[LOCKED]" : "[Reply]"}
                             </p>
                           </button>
                         )}
@@ -147,4 +153,6 @@ const PostContent = ({
   );
 };
 
-export default PostContent;
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps, {updatePost})(PostContent);
