@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { updatePost } from "../../store/actions/post";
+import { updateReply } from "../../store/actions/replies";
 
 import { Image, Transformation } from "cloudinary-react";
 
@@ -22,7 +23,8 @@ const PostContent = ({
   isMod,
   updatePost,
   borderColor,
-  isLocked
+  isLocked,
+  updateReply
 }) => {
   const [imageID, setImageID] = useState("");
 
@@ -40,8 +42,18 @@ const PostContent = ({
     updateReplyTarget({ type: type, value: value });
   };
 
-  const handleLock = () => {
-    updatePost(content.id, 'locked')
+  const toggleLock = () => {
+    if (isLocked) {
+      if (postID !== undefined)
+        updatePost(content.id, 'default')
+      if (replyID !== undefined)
+        updateReply(content.id, 'default')
+    } else {
+      if (postID !== undefined)
+        updatePost(content.id, 'locked')
+      if (replyID !== undefined)
+        updateReply(content.id, 'locked')
+    }
   };
 
   const contentLength = content.comment.length;
@@ -108,6 +120,14 @@ const PostContent = ({
                     <div class="flex space-x-1">
                       <div><span class={content.is_author_mod ? "font-bold text-indigo-600" : ""}>{content.username}</span></div>
                       <div>
+                        { isPreviewing ?  (
+                            <Link
+                              class="underline text-blue-500 hover:underline hover:text-white"
+                              to={"/" + content.board + "/" + postID}
+                            >
+                              [Actions]
+                            </Link>
+                          ) : null}
                         {isPreviewing ? (
                           <Link
                             class="underline text-blue-500 hover:underline hover:text-white"
@@ -122,19 +142,19 @@ const PostContent = ({
                             </p>
                           </button>
                         )}
-                        { isMod ? (
+                        { !isPreviewing && isMod ? (
                           <button onClick={handleReply.bind(this)}>
                             <p class="underline text-green-500 hover:underline hover:text-white">
                               [Sticky]
                             </p>
                           </button> ) : null}
-                        { isMod ? (
-                          <button onClick={handleLock.bind(this)}>
+                        { !isPreviewing && isMod ? (
+                          <button onClick={toggleLock.bind(this)}>
                             <p class="underline text-purple-500 hover:underline hover:text-white">
-                              [Lock]
+                              {isLocked ? "[Unlock]" : "[Lock]"}
                             </p>
                           </button> ) : null}
-                        { isMod ? (
+                        { !isPreviewing && isMod ? (
                           <button onClick={handleReply.bind(this)}>
                             <p class="underline text-red-500 hover:underline hover:text-white">
                               [Delete]
@@ -155,4 +175,4 @@ const PostContent = ({
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, {updatePost})(PostContent);
+export default connect(mapStateToProps, {updatePost, updateReply})(PostContent);

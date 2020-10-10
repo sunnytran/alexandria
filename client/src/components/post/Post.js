@@ -37,7 +37,7 @@ const Post = ({
 
   var borderColor = 'white'
   if (postContent.status === 'locked')
-  borderColor = 'purple-500'
+    borderColor = 'purple-500'
 
   const isLocked = postContent.status === "locked";
 
@@ -81,7 +81,7 @@ const Post = ({
                 replyTargetData={replyTargetData}
                 isMod={isMod}
                 borderColor={borderColor}
-                isLocked={isLocked}
+                isLocked={isLocked || i.status === "locked"}
               />
             );
           })}

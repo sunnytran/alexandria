@@ -45,6 +45,7 @@ app.post(
   multerUploads,
   replies.handleRepliesPost(db, dataUri, uploader)
 );
+app.put("/api/v1/replies", replies.handleReplyPut(db))
 app.get("/api/v1/stats", stats.handleStatsGet(db));
 
 const session = require("express-session");

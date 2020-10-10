@@ -35,6 +35,10 @@ const Reply = ({
     setIsShowing(!isShowing);
   };
 
+  var borderColor = 'white'
+  if (replyContent.status === 'locked')
+    borderColor = 'purple-500'
+
   return (
     <div class="pt-2 pl-4">
       <PostContent
@@ -80,6 +84,7 @@ const Reply = ({
                 updateReplyTarget={updateReplyTarget}
                 replyTargetData={replyTargetData}
                 isMod={isMod}
+                isLocked={isLocked}
               />
             );
           })}

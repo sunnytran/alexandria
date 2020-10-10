@@ -1,4 +1,4 @@
-import { GET_REPLIES, ADD_REPLY } from "../actions/types";
+import { GET_REPLIES, ADD_REPLY, UPDATE_REPLY } from "../actions/types";
 
 const repliesReducer = (state = [], { type, payload }) => {
   switch (type) {
@@ -6,6 +6,9 @@ const repliesReducer = (state = [], { type, payload }) => {
       return payload;
     case ADD_REPLY:
       return state.concat(payload);
+    case UPDATE_REPLY:
+        console.log(state);
+        return state;
     default:
       return state;
   }

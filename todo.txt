@@ -8,6 +8,8 @@ mod stuff
 leak error
 annoying flash IS FETCHING
 
+LOCK UPDATE STATE AND REFRESH
+
 STICKY!!
 LOCKING
 remove image from cloudinary when removing a post
@@ -22,6 +24,7 @@ server
 db
 
 FIXED
+LOCK REPLIES
 mod actions styling
 special mod color
 splash log in or view only

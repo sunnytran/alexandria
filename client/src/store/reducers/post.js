@@ -5,7 +5,7 @@ const postReducer = (state = [], { type, payload }) => {
     case GET_POST:
       return payload;
     case UPDATE_POST:
-      return state;
+      return payload;
     default:
       return state;
   }

@@ -45,7 +45,18 @@ const handleRepliesPost = (db, dataUri, uploader) => async (req, res) => {
   res.json(replies);
 };
 
+const handleReplyPut = (db) => async (req, res) => {
+  var reply = await db('replies')
+    .where({ id: req.body.id })
+    .update({ status: req.body.status })
+    .returning("*")
+    .then((res) => res);
+  
+  res.json(reply[0])
+};
+
 module.exports = {
   handleRepliesGet: handleRepliesGet,
   handleRepliesPost: handleRepliesPost,
+  handleReplyPut: handleReplyPut
 };

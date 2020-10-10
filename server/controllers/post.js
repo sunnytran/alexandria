@@ -41,7 +41,13 @@ const handlePostPost = (db, dataUri, uploader) => async (req, res) => {
 };
 
 const handlePostPut = (db) => async (req, res) => {
-  await db('posts').where({ id: req.params.id }).update({ status: req.body.status })
+  var post = await db('posts')
+    .where({ id: req.params.id })
+    .update({ status: req.body.status })
+    .returning("*")
+    .then((res) => res);
+  
+  res.json(post[0])
 };
 
 module.exports = {

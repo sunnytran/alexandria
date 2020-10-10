@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_REPLIES, ADD_REPLY } from "./types";
+import { GET_REPLIES, ADD_REPLY, UPDATE_REPLY } from "./types";
 
 export const getReplies = (params) => async (dispatch) => {
   await axios.get("/api/v1/replies/", { params: params }).then((res) => {
@@ -31,6 +31,15 @@ export const addReply = (
   await axios.post("/api/v1/replies", formData).then((res) => {
     dispatch({
       type: ADD_REPLY,
+      payload: res.data,
+    });
+  });
+};
+
+export const updateReply = (id, status) => async (dispatch) => {
+  await axios.put("/api/v1/replies/", { status: status, id: id }).then((res) => {
+    dispatch({
+      type: UPDATE_REPLY,
       payload: res.data,
     });
   });
